@@ -191,7 +191,6 @@ main {
   z-index: 30;
   backdrop-filter: blur(16px);
   background: rgba(255, 246, 232, 0.78);
-  border-bottom: 1px solid rgba(103, 63, 36, 0.1);
 }
 
 .nav-shell {
@@ -1034,31 +1033,15 @@ main {
 .site-footer {
   position: relative;
   padding: 0.7rem 0 1.45rem;
-  border-top: 1px solid rgba(103, 63, 36, 0.16);
-  background:
-    linear-gradient(180deg, rgba(255, 249, 240, 0.96), rgba(247, 229, 193, 0.94)),
-    radial-gradient(circle at 14% 0%, rgba(219, 165, 52, 0.16), transparent 32%),
-    radial-gradient(circle at 88% 12%, rgba(29, 123, 115, 0.12), transparent 34%);
+  background: var(--background);
 }
 
 .site-footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, rgba(210, 69, 47, 0.08), transparent 24%),
-    linear-gradient(270deg, rgba(29, 123, 115, 0.07), transparent 24%);
+  content: none;
 }
 
 .site-footer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(103, 63, 36, 0.08) 0.7px, transparent 0.7px);
-  background-size: 12px 12px;
-  opacity: 0.28;
+  content: none;
 }
 
 .footer-shell {
@@ -1281,7 +1264,6 @@ button:focus-visible {
 
 .site-header {
   background: rgba(247, 236, 213, 0.96);
-  border-bottom: 2px solid rgba(88, 46, 25, 0.16);
 }
 
 .brand-mark span {
@@ -2121,7 +2103,6 @@ span.poster-sticker-family::after {
   .footer-social {
     min-height: 100%;
     padding: 1.05rem 1rem 1rem;
-    border-top: 1px solid rgba(126, 72, 46, 0.18);
   }
 
   .footer-nav {
