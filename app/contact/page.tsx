@@ -20,12 +20,18 @@ export default function ContactPage() {
       >
         <div className="contact-grid">
           <article className="content-card">
-            <h3>Parish contact details</h3>
-            <p>Email, parish office phone number, and event coordination details will be posted here.</p>
+            <h3>Summer Fest form links</h3>
+            <p>
+              Use the Get Involved page for the live Summer Fest Registration form and Summer Fest
+              Donation form.
+            </p>
           </article>
           <article className="content-card">
-            <h3>Payment and registration link</h3>
-            <p>The parish payment link is available now, and additional sign-up details will be posted here as they are finalized.</p>
+            <h3>Parish payment portal</h3>
+            <p>
+              The parish payment portal is still available for church payments, but Summer Fest sign-ups
+              and donation responses now use the live Google Forms.
+            </p>
             <a className="button button-secondary" href={paymentUrl} target="_blank" rel="noreferrer">
               Open Payment Portal
             </a>

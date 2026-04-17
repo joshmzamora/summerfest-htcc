@@ -4,7 +4,7 @@ type SignUpCardsProps = {
     description: string;
     buttonLabel: string;
     formUrl: string;
-    embedLabel: string;
+    details: ReadonlyArray<string>;
   }>;
 };
 
@@ -20,17 +20,14 @@ export function SignUpCards({ items }: SignUpCardsProps) {
               <h3>{item.title}</h3>
               <p>{item.description}</p>
             </div>
-            <div className="embed-placeholder" aria-label={item.embedLabel}>
-              <span className="placeholder-badge">Sign-up details</span>
-              <p>{item.embedLabel}</p>
-            </div>
+            <ul className="detail-list">
+              {item.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
             <div className="button-row">
-              {hasLink ? (
+              {hasLink && (
                 <a className="button button-primary" href={item.formUrl} target="_blank" rel="noreferrer">
-                  {item.buttonLabel}
-                </a>
-              ) : (
-                <a className="button button-primary" href="#contact">
                   {item.buttonLabel}
                 </a>
               )}

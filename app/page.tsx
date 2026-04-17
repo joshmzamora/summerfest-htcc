@@ -99,14 +99,14 @@ export default function Home() {
       <section className="section cta-ribbon">
         <div className="container cta-ribbon-shell">
           <div>
-            <h2>Ready to volunteer, register, or support the building fund?</h2>
+            <h2>Ready to register, volunteer, or donate?</h2>
           </div>
           <div className="button-row">
             <Link className="button button-primary" href="/get-involved">
               Get Involved
             </Link>
             <Link className="button button-ghost" href="/get-involved">
-              Support the Fest
+              Open Live Forms
             </Link>
           </div>
         </div>

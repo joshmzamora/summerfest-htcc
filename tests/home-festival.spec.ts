@@ -74,3 +74,54 @@ test("home page shows strong festival branding", async ({ page }) => {
   expect(familyStyles.transform).not.toBe("none");
   expect(benefitStyles.transform).not.toBe("none");
 });
+
+test("get involved page exposes only the two live Summer Fest forms", async ({ page }) => {
+  await page.goto("/get-involved");
+
+  await expect(page.getByRole("heading", { level: 2, name: "Choose the form that fits your role" })).toBeVisible();
+
+  const registrationLink = page.getByRole("link", { name: "Open Registration Form" });
+  const donationLink = page.getByRole("link", { name: "Open Donation Form" });
+  const signUpGrid = page.locator(".sign-up-grid");
+
+  await expect(registrationLink).toBeVisible();
+  await expect(donationLink).toBeVisible();
+  await expect(registrationLink).toHaveAttribute(
+    "href",
+    "https://docs.google.com/forms/d/e/1FAIpQLSe9Z-FC43WnBFT__pQ3kTOlM_sxCGZFr0qVCkxr9oPAPj3j2A/viewform",
+  );
+  await expect(donationLink).toHaveAttribute(
+    "href",
+    "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog",
+  );
+
+  await expect(signUpGrid.locator("li").filter({ hasText: "Volunteer sign-ups" })).toBeVisible();
+  await expect(signUpGrid.locator("li").filter({ hasText: "Vendor registration" })).toBeVisible();
+  await expect(signUpGrid.locator("li").filter({ hasText: "Tournament registration" })).toBeVisible();
+  await expect(signUpGrid.locator("li").filter({ hasText: "Silent auction items" })).toBeVisible();
+  await expect(signUpGrid.locator("li").filter({ hasText: "Monetary donations" })).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("1Gr_VpCTN1gbnyRrS_VXAmGgqlcWsQgErWRmKhDVUO3g");
+});
+
+test("home and contact pages reflect the new two-form signup flow", async ({ page }) => {
+  await page.goto("/");
+
+  const hero = page.locator(".hero-section");
+
+  await expect(hero.getByRole("link", { name: "Register" })).toHaveAttribute(
+    "href",
+    "https://docs.google.com/forms/d/e/1FAIpQLSe9Z-FC43WnBFT__pQ3kTOlM_sxCGZFr0qVCkxr9oPAPj3j2A/viewform",
+  );
+  await expect(hero.getByRole("link", { name: "Donate" })).toHaveAttribute(
+    "href",
+    "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog",
+  );
+  await expect(page.getByRole("heading", { level: 2, name: "Ready to register, volunteer, or donate?" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open Live Forms" })).toBeVisible();
+
+  await page.goto("/contact");
+
+  await expect(page.getByRole("heading", { level: 3, name: "Summer Fest form links" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Parish payment portal" })).toBeVisible();
+  await expect(page.getByText("Summer Fest sign-ups and donation responses now use the live Google Forms.")).toBeVisible();
+});

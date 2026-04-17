@@ -8,7 +8,7 @@ import { paymentUrl, siteContent } from "@/data/site-content";
 
 export default function GetInvolvedPage() {
   return (
-    <main>
+    <main className="get-involved-page">
       <NavBar
         churchName={siteContent.churchName}
         eventName={siteContent.eventName}
@@ -17,23 +17,25 @@ export default function GetInvolvedPage() {
       <PageIntro {...siteContent.pageIntros.involved} />
 
       <Section
-        title="Ways to join in"
-        description="Use the sections below to volunteer, register, or follow the latest sign-up information for Summer Fest."
+        className="involvement-forms-section"
+        title="Choose the form that fits your role"
+        description="The two live Summer Fest forms below are the main sign-up path for volunteers, vendors, tournament entries, silent auction items, and monetary donations."
       >
         <SignUpCards items={siteContent.signUps} />
       </Section>
 
       <Section
-        title="Vendor info, tournament registration, and support"
-        description="Families, teams, vendors, and supporters can all start here for festival participation and support information."
+        className="involvement-guidance-section"
+        title="How these forms are being used"
+        description="Registration and donations now have their own direct links, so guests can go straight to the right form without sorting through a general sign-up page."
       >
-        <div className="split-layout">
+        <div className="split-layout involvement-guidance-layout">
           <CardGrid className="single-column" items={siteContent.involvementHighlights} />
-          <article className="support-panel">
-            <h3>Support the building fund</h3>
+          <article className="support-panel involvement-support-panel">
+            <h3>Other parish payment needs</h3>
             <p>
-              The parish payment link can be used for available Summer Fest and church-related payments,
-              including vendor booth and wristband-related options listed in Vanco.
+              If you need the parish payment portal for other church payments, it is still available. For
+              Summer Fest registrations and donation interest, please use the Google Forms above first.
             </p>
             <ul className="detail-list">
               {siteContent.donationOptions.map((item) => (
@@ -41,8 +43,8 @@ export default function GetInvolvedPage() {
               ))}
             </ul>
             <div className="button-row">
-              <a className="button button-primary" href={paymentUrl} target="_blank" rel="noreferrer">
-                Support the Fest
+              <a className="button button-secondary" href={paymentUrl} target="_blank" rel="noreferrer">
+                Open Payment Portal
               </a>
             </div>
           </article>

@@ -1,4 +1,8 @@
 export const paymentUrl = "https://secure.myvanco.com/L-ZFPW/home";
+export const donationFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog";
+export const registrationFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSe9Z-FC43WnBFT__pQ3kTOlM_sxCGZFr0qVCkxr9oPAPj3j2A/viewform";
 
 export const siteContent = {
   churchName: "Holy Trinity Catholic Church",
@@ -17,8 +21,8 @@ export const siteContent = {
   ],
   heroActions: [
     { label: "Volunteer", href: "/get-involved", variant: "primary" as const },
-    { label: "Register", href: paymentUrl, variant: "secondary" as const, external: true },
-    { label: "Donate", href: paymentUrl, variant: "secondary" as const, external: true },
+    { label: "Register", href: registrationFormUrl, variant: "secondary" as const, external: true },
+    { label: "Donate", href: donationFormUrl, variant: "secondary" as const, external: true },
     { label: "Learn More", href: "/event-info", variant: "ghost" as const },
   ],
   quickInfo: [
@@ -95,42 +99,35 @@ export const siteContent = {
   activitiesNote: "Full activity lineup coming soon.",
   signUps: [
     {
-      title: "Volunteer Sign-Up",
-      description: "Help welcome guests, support activities, and make the day run smoothly.",
-      buttonLabel: "Open Volunteer Form",
-      formUrl: "",
-      embedLabel: "Volunteer sign-up details will be shared here",
+      title: "Register",
+      description: "For volunteers, vendors, and tournament registration so teams and helpers can sign up in one place.",
+      buttonLabel: "Open Registration Form",
+      formUrl: registrationFormUrl,
+      details: ["Volunteer sign-ups", "Vendor registration", "Tournament registration"],
     },
     {
-      title: "Tournament Registration",
-      description: "Reserve your spot for tournament play and friendly festival competition.",
-      buttonLabel: "Open Tournament Form",
-      formUrl: "",
-      embedLabel: "Tournament registration details will be shared here",
-    },
-    {
-      title: "Vendor Registration",
-      description: "Apply for a vendor booth and be part of this community festival day.",
-      buttonLabel: "Open Vendor Form",
-      formUrl: paymentUrl,
-      embedLabel: "Vendor registration details will be shared here",
+      title: "Donate",
+      description: "Share silent auction items or make a monetary gift through the festival donation form.",
+      buttonLabel: "Open Donation Form",
+      formUrl: donationFormUrl,
+      details: ["Silent auction items", "Monetary donations", "Physical item", "Gift certificate", "Service", "Experience"],
     },
   ],
   involvementHighlights: [
     {
-      title: "Vendor info",
-      body: "Vendor booth details and participation information will be shared here as festival plans continue to come together.",
+      title: "Registration in one place",
+      body: "Volunteers, vendors, and tournament participants can all use the live registration form instead of waiting for separate sign-up links.",
     },
     {
-      title: "Tournament registration",
-      body: "Tournament sign-up details will be posted here so teams can easily find registration information and updates.",
+      title: "Donation form is live",
+      body: "Supporters can now submit silent auction item information and monetary donations through the live Summer Fest donation form.",
     },
     {
-      title: "Support and donations",
-      body: "Guests can support the building fund through monetary donations, basket adoption, and silent auction contributions.",
+      title: "Payment portal still available",
+      body: "The parish payment portal remains available for church payments, but the Google Forms are now the main way to register and share donation interest for Summer Fest.",
     },
   ],
-  donationOptions: ["Silent auction donations", "Basket adoption", "Monetary donations"],
+  donationOptions: ["Silent auction item donations", "Monetary donations"],
   policies: [
     "Parking is available in the church lot and marked field areas.",
     "Tents, tables, and chairs will be provided, and guests may bring chairs if preferred.",
@@ -161,11 +158,15 @@ export const siteContent = {
     },
     {
       question: "How do I volunteer?",
-      answer: "Visit the Get Involved page to find volunteer information and the sign-up button when the form is available.",
+      answer: "Use the Summer Fest Registration form on the Get Involved page to sign up as a volunteer.",
     },
     {
       question: "How do I become a vendor?",
-      answer: "Visit the Get Involved page for vendor information. Registration details will be posted there as they are confirmed.",
+      answer: "Use the Summer Fest Registration form on the Get Involved page to register as a vendor.",
+    },
+    {
+      question: "How do I donate to the silent auction or make a monetary donation?",
+      answer: "Use the Summer Fest Donation form on the Get Involved page to share silent auction items or make a monetary donation.",
     },
   ],
   sponsors: [
@@ -181,14 +182,14 @@ export const siteContent = {
     description: "The official church or event logo will be featured here.",
   },
   contact: {
-    heading: "Contact information coming soon",
-    body: "Email, phone, and parish office details will be posted here as they are confirmed.",
+    heading: "Questions, sign-ups, and support links",
+    body: "Use the Summer Fest forms for registration and donations, and check back here for parish office contact details and festival updates.",
   },
   footerLinks: [
     { label: "Event Info", href: "/event-info" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },
-    { label: "Donate", href: paymentUrl },
+    { label: "Donate", href: donationFormUrl },
   ],
   socialLinks: [
     {
@@ -229,12 +230,12 @@ export const siteContent = {
     involved: {
       title: "Volunteer, register, support the fest, or help it grow",
       description:
-        "Find volunteer sign-ups, vendor information, tournament registration, and ways to support the festival.",
+        "Find the live registration and donation forms for volunteers, vendors, tournament entries, silent auction items, and festival support.",
     },
     contactPage: {
-      title: "Stay connected as more details are released",
+      title: "Stay connected with the latest Summer Fest links",
       description:
-        "Check back here for parish contact details, volunteer coordination information, and festival updates.",
+        "Use this page to find current festival form links, the parish payment portal, and upcoming contact updates.",
     },
   },
   homeHighlights: [
@@ -246,7 +247,7 @@ export const siteContent = {
     },
     {
       title: "Get Involved",
-      body: "Volunteer, register, explore vendor details, and discover ways to support the building fund.",
+      body: "Open the live Summer Fest registration and donation forms for volunteers, vendors, tournament entries, and silent auction support.",
       href: "/get-involved",
       label: "Get Involved",
     },
