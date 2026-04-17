@@ -20,14 +20,14 @@ export default function ContactPage() {
       >
         <div className="contact-grid">
           <article className="content-card">
-            <h3>Future contact area</h3>
-            <p>Reserved for email, parish office phone number, and event coordination details.</p>
+            <h3>Parish contact details</h3>
+            <p>Email, parish office phone number, and event coordination details will be posted here.</p>
           </article>
           <article className="content-card">
-            <h3>Need a current link?</h3>
-            <p>Vendor-related payment access is live now, and more sign-up links can be added here later.</p>
+            <h3>Payment and registration link</h3>
+            <p>The current payment link is available now, and additional sign-up details will be shared here as they are finalized.</p>
             <a className="button button-secondary" href={paymentUrl} target="_blank" rel="noreferrer">
-              Open Current Payment Portal
+              Open Payment Portal
             </a>
           </article>
         </div>

@@ -39,7 +39,7 @@ export default function EventInfoPage() {
             className="single-column"
             items={siteContent.admission.placeholders.map((item) => ({
               title: item,
-              body: "This area is ready for an update as soon as final details are confirmed.",
+              body: "Final details will be shared here as plans for the day are confirmed.",
             }))}
           />
         </div>

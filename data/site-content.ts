@@ -64,8 +64,8 @@ export const siteContent = {
       body: "Cold water, soda, and adult beverage options will be offered respectfully and responsibly.",
     },
     {
-      title: "Menu updates ahead",
-      body: "The final menu lineup is still being organized, so additional items may be added soon.",
+      title: "More to enjoy",
+      body: "The full menu is still coming together, and more festival favorites may be added as the day gets closer.",
     },
   ],
   foodNote: "Menu is still being finalized.",
@@ -81,15 +81,15 @@ export const siteContent = {
   activitiesHighlights: [
     {
       title: "Play together",
-      body: "The activity schedule is being built to keep children, teens, and adults engaged throughout the afternoon.",
+      body: "Games and activities are being planned for children, teens, and adults to enjoy throughout the afternoon.",
     },
     {
       title: "Tournament energy",
-      body: "Friendly competition will be part of the day, with room for bragging rights and community fun.",
+      body: "Friendly competition will be part of the celebration, with plenty of spirited fun for teams and spectators alike.",
     },
     {
       title: "More to come",
-      body: "The full lineup is still growing as organizers confirm the final event schedule.",
+      body: "More games, contests, and festival fun will be shared as plans are finalized.",
     },
   ],
   activitiesNote: "Full activity lineup coming soon.",
@@ -99,31 +99,31 @@ export const siteContent = {
       description: "Help welcome guests, support activities, and make the day run smoothly.",
       buttonLabel: "Open Volunteer Form",
       formUrl: "",
-      embedLabel: "Volunteer form embed area reserved for Google Forms",
+      embedLabel: "Volunteer sign-up form will be shared here",
     },
     {
       title: "Tournament Registration",
       description: "Reserve your spot for tournament play and friendly festival competition.",
       buttonLabel: "Open Tournament Form",
       formUrl: "",
-      embedLabel: "Tournament registration embed area reserved for Google Forms",
+      embedLabel: "Tournament registration form will be shared here",
     },
     {
       title: "Vendor Registration",
       description: "Apply for a vendor booth and be part of this community festival day.",
       buttonLabel: "Open Vendor Form",
       formUrl: paymentUrl,
-      embedLabel: "Vendor registration embed area reserved for Google Forms",
+      embedLabel: "Vendor registration form will be shared here",
     },
   ],
   involvementHighlights: [
     {
       title: "Vendor info",
-      body: "Vendor booth details and updated participation information will continue to be added here as planning moves forward.",
+      body: "Vendor booth details and participation information will be shared here as festival plans continue to come together.",
     },
     {
       title: "Tournament registration",
-      body: "Tournament sign-up is reserved here so players can quickly find registration details and future form links in one place.",
+      body: "Tournament sign-up details will be posted here so teams can easily find registration information and updates.",
     },
     {
       title: "Support and donations",
@@ -161,11 +161,11 @@ export const siteContent = {
     },
     {
       question: "How do I volunteer?",
-      answer: "Visit the Get Involved page to find the volunteer placeholder button and future Google Form area.",
+      answer: "Visit the Get Involved page to find volunteer information and the sign-up button when the form is available.",
     },
     {
       question: "How do I become a vendor?",
-      answer: "Visit the Get Involved page. Additional vendor details and future form links will be added soon.",
+      answer: "Visit the Get Involved page for vendor information. Registration details will be posted there as they are confirmed.",
     },
   ],
   sponsors: [
@@ -178,11 +178,11 @@ export const siteContent = {
     "Local businesses, parish supporters, and community partners will be highlighted here as sponsor materials are collected.",
   logoPlaceholder: {
     title: "Church or Event Logo",
-    description: "Logo upload area reserved for the final church or event artwork.",
+    description: "The official church or event logo will be featured here.",
   },
   contact: {
     heading: "Contact information coming soon",
-    body: "This section is ready for a future email address, phone number, and parish office details.",
+    body: "Email, phone, and parish office details will be shared here as they become available.",
   },
   footerLinks: [
     { label: "Event Info", href: "/event-info" },
@@ -200,22 +200,22 @@ export const siteContent = {
     food: {
       title: "Festival bites, cold drinks, and sweet treats",
       description:
-        "From hearty favorites to refreshing drinks, this page is reserved for the menu lineup and future updates as the fest gets closer.",
+        "From hearty favorites to refreshing drinks, this page gathers the menu lineup and the latest food updates as festival day approaches.",
     },
     activities: {
       title: "Friendly competition and family fun all afternoon",
       description:
-        "The activity lineup is being built with a mix of all-ages games, tournament moments, and festival staples.",
+        "The activity lineup is coming together with all-ages games, tournament moments, and classic festival fun.",
     },
     involved: {
       title: "Volunteer, register, support the fest, or help it grow",
       description:
-        "This page keeps sign-ups, vendor information, tournament registration, and building fund support in one clear place.",
+        "Find volunteer sign-ups, vendor information, tournament registration, and support opportunities in one place.",
     },
     contactPage: {
       title: "Stay connected as more details are released",
       description:
-        "This page is ready for parish contact details, volunteer coordination information, and future event updates.",
+        "Check back here for contact details, volunteer coordination information, and the latest festival updates.",
     },
   },
   homeHighlights: [
@@ -233,7 +233,7 @@ export const siteContent = {
     },
     {
       title: "Contact",
-      body: "Check the contact page for the current placeholder contact area and future event communication details.",
+      body: "Visit the contact page for parish contact details and the latest festival communication updates.",
       href: "/contact",
       label: "Contact",
     },

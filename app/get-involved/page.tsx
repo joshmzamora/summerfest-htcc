@@ -17,8 +17,8 @@ export default function GetInvolvedPage() {
       <PageIntro {...siteContent.pageIntros.involved} />
 
       <Section
-        title="Simple, future-friendly registration spaces"
-        description="Each card below includes a clear next step now and a reserved area for future Google Form embeds."
+        title="Ways to join in"
+        description="Use the sections below to volunteer, register, or follow the latest sign-up details for Summer Fest."
       >
         <SignUpCards items={siteContent.signUps} />
       </Section>
@@ -32,8 +32,8 @@ export default function GetInvolvedPage() {
           <article className="support-panel">
             <h3>Support the building fund</h3>
             <p>
-              The current payment link can be used for available Summer Fest and parish-related payments,
-              including vendor booth and wristband-related options already set up in Vanco.
+              The parish payment link can be used for available Summer Fest and church-related payments,
+              including vendor booth and wristband-related options already listed in Vanco.
             </p>
             <ul className="detail-list">
               {siteContent.donationOptions.map((item) => (

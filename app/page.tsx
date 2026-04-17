@@ -28,7 +28,7 @@ export default function Home() {
 
       <Section
         title="A lively invitation for parish families, neighbors, and friends"
-        description="The homepage now acts like the front gate to the festival: colorful, easy to follow, and built to guide visitors into the right page quickly."
+        description="Holy Trinity Summer Fest brings together parish families, neighbors, and friends for a joyful day of food, games, and fellowship."
       >
         <div className="split-layout">
           <article className="highlight-panel">
@@ -51,8 +51,8 @@ export default function Home() {
       </Section>
 
       <Section
-        title="Each topic now has its own page"
-        description="Use the main sections below to jump straight into the parts of the event most relevant to your family, group, or volunteer plans."
+        title="Plan your visit"
+        description="Explore event details, ways to get involved, and contact information before festival day."
       >
         <CardGrid
           items={siteContent.homeHighlights.map((item) => ({
