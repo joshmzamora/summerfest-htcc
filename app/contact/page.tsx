@@ -25,7 +25,7 @@ export default function ContactPage() {
           </article>
           <article className="content-card">
             <h3>Payment and registration link</h3>
-            <p>The current payment link is available now, and additional sign-up details will be shared here as they are finalized.</p>
+            <p>The parish payment link is available now, and additional sign-up details will be posted here as they are finalized.</p>
             <a className="button button-secondary" href={paymentUrl} target="_blank" rel="noreferrer">
               Open Payment Portal
             </a>

@@ -18,14 +18,14 @@ export default function GetInvolvedPage() {
 
       <Section
         title="Ways to join in"
-        description="Use the sections below to volunteer, register, or follow the latest sign-up details for Summer Fest."
+        description="Use the sections below to volunteer, register, or follow the latest sign-up information for Summer Fest."
       >
         <SignUpCards items={siteContent.signUps} />
       </Section>
 
       <Section
         title="Vendor info, tournament registration, and support"
-        description="Get Involved also keeps the key participation and support areas together so families, teams, and supporters know exactly where to start."
+        description="Families, teams, vendors, and supporters can all start here for festival participation and support information."
       >
         <div className="split-layout">
           <CardGrid className="single-column" items={siteContent.involvementHighlights} />
@@ -33,7 +33,7 @@ export default function GetInvolvedPage() {
             <h3>Support the building fund</h3>
             <p>
               The parish payment link can be used for available Summer Fest and church-related payments,
-              including vendor booth and wristband-related options already listed in Vanco.
+              including vendor booth and wristband-related options listed in Vanco.
             </p>
             <ul className="detail-list">
               {siteContent.donationOptions.map((item) => (

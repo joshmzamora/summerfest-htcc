@@ -21,7 +21,7 @@ export function SignUpCards({ items }: SignUpCardsProps) {
               <p>{item.description}</p>
             </div>
             <div className="embed-placeholder" aria-label={item.embedLabel}>
-              <span className="placeholder-badge">Form area</span>
+              <span className="placeholder-badge">Sign-up details</span>
               <p>{item.embedLabel}</p>
             </div>
             <div className="button-row">

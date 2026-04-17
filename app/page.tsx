@@ -27,8 +27,8 @@ export default function Home() {
       />
 
       <Section
-        title="A lively invitation for parish families, neighbors, and friends"
-        description="Holy Trinity Summer Fest brings together parish families, neighbors, and friends for a joyful day of food, games, and fellowship."
+        title="A joyful celebration for parish families, neighbors, and friends"
+        description="Holy Trinity Summer Fest brings the community together for food, games, fellowship, and support for the church building fund."
       >
         <div className="split-layout">
           <article className="highlight-panel">
@@ -52,7 +52,7 @@ export default function Home() {
 
       <Section
         title="Plan your visit"
-        description="Explore event details, ways to get involved, and contact information before festival day."
+        description="Explore festival details, ways to help, and parish contact information before the celebration begins."
       >
         <CardGrid
           items={siteContent.homeHighlights.map((item) => ({

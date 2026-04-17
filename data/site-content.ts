@@ -99,21 +99,21 @@ export const siteContent = {
       description: "Help welcome guests, support activities, and make the day run smoothly.",
       buttonLabel: "Open Volunteer Form",
       formUrl: "",
-      embedLabel: "Volunteer sign-up form will be shared here",
+      embedLabel: "Volunteer sign-up details will be shared here",
     },
     {
       title: "Tournament Registration",
       description: "Reserve your spot for tournament play and friendly festival competition.",
       buttonLabel: "Open Tournament Form",
       formUrl: "",
-      embedLabel: "Tournament registration form will be shared here",
+      embedLabel: "Tournament registration details will be shared here",
     },
     {
       title: "Vendor Registration",
       description: "Apply for a vendor booth and be part of this community festival day.",
       buttonLabel: "Open Vendor Form",
       formUrl: paymentUrl,
-      embedLabel: "Vendor registration form will be shared here",
+      embedLabel: "Vendor registration details will be shared here",
     },
   ],
   involvementHighlights: [
@@ -144,7 +144,7 @@ export const siteContent = {
     },
     {
       question: "What do wristbands include?",
-      answer: "Wristbands are planned to cover games and activities. Final pricing and details are coming soon.",
+      answer: "Wristbands are expected to cover games and activities. Final pricing and details will be posted as they are confirmed.",
     },
     {
       question: "Can I bring my own chairs?",
@@ -169,20 +169,20 @@ export const siteContent = {
     },
   ],
   sponsors: [
-    "Sponsor logo coming soon",
-    "Sponsor logo coming soon",
-    "Sponsor logo coming soon",
-    "Sponsor logo coming soon",
+    "Sponsor logo",
+    "Sponsor logo",
+    "Sponsor logo",
+    "Sponsor logo",
   ],
   sponsorCallout:
-    "Local businesses, parish supporters, and community partners will be highlighted here as sponsor materials are collected.",
+    "Local businesses, parish supporters, and community partners will be recognized here as sponsor information is confirmed.",
   logoPlaceholder: {
     title: "Church or Event Logo",
     description: "The official church or event logo will be featured here.",
   },
   contact: {
     heading: "Contact information coming soon",
-    body: "Email, phone, and parish office details will be shared here as they become available.",
+    body: "Email, phone, and parish office details will be posted here as they are confirmed.",
   },
   footerLinks: [
     { label: "Event Info", href: "/event-info" },
@@ -210,12 +210,12 @@ export const siteContent = {
     involved: {
       title: "Volunteer, register, support the fest, or help it grow",
       description:
-        "Find volunteer sign-ups, vendor information, tournament registration, and support opportunities in one place.",
+        "Find volunteer sign-ups, vendor information, tournament registration, and ways to support the festival.",
     },
     contactPage: {
       title: "Stay connected as more details are released",
       description:
-        "Check back here for contact details, volunteer coordination information, and the latest festival updates.",
+        "Check back here for parish contact details, volunteer coordination information, and festival updates.",
     },
   },
   homeHighlights: [
@@ -227,7 +227,7 @@ export const siteContent = {
     },
     {
       title: "Get Involved",
-      body: "Volunteer, register, explore vendor details, and support the building fund through the updated participation page.",
+      body: "Volunteer, register, explore vendor details, and discover ways to support the building fund.",
       href: "/get-involved",
       label: "Get Involved",
     },

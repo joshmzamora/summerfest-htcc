@@ -17,13 +17,13 @@ export default function EventInfoPage() {
       />
       <PageIntro
         title="Everything you need to know before festival day"
-        description="Event Info brings the essential details together in one easy path: quick event details, about the day, food, activities, and frequently asked questions."
+        description="Find the essentials for festival day, including event details, food, activities, and frequently asked questions."
       />
       <InfoBar items={siteContent.quickInfo} />
 
       <Section
         title="About Summer Fest"
-        description="Holy Trinity Summer Fest is designed to feel welcoming, community-centered, and easy to enjoy for parish families, neighbors, and new visitors."
+        description="Holy Trinity Summer Fest is a welcoming community celebration with food, fellowship, and family fun for all ages."
       >
         <div className="split-layout">
           <article className="highlight-panel">
@@ -39,7 +39,7 @@ export default function EventInfoPage() {
             className="single-column"
             items={siteContent.admission.placeholders.map((item) => ({
               title: item,
-              body: "Final details will be shared here as plans for the day are confirmed.",
+              body: "More details will be posted here as plans for the day are finalized.",
             }))}
           />
         </div>
@@ -47,7 +47,7 @@ export default function EventInfoPage() {
 
       <Section
         title="Food & drink"
-        description="Festival favorites, treats, and refreshing drinks will all be listed here as the menu is finalized."
+        description="Festival favorites, sweet treats, and refreshing drinks will be listed here as the menu comes together."
       >
         <CardGrid
           items={siteContent.foodAndDrink.map((item) => ({
@@ -63,7 +63,7 @@ export default function EventInfoPage() {
 
       <Section
         title="Activities & games"
-        description="This part of the event is built for all ages, with room for friendly competition, family fun, and more details to come."
+        description="This part of the celebration is planned for all ages, with friendly competition, family fun, and more to enjoy."
       >
         <CardGrid
           items={siteContent.activities.map((item) => ({
