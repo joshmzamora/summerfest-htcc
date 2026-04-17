@@ -25,7 +25,7 @@ export default function EventInfoPage() {
         title="About Summer Fest"
         description="Holy Trinity Summer Fest is a welcoming community celebration with food, fellowship, and family fun for all ages."
       >
-        <div className="split-layout">
+        <div className="split-layout event-info-about-layout">
           <article className="highlight-panel">
             <h3>{siteContent.admission.title}</h3>
             <p>{siteContent.admission.summary}</p>
@@ -34,14 +34,38 @@ export default function EventInfoPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <div className="button-row">
+              <a
+                className="button button-primary"
+                href={siteContent.admission.cta.href}
+                target={siteContent.admission.cta.external ? "_blank" : undefined}
+                rel={siteContent.admission.cta.external ? "noreferrer" : undefined}
+              >
+                {siteContent.admission.cta.label}
+              </a>
+            </div>
           </article>
-          <CardGrid
-            className="single-column"
-            items={siteContent.admission.placeholders.map((item) => ({
-              title: item,
-              body: "More details will be posted here as plans for the day are finalized.",
-            }))}
-          />
+          <div className="admission-showcase">
+            <div className="pricing-board">
+              <div className="pricing-board-header">
+                <h3>Pricing</h3>
+                <p>Admission stays free. Wristbands, ticket bundles, and vendor booth fees can be purchased online now.</p>
+              </div>
+              <div className="pricing-grid">
+                {siteContent.admission.pricing.map((item) => (
+                  <article className="pricing-card" key={item.title}>
+                    <div className="pricing-card-topline">
+                      <span className="pricing-label">{item.title}</span>
+                      <span className="pricing-badge">Early bird pricing</span>
+                    </div>
+                    <strong>{item.price}</strong>
+                    <p>{item.description}</p>
+                    {item.note ? <em>{item.note}</em> : null}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 

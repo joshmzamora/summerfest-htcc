@@ -40,13 +40,40 @@ export const siteContent = {
   admission: {
     title: "Admission",
     summary:
-      "Everyone is welcome to join the celebration. Admission is free, with simple festival options for games, food, and activities.",
+      "Admission is free, and guests can buy Summer Fest wristbands, ticket bundles, and vendor booth fees ahead of time.",
     bullets: [
       "Free admission for all guests",
-      "Wristbands give access to games and activities",
-      "Tickets are used for food, drinks, and select activity purchases",
+      "Advance purchases are available online",
+      "Use the Summer Fest forms for vendor registration and silent auction details",
     ],
-    placeholders: ["Pricing coming soon", "Bundles coming soon", "Accepted payment methods coming soon"],
+    cta: {
+      label: "Open Vanco Payment Link",
+      href: paymentUrl,
+      external: true,
+    },
+    pricing: [
+      {
+        title: "1 wristband",
+        price: "$25",
+        description: "A simple option for one guest planning to enjoy the games and activities.",
+      },
+      {
+        title: "3 wristbands",
+        price: "$65",
+        description: "A family-friendly bundle for three guests at a lower total price.",
+      },
+      {
+        title: "5 tickets",
+        price: "$5",
+        description: "A small ticket bundle for food, drinks, or select festival purchases.",
+      },
+      {
+        title: "Vendor booth",
+        price: "$50 fee",
+        description: "Vendor booth fee, plus a contribution to the silent auction.",
+        note: "Silent auction contribution required",
+      },
+    ],
   },
   foodAndDrink: [
     "Brisket sandwiches",
