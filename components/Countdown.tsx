@@ -46,7 +46,7 @@ export function Countdown({ target }: CountdownProps) {
   if (timeLeft.expired) {
     return (
       <div className="countdown-card" aria-live="polite">
-        <span className="eyebrow">Summer Fest is here</span>
+        <span className="countdown-ribbon">Summer Fest is here</span>
         <p className="countdown-expired">Today is the day. We look forward to welcoming the community.</p>
       </div>
     );
@@ -61,7 +61,7 @@ export function Countdown({ target }: CountdownProps) {
 
   return (
     <div className="countdown-card" aria-label="Countdown to Summer Fest">
-      <span className="eyebrow">Countdown to the festival</span>
+      <span className="countdown-ribbon">Countdown to the festival</span>
       <div className="countdown-grid">
         {units.map((unit) => (
           <div className="countdown-unit" key={unit.label}>

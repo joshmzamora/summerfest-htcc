@@ -7,7 +7,7 @@ export const siteContent = {
   eventDate: "May 31, 2026",
   eventTime: "11:30 AM - 5:00 PM",
   location: "Location details coming soon",
-  heroNote: "Open to the community and benefitting Holy Trinity Catholic Church's building fund.",
+  heroNote: "",
   countdownTarget: "2026-05-31T11:30:00-05:00",
   navigation: [
     { label: "Home", href: "/" },

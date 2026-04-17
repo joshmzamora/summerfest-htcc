@@ -8,7 +8,7 @@ type HeroSectionProps = {
   date: string;
   time: string;
   tagline: string;
-  note: string;
+  note?: string;
   actions: readonly Action[];
   countdownTarget: string;
 };
@@ -44,18 +44,25 @@ export function HeroSection({
     <section className="hero-section section festival-layer" id="top">
       <div className="container hero-layout">
         <div className="hero-copy">
-          <span className="eyebrow">Community Festival + Building Fund Benefit</span>
           <h1>{title}</h1>
           <p className="hero-meta">
             <strong>{date}</strong>
             <span>{time}</span>
           </p>
           <p className="hero-tagline">{tagline}</p>
-          <p className="hero-note">{note}</p>
-          <div className="button-row">{actions.map(renderAction)}</div>
+          {note ? <p className="hero-note">{note}</p> : null}
+          <div className="button-row hero-actions">{actions.map(renderAction)}</div>
         </div>
         <div className="hero-aside">
           <div className="festival-scene" aria-hidden="true">
+            <div className="scene-bunting scene-bunting-top">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
             <div className="scene-bunting">
               <span />
               <span />
