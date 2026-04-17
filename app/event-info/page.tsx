@@ -16,7 +16,7 @@ export default function EventInfoPage() {
         navigation={siteContent.navigation}
       />
       <PageIntro
-        title="Everything guests need to know before festival day"
+        title="Everything you need to know before festival day"
         description="Event Info brings the essential details together in one easy path: quick event details, about the day, food, activities, and frequently asked questions."
       />
       <InfoBar items={siteContent.quickInfo} />

@@ -714,90 +714,58 @@ main {
     linear-gradient(180deg, rgba(255, 252, 245, 0.96), rgba(255, 237, 190, 0.95));
 }
 
-.info-icon {
+.info-icon-wrap {
   position: absolute;
   top: 1.1rem;
   left: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 248, 214, 0.98), rgba(255, 231, 164, 0.98));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 8px 18px rgba(168, 74, 22, 0.12);
+}
+
+.info-icon {
+  position: relative;
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  background: rgba(255, 216, 61, 0.28);
+  background: rgba(255, 216, 61, 0.16);
+  display: grid;
+  place-items: center;
 }
 
-.info-icon::before,
-.info-icon::after {
-  content: "";
-  position: absolute;
+.info-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.icon-sun::before {
-  inset: 0.45rem;
-  border-radius: 50%;
-  background: var(--sun);
+.icon-sun {
+  color: #ffbe18;
 }
 
-.icon-clock::before {
-  inset: 0.35rem;
-  border: 2px solid var(--sky);
-  border-radius: 50%;
+.icon-clock {
+  color: var(--sky);
 }
 
-.icon-clock::after {
-  top: 0.6rem;
-  left: 1.05rem;
-  width: 2px;
-  height: 0.7rem;
-  background: var(--sky);
-  box-shadow: 0.35rem 0.35rem 0 0 var(--sky);
-  transform-origin: bottom;
+.icon-pin {
+  color: var(--berry);
 }
 
-.icon-pin::before {
-  top: 0.35rem;
-  left: 0.68rem;
-  width: 0.8rem;
-  height: 1.1rem;
-  border-radius: 0.6rem 0.6rem 0.9rem 0.9rem;
-  background: var(--berry);
-  transform: rotate(45deg);
+.icon-wheel {
+  color: var(--orange);
 }
 
-.icon-wheel::before {
-  inset: 0.45rem;
-  border: 2px dashed var(--orange);
-  border-radius: 50%;
+.icon-chair {
+  color: var(--teal);
 }
 
-.icon-chair::before {
-  left: 0.62rem;
-  top: 0.55rem;
-  width: 1rem;
-  height: 0.8rem;
-  border: 2px solid var(--teal);
-  border-bottom: 0;
-}
-
-.icon-chair::after {
-  left: 0.72rem;
-  top: 1.3rem;
-  width: 0.9rem;
-  height: 0.55rem;
-  border-left: 2px solid var(--teal);
-  border-right: 2px solid var(--teal);
-}
-
-.icon-paw::before {
-  top: 0.5rem;
-  left: 0.75rem;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 50%;
-  background: var(--berry);
-  box-shadow:
-    -0.45rem -0.1rem 0 -0.08rem var(--berry),
-    0.45rem -0.1rem 0 -0.08rem var(--berry),
-    -0.2rem -0.45rem 0 -0.1rem var(--berry),
-    0.2rem -0.45rem 0 -0.1rem var(--berry);
+.icon-paw {
+  color: var(--berry);
 }
 
 .info-item span {

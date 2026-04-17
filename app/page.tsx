@@ -2,7 +2,6 @@ import Link from "next/link";
 
 import { CardGrid } from "@/components/Cards";
 import { HeroSection } from "@/components/HeroSection";
-import { InfoBar } from "@/components/InfoBar";
 import { NavBar } from "@/components/NavBar";
 import { Section } from "@/components/Section";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -26,8 +25,6 @@ export default function Home() {
         actions={siteContent.heroActions}
         countdownTarget={siteContent.countdownTarget}
       />
-
-      <InfoBar items={siteContent.quickInfo} />
 
       <Section
         title="A lively invitation for parish families, neighbors, and friends"
