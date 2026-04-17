@@ -27,24 +27,44 @@ export default function Home() {
       />
 
       <Section
-        title="A joyful celebration for parish families, neighbors, and friends"
-        description="Holy Trinity Summer Fest brings the community together for food, games, fellowship, and support for the church building fund."
+        title="A real festival day for families, friends, and neighbors"
+        description="Summer Fest brings food booths, games, tournaments, and the silent auction together to support the Holy Trinity building fund."
       >
-        <div className="split-layout">
+        <div className="split-layout festival-detail-grid">
           <article className="highlight-panel">
-            <h3>{siteContent.admission.title}</h3>
-            <p>{siteContent.admission.summary}</p>
+            <h3>Festival at a glance</h3>
+            <p>Classic parish festival energy with clear event details and activities for every age group.</p>
             <ul className="detail-list">
-              {siteContent.admission.bullets.map((item) => (
+              {[
+                "Food booths and sweet treats all afternoon",
+                "Games, family activities, and tournament competition",
+                "Silent auction and community support for the building fund",
+                "Free admission and open to the wider community",
+              ].map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </article>
-          <article className="highlight-panel logo-panel">
-            <h3>{siteContent.logoPlaceholder.title}</h3>
-            <p>{siteContent.logoPlaceholder.description}</p>
-            <div className="logo-placeholder" aria-hidden="true">
-              <span>Logo Area</span>
+          <article className="highlight-panel logo-panel festival-board">
+            <h3>Festival board</h3>
+            <p>Quick wayfinding for guests planning the day.</p>
+            <div className="festival-board-grid" aria-label="Festival area highlights">
+              <div>
+                <span>Food</span>
+                <strong>Main Booth Row</strong>
+              </div>
+              <div>
+                <span>Games</span>
+                <strong>Kid Zone & Midway</strong>
+              </div>
+              <div>
+                <span>Tournaments</span>
+                <strong>Volleyball + Washers</strong>
+              </div>
+              <div>
+                <span>Auction</span>
+                <strong>Parish Hall Tent</strong>
+              </div>
             </div>
           </article>
         </div>
@@ -64,13 +84,13 @@ export default function Home() {
       </Section>
 
       <Section
-        title="Community sponsor area"
+        title="Community partner banner row"
         description={siteContent.sponsorCallout}
       >
         <div className="sponsor-grid">
           {siteContent.sponsors.map((item, index) => (
             <div className="sponsor-placeholder" key={`${item}-${index}`}>
-              <span>{item}</span>
+              <span>{item.replace("logo", `spot ${index + 1}`)}</span>
             </div>
           ))}
         </div>

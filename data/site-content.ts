@@ -2,12 +2,12 @@ export const paymentUrl = "https://secure.myvanco.com/L-ZFPW/home";
 
 export const siteContent = {
   churchName: "Holy Trinity Catholic Church",
-  eventName: "Summer Fest",
-  tagline: "A day of food, fun, and fellowship in support of Holy Trinity",
+  eventName: "Summer Fest at Holy Trinity",
+  tagline: "Food, games, tournaments, auctions, and family fun for the whole community",
   eventDate: "May 31, 2026",
   eventTime: "11:30 AM - 5:00 PM",
   location: "Location details coming soon",
-  heroNote: "",
+  heroNote: "A parish celebration and fundraiser benefitting the building fund.",
   countdownTarget: "2026-05-31T11:30:00-05:00",
   navigation: [
     { label: "Home", href: "/" },
