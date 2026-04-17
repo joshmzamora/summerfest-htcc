@@ -116,7 +116,7 @@ export default function Home() {
         churchName={siteContent.churchName}
         eventName={siteContent.eventName}
         footerLinks={siteContent.footerLinks}
-        socialPlaceholders={siteContent.socialPlaceholders}
+        socialLinks={siteContent.socialLinks}
       />
     </main>
   );

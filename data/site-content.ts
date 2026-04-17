@@ -190,7 +190,26 @@ export const siteContent = {
     { label: "Contact", href: "/contact" },
     { label: "Donate", href: paymentUrl },
   ],
-  socialPlaceholders: ["Facebook coming soon", "Instagram coming soon", "Parish updates coming soon"],
+  socialLinks: [
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/HolyTrinityMB/",
+      platform: "facebook",
+      external: true,
+    },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/holytrinitycatholicchurchtx/",
+      platform: "instagram",
+      external: true,
+    },
+    {
+      label: "Parish Website",
+      href: "https://htcc-mb.org",
+      platform: "website",
+      external: true,
+    },
+  ],
   pageIntros: {
     about: {
       title: "A welcoming summer celebration for the parish and the wider community",
