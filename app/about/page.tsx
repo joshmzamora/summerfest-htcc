@@ -18,7 +18,6 @@ export default function AboutPage() {
       <InfoBar items={siteContent.quickInfo} />
 
       <Section
-        eyebrow="Admission"
         title="Free to attend, with festival options coming soon"
         description="Admission is free, and final pricing details for wristbands, tickets, bundles, and accepted payment methods will be added as soon as they are confirmed."
       >
@@ -43,7 +42,6 @@ export default function AboutPage() {
       </Section>
 
       <Section
-        eyebrow="Event Details"
         title="Policies and guest information"
         description="These notes are here to help the day feel welcoming, comfortable, and easy to navigate for the full community."
       >

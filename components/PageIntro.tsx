@@ -1,15 +1,13 @@
 type PageIntroProps = {
-  eyebrow: string;
   title: string;
   description: string;
 };
 
-export function PageIntro({ eyebrow, title, description }: PageIntroProps) {
+export function PageIntro({ title, description }: PageIntroProps) {
   return (
     <section className="page-intro section festival-layer">
       <div className="container page-intro-shell">
         <div className="page-intro-copy">
-          <span className="eyebrow">{eyebrow}</span>
           <h1>{title}</h1>
           <p>{description}</p>
         </div>

@@ -30,13 +30,11 @@ export default function Home() {
       <InfoBar items={siteContent.quickInfo} />
 
       <Section
-        eyebrow="Festival Welcome"
         title="A lively invitation for parish families, neighbors, and friends"
         description="The homepage now acts like the front gate to the festival: colorful, easy to follow, and built to guide visitors into the right page quickly."
       >
         <div className="split-layout">
           <article className="highlight-panel">
-            <span className="eyebrow">At a Glance</span>
             <h3>{siteContent.admission.title}</h3>
             <p>{siteContent.admission.summary}</p>
             <ul className="detail-list">
@@ -46,7 +44,6 @@ export default function Home() {
             </ul>
           </article>
           <article className="highlight-panel logo-panel">
-            <span className="eyebrow">Logo Placeholder</span>
             <h3>{siteContent.logoPlaceholder.title}</h3>
             <p>{siteContent.logoPlaceholder.description}</p>
             <div className="logo-placeholder" aria-hidden="true">
@@ -57,7 +54,6 @@ export default function Home() {
       </Section>
 
       <Section
-        eyebrow="Explore the Fest"
         title="Each topic now has its own page"
         description="Use the main sections below to jump straight into the parts of the event most relevant to your family, group, or volunteer plans."
       >
@@ -71,7 +67,6 @@ export default function Home() {
       </Section>
 
       <Section
-        eyebrow="Sponsors"
         title="Community sponsor area"
         description={siteContent.sponsorCallout}
       >
@@ -87,7 +82,6 @@ export default function Home() {
       <section className="section cta-ribbon">
         <div className="container cta-ribbon-shell">
           <div>
-            <span className="eyebrow">Next Step</span>
             <h2>Ready to volunteer, register, or support the building fund?</h2>
           </div>
           <div className="button-row">

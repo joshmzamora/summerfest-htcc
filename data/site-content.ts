@@ -183,43 +183,36 @@ export const siteContent = {
   socialPlaceholders: ["Facebook coming soon", "Instagram coming soon", "Parish updates coming soon"],
   pageIntros: {
     about: {
-      eyebrow: "About the Fest",
       title: "A welcoming summer celebration for the parish and the wider community",
       description:
         "Holy Trinity Summer Fest is designed to feel like a joyful invitation: good food, games, fellowship, and support for the parish building fund.",
     },
     food: {
-      eyebrow: "Food & Drink",
       title: "Festival bites, cold drinks, and sweet treats",
       description:
         "From hearty favorites to refreshing drinks, this page is reserved for the menu lineup and future updates as the fest gets closer.",
     },
     activities: {
-      eyebrow: "Activities & Games",
       title: "Friendly competition and family fun all afternoon",
       description:
         "The activity lineup is being built with a mix of all-ages games, tournament moments, and festival staples.",
     },
     involved: {
-      eyebrow: "Get Involved",
       title: "Volunteer, register, or prepare to join the action",
       description:
         "The sign-up experience is kept simple, with clean placeholders ready for future Google Form links and embeds.",
     },
     support: {
-      eyebrow: "Donations & Support",
       title: "Help build a great day and support the building fund",
       description:
         "There are several ways to contribute, from silent auction donations to direct monetary support through the existing payment portal.",
     },
     faq: {
-      eyebrow: "FAQ",
       title: "Helpful answers before festival day",
       description:
         "These answers cover the most common questions for guests, families, volunteers, and future participants.",
     },
     contactPage: {
-      eyebrow: "Contact",
       title: "Stay connected as more details are released",
       description:
         "This page is ready for parish contact details, volunteer coordination information, and future event updates.",

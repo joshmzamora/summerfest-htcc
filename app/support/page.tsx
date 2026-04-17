@@ -16,7 +16,6 @@ export default function SupportPage() {
       <PageIntro {...siteContent.pageIntros.support} />
 
       <Section
-        eyebrow="Ways to Help"
         title="Support options for the festival and the parish"
         description="This page keeps support details simple: easy to update, easy to navigate, and clear about what is already live."
       >
@@ -29,7 +28,6 @@ export default function SupportPage() {
             }))}
           />
           <article className="support-panel">
-            <span className="eyebrow">Live Payment Link</span>
             <h3>Current Vanco payment portal</h3>
             <p>
               The current payment link can be used for available Summer Fest and parish-related payments,

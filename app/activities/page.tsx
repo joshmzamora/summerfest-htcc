@@ -16,7 +16,6 @@ export default function ActivitiesPage() {
       <PageIntro {...siteContent.pageIntros.activities} />
 
       <Section
-        eyebrow="Activity Lineup"
         title="Festival fun with room for everyone"
         description="The activity page is designed to feel more energetic while keeping the schedule and offerings easy to scan."
       >
@@ -29,7 +28,6 @@ export default function ActivitiesPage() {
       </Section>
 
       <Section
-        eyebrow="Looking Ahead"
         title="The lineup is still growing"
         description={siteContent.activitiesNote}
       >

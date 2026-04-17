@@ -16,7 +16,6 @@ export default function GetInvolvedPage() {
       <PageIntro {...siteContent.pageIntros.involved} />
 
       <Section
-        eyebrow="Sign-Up Area"
         title="Simple, future-friendly registration spaces"
         description="Each card below includes a clear next step now and a reserved area for future Google Form embeds."
       >

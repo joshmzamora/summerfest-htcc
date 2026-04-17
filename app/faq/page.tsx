@@ -16,7 +16,6 @@ export default function FaqPage() {
       <PageIntro {...siteContent.pageIntros.faq} />
 
       <Section
-        eyebrow="Questions"
         title="Helpful answers for guests and volunteers"
         description="The FAQ page keeps the most common details in one place so the event remains easy to understand for all ages."
       >

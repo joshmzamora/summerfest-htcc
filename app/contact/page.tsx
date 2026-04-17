@@ -15,7 +15,6 @@ export default function ContactPage() {
       <PageIntro {...siteContent.pageIntros.contactPage} />
 
       <Section
-        eyebrow="Contact Placeholders"
         title={siteContent.contact.heading}
         description={siteContent.contact.body}
       >

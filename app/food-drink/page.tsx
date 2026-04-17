@@ -16,7 +16,6 @@ export default function FoodDrinkPage() {
       <PageIntro {...siteContent.pageIntros.food} />
 
       <Section
-        eyebrow="Menu Preview"
         title="A lineup of festival favorites"
         description="This page keeps food and drink details in one place so the menu can be expanded easily as plans are finalized."
       >
@@ -32,7 +31,6 @@ export default function FoodDrinkPage() {
       </Section>
 
       <Section
-        eyebrow="More to Come"
         title="Menu notes and updates"
         description={siteContent.foodNote}
       >
