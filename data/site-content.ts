@@ -2,7 +2,7 @@ export const paymentUrl = "https://secure.myvanco.com/L-ZFPW/home";
 
 export const siteContent = {
   churchName: "Holy Trinity Catholic Church",
-  eventName: "Holy Trinity Summer Fest 2026",
+  eventName: "Summer Fest",
   tagline: "A day of food, fun, and fellowship in support of Holy Trinity",
   eventDate: "May 31, 2026",
   eventTime: "11:30 AM - 5:00 PM",
