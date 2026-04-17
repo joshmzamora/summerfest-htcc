@@ -220,22 +220,22 @@ export const siteContent = {
   },
   homeHighlights: [
     {
-      title: "Plan your day",
-      body: "See the essentials first, then open Event Info for the about section, food, activities, and FAQ in one place.",
+      title: "Event Info",
+      body: "Find the key details for the day in one place, including event basics, food, activities, and frequently asked questions.",
       href: "/event-info",
-      label: "Explore Event Details",
+      label: "Event Info",
     },
     {
-      title: "Bring the family",
-      body: "Summer Fest is designed to feel joyful, neighborly, and easy to navigate for guests of all ages.",
-      href: "/event-info",
-      label: "See Event Info",
-    },
-    {
-      title: "Join the effort",
-      body: "Volunteer, register, or support the building fund with simple next steps and future form placeholders.",
+      title: "Get Involved",
+      body: "Volunteer, register, explore vendor details, and support the building fund through the updated participation page.",
       href: "/get-involved",
       label: "Get Involved",
+    },
+    {
+      title: "Contact",
+      body: "Check the contact page for the current placeholder contact area and future event communication details.",
+      href: "/contact",
+      label: "Contact",
     },
   ],
 } as const;
