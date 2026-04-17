@@ -88,7 +88,7 @@ export default function Home() {
             <Link className="button button-primary" href="/get-involved">
               Get Involved
             </Link>
-            <Link className="button button-ghost" href="/support">
+            <Link className="button button-ghost" href="/get-involved">
               Support the Fest
             </Link>
           </div>

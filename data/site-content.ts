@@ -11,19 +11,15 @@ export const siteContent = {
   countdownTarget: "2026-05-31T11:30:00-05:00",
   navigation: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Food", href: "/food-drink" },
-    { label: "Activities", href: "/activities" },
-    { label: "Sign Up", href: "/get-involved" },
-    { label: "Support", href: "/support" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Event Info", href: "/event-info" },
+    { label: "Get Involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },
   ],
   heroActions: [
     { label: "Volunteer", href: "/get-involved", variant: "primary" as const },
     { label: "Register", href: paymentUrl, variant: "secondary" as const, external: true },
     { label: "Donate", href: paymentUrl, variant: "secondary" as const, external: true },
-    { label: "Learn More", href: "/about", variant: "ghost" as const },
+    { label: "Learn More", href: "/event-info", variant: "ghost" as const },
   ],
   quickInfo: [
     { label: "Date", value: "May 31, 2026", icon: "sun" },
@@ -120,6 +116,20 @@ export const siteContent = {
       embedLabel: "Vendor registration embed area reserved for Google Forms",
     },
   ],
+  involvementHighlights: [
+    {
+      title: "Vendor info",
+      body: "Vendor booth details and updated participation information will continue to be added here as planning moves forward.",
+    },
+    {
+      title: "Tournament registration",
+      body: "Tournament sign-up is reserved here so players can quickly find registration details and future form links in one place.",
+    },
+    {
+      title: "Support and donations",
+      body: "Guests can support the building fund through monetary donations, basket adoption, and silent auction contributions.",
+    },
+  ],
   donationOptions: ["Silent auction donations", "Basket adoption", "Monetary donations"],
   policies: [
     "Parking is available in the church lot and marked field areas.",
@@ -175,10 +185,10 @@ export const siteContent = {
     body: "This section is ready for a future email address, phone number, and parish office details.",
   },
   footerLinks: [
-    { label: "About", href: "/about" },
+    { label: "Event Info", href: "/event-info" },
     { label: "Get Involved", href: "/get-involved" },
-    { label: "Support", href: "/support" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" },
+    { label: "Donate", href: paymentUrl },
   ],
   socialPlaceholders: ["Facebook coming soon", "Instagram coming soon", "Parish updates coming soon"],
   pageIntros: {
@@ -198,19 +208,9 @@ export const siteContent = {
         "The activity lineup is being built with a mix of all-ages games, tournament moments, and festival staples.",
     },
     involved: {
-      title: "Volunteer, register, or prepare to join the action",
+      title: "Volunteer, register, support the fest, or help it grow",
       description:
-        "The sign-up experience is kept simple, with clean placeholders ready for future Google Form links and embeds.",
-    },
-    support: {
-      title: "Help build a great day and support the building fund",
-      description:
-        "There are several ways to contribute, from silent auction donations to direct monetary support through the existing payment portal.",
-    },
-    faq: {
-      title: "Helpful answers before festival day",
-      description:
-        "These answers cover the most common questions for guests, families, volunteers, and future participants.",
+        "This page keeps sign-ups, vendor information, tournament registration, and building fund support in one clear place.",
     },
     contactPage: {
       title: "Stay connected as more details are released",
@@ -221,15 +221,15 @@ export const siteContent = {
   homeHighlights: [
     {
       title: "Plan your day",
-      body: "See the essentials first, then hop into the dedicated pages for food, activities, FAQs, and getting involved.",
-      href: "/about",
+      body: "See the essentials first, then open Event Info for the about section, food, activities, and FAQ in one place.",
+      href: "/event-info",
       label: "Explore Event Details",
     },
     {
       title: "Bring the family",
       body: "Summer Fest is designed to feel joyful, neighborly, and easy to navigate for guests of all ages.",
-      href: "/activities",
-      label: "See Activities",
+      href: "/event-info",
+      label: "See Event Info",
     },
     {
       title: "Join the effort",
