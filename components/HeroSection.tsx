@@ -64,32 +64,33 @@ export function HeroSection({
           </p>
           <p className="hero-tagline">{tagline}</p>
           {note ? <p className="hero-note">{note}</p> : null}
-          <ul className="hero-highlight-list" aria-label="Festival highlights">
-            <li>Free Admission</li>
-            <li>Building Fund Benefit</li>
-            <li>Food, Games, Auction</li>
-            <li>Family-Friendly Day</li>
-          </ul>
           <div className="button-row hero-actions">{actions.map(renderAction)}</div>
         </div>
         <div className="hero-aside">
           <div className="festival-scene" aria-label="Festival poster panel">
-            <p className="poster-chip">May 31, 2026</p>
+            <div className="poster-head">
+              <div className="poster-stickers" aria-label="Festival highlights">
+                <span className="poster-sticker poster-sticker-top">Food, Games, Auction</span>
+                <span className="poster-sticker poster-sticker-family">Family Friendly</span>
+              </div>
+              <p className="poster-burst">Free Admission</p>
+            </div>
             <h2>Festival Grounds</h2>
+            <p className="poster-benefit">Support Our New Building</p>
             <ul className="poster-list">
-              <li>
+              <li className="poster-item poster-food">
                 <span>Food Booths</span>
                 <strong>Brisket, turkey legs, funnel cakes</strong>
               </li>
-              <li>
+              <li className="poster-item poster-games">
                 <span>Game Tents</span>
                 <strong>Family games and prize stations</strong>
               </li>
-              <li>
+              <li className="poster-item poster-tournament">
                 <span>Tournaments</span>
                 <strong>Volleyball and washers sign-up</strong>
               </li>
-              <li>
+              <li className="poster-item poster-auction">
                 <span>Silent Auction</span>
                 <strong>Gift baskets and community bids</strong>
               </li>
