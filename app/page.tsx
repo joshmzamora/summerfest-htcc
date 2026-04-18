@@ -23,7 +23,9 @@ export default function Home() {
         tagline={siteContent.tagline}
         note={siteContent.heroNote}
         actions={siteContent.heroActions}
-        countdownTarget={siteContent.countdownTarget}
+        countdownTarget={siteContent.calendarEvent.start}
+        calendarHref="/api/calendar"
+        calendarLabel="Add to Calendar"
       />
 
       <Section

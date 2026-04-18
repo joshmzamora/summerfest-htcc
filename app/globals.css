@@ -692,6 +692,15 @@ main {
   color: var(--berry);
 }
 
+.hero-calendar-button {
+  width: 100%;
+  min-height: 3.35rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 1rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 14px 26px rgba(130, 43, 30, 0.24);
+}
+
 .button:hover,
 .button:focus-visible {
   transform: translateY(-2px) rotate(-0.4deg);
@@ -2093,6 +2102,11 @@ button:focus-visible {
 
 .hero-actions .button:hover,
 .hero-actions .button:focus-visible {
+  transform: translateY(-2px);
+}
+
+.hero-calendar-button:hover,
+.hero-calendar-button:focus-visible {
   transform: translateY(-2px);
 }
 

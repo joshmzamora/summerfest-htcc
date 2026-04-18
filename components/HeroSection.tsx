@@ -11,6 +11,8 @@ type HeroSectionProps = {
   note?: string;
   actions: readonly Action[];
   countdownTarget: string;
+  calendarHref: string;
+  calendarLabel: string;
 };
 
 const renderAction = (action: Action) => {
@@ -39,6 +41,8 @@ export function HeroSection({
   note,
   actions,
   countdownTarget,
+  calendarHref,
+  calendarLabel,
 }: HeroSectionProps) {
   return (
     <section className="hero-section section festival-layer" id="top">
@@ -98,6 +102,14 @@ export function HeroSection({
             <p className="poster-ticket">Hosted by Holy Trinity Catholic Church</p>
           </div>
           <Countdown target={countdownTarget} />
+          <a
+            className="button button-primary hero-calendar-button"
+            href={calendarHref}
+            download
+            aria-label={`${calendarLabel} for ${title}`}
+          >
+            {calendarLabel}
+          </a>
         </div>
       </div>
     </section>

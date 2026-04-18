@@ -107,6 +107,8 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
   await page.goto("/");
 
   const hero = page.locator(".hero-section");
+  const countdownCard = hero.locator(".countdown-card");
+  const calendarLink = hero.getByRole("link", { name: "Add to Calendar" });
 
   await expect(hero.getByRole("link", { name: "Register" })).toHaveAttribute(
     "href",
@@ -116,6 +118,18 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
     "href",
     "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog",
   );
+  await expect(calendarLink).toHaveAttribute("href", "/api/calendar");
+  await expect(calendarLink).toHaveAttribute("download", "");
+  await expect(calendarLink).toBeVisible();
+
+  const countdownRelation = await countdownCard.evaluate(
+    (element, calendarAnchor) =>
+      element.compareDocumentPosition(calendarAnchor as Node) & Node.DOCUMENT_POSITION_FOLLOWING,
+    await calendarLink.elementHandle(),
+  );
+
+  expect(countdownRelation).toBeTruthy();
+
   await expect(page.getByRole("heading", { level: 2, name: "Ready to register, volunteer, or donate?" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Open Live Forms" })).toBeVisible();
 
@@ -124,4 +138,19 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
   await expect(page.getByRole("heading", { level: 3, name: "Summer Fest form links" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Parish payment portal" })).toBeVisible();
   await expect(page.getByText("Summer Fest sign-ups and donation responses now use the live Google Forms.")).toBeVisible();
+});
+
+test("calendar route returns a downloadable ICS event", async ({ request }) => {
+  const response = await request.get("/api/calendar");
+
+  expect(response.ok()).toBeTruthy();
+  expect(response.headers()["content-type"]).toContain("text/calendar");
+  expect(response.headers()["content-disposition"]).toContain('attachment; filename="summer-fest-at-holy-trinity.ics"');
+
+  const body = await response.text();
+
+  expect(body).toContain("SUMMARY:Summer Fest at Holy Trinity");
+  expect(body).toContain("LOCATION:3515 Trinity Dr\\, Mont Belvieu\\, TX 77580\\, USA");
+  expect(body).toContain("DTSTART:20260531T163000Z");
+  expect(body).toContain("DTEND:20260531T220000Z");
 });

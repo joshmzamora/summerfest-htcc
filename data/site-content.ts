@@ -15,7 +15,15 @@ export const siteContent = {
   eventTime: "11:30 AM - 5:00 PM",
   location: festivalLocation,
   heroNote: "A parish celebration and fundraiser benefitting the building fund.",
-  countdownTarget: "2026-05-31T11:30:00-05:00",
+  calendarEvent: {
+    title: "Summer Fest at Holy Trinity",
+    start: "2026-05-31T11:30:00-05:00",
+    end: "2026-05-31T17:00:00-05:00",
+    location: festivalLocation,
+    description:
+      "Food, games, tournaments, auctions, and family fun for the whole community. A parish celebration and fundraiser benefitting the building fund.",
+    fileName: "summer-fest-at-holy-trinity.ics",
+  },
   navigation: [
     { label: "Home", href: "/" },
     { label: "Event Info", href: "/event-info" },
