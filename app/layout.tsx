@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Barlow } from "next/font/google";
 
+import { ShareSavePrompt } from "@/components/ShareSavePrompt";
+import { siteContent } from "@/data/site-content";
+
 import "./globals.css";
 
 const festivalDisplay = localFont({
@@ -30,7 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${festivalDisplay.variable} ${barlow.variable}`}>{children}</body>
+      <body className={`${festivalDisplay.variable} ${barlow.variable}`}>
+        {children}
+        <ShareSavePrompt eventName={siteContent.eventName} config={siteContent.sharePrompt} />
+      </body>
     </html>
   );
 }

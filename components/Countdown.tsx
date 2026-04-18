@@ -14,6 +14,14 @@ type CountdownState = {
   expired: boolean;
 };
 
+const initialCountdownState: CountdownState = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  expired: false,
+};
+
 const getCountdownState = (target: string): CountdownState => {
   const now = new Date().getTime();
   const end = new Date(target).getTime();
@@ -33,14 +41,21 @@ const getCountdownState = (target: string): CountdownState => {
 };
 
 export function Countdown({ target }: CountdownProps) {
-  const [timeLeft, setTimeLeft] = useState<CountdownState>(() => getCountdownState(target));
+  const [timeLeft, setTimeLeft] = useState<CountdownState>(initialCountdownState);
 
   useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      setTimeLeft(getCountdownState(target));
+    });
+
     const intervalId = window.setInterval(() => {
       setTimeLeft(getCountdownState(target));
     }, 1000);
 
-    return () => window.clearInterval(intervalId);
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.clearInterval(intervalId);
+    };
   }, [target]);
 
   if (timeLeft.expired) {
