@@ -140,6 +140,54 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
   await expect(page.getByText("Summer Fest sign-ups and donation responses now use the live Google Forms.")).toBeVisible();
 });
 
+test("event info admission explainer shows the custom wristband and ticket icons", async ({ page }) => {
+  await page.goto("/event-info");
+
+  await expect(page.getByRole("heading", { level: 2, name: "About Summer Fest" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Wristbands or tickets?" })).toBeVisible();
+  await expect(page.getByText("Unlimited games and activities")).toBeVisible();
+  await expect(page.getByText("Pay one item at a time")).toBeVisible();
+
+  const wristbandIcon = page.locator(".admission-explainer-icon.icon-wristband .admission-explainer-glyph-wristband");
+  const ticketsIcon = page.locator(".admission-explainer-icon.icon-tickets .admission-explainer-glyph-tickets");
+
+  await expect(wristbandIcon).toBeVisible();
+  await expect(ticketsIcon).toBeVisible();
+
+  const [wristbandMask, ticketsMask] = await Promise.all([
+    wristbandIcon.evaluate((element) => {
+      const styles = window.getComputedStyle(element);
+      return styles.maskImage || styles.webkitMaskImage;
+    }),
+    ticketsIcon.evaluate((element) => {
+      const styles = window.getComputedStyle(element);
+      return styles.maskImage || styles.webkitMaskImage;
+    }),
+  ]);
+
+  expect(wristbandMask).not.toBe("none");
+  expect(ticketsMask).not.toBe("none");
+});
+
+test("event info pricing cards link to the Vanco payment page", async ({ page }) => {
+  await page.goto("/event-info");
+
+  const pricingCards = page.locator(".pricing-grid .pricing-card");
+  const firstPricingSummary = pricingCards.first().locator(".pricing-card-summary");
+
+  await expect(pricingCards).toHaveCount(4);
+  await expect(pricingCards.first()).toContainText("$25");
+  await expect(pricingCards.first()).toContainText("1 wristband");
+  await expect(pricingCards.first()).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+  await expect(pricingCards.nth(1)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+  await expect(pricingCards.nth(2)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+  await expect(pricingCards.nth(3)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+
+  const summaryColumns = await firstPricingSummary.evaluate((element) => window.getComputedStyle(element).gridTemplateColumns);
+
+  expect(summaryColumns.split(" ").length).toBeGreaterThan(1);
+});
+
 test("calendar route returns a downloadable ICS event", async ({ request }) => {
   const response = await request.get("/api/calendar");
 

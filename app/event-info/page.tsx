@@ -10,31 +10,9 @@ import { siteContent } from "@/data/site-content";
 function AdmissionExplainerIcon({ icon }: { icon: string }) {
   switch (icon) {
     case "wristband":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path
-            d="M20 15h24a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H20a6 6 0 0 1-6-6V21a6 6 0 0 1 6-6Z"
-            stroke="currentColor"
-            strokeWidth="3.5"
-          />
-          <path d="M24 15v34M40 15v34" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
-          <circle cx="32" cy="32" r="5.5" fill="currentColor" />
-          <path d="M10 23h8M10 41h8M46 23h8M46 41h8" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
-        </svg>
-      );
+      return <span className="admission-explainer-glyph admission-explainer-glyph-wristband" aria-hidden="true" />;
     case "tickets":
-      return (
-        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <path
-            d="M14 22a4 4 0 0 0 4-4h32a4 4 0 0 0 4 4v8a4 4 0 0 0 0 8v8a4 4 0 0 0-4 4H18a4 4 0 0 0-4-4v-8a4 4 0 0 0 0-8v-8Z"
-            stroke="currentColor"
-            strokeWidth="3.5"
-            strokeLinejoin="round"
-          />
-          <path d="M32 20v24" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="4 5" />
-          <path d="M24 31h0.01M40 31h0.01" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-        </svg>
-      );
+      return <span className="admission-explainer-glyph admission-explainer-glyph-tickets" aria-hidden="true" />;
     default:
       return null;
   }
@@ -56,7 +34,7 @@ export default function EventInfoPage() {
 
       <Section
         title="About Summer Fest"
-        description="Holy Trinity Summer Fest is a welcoming community celebration with food, fellowship, and family fun for all ages."
+        description=""
       >
         <div className="split-layout event-info-about-layout">
           <article className="highlight-panel admission-panel">
@@ -96,15 +74,24 @@ export default function EventInfoPage() {
             </div>
             <div className="pricing-grid">
               {siteContent.admission.pricing.map((item) => (
-                <article className="pricing-card" key={item.title}>
-                  <div className="pricing-card-topline">
-                    <span className="pricing-label">{item.title}</span>
-                    <span className="pricing-badge">Early bird pricing</span>
+                <a
+                  className="pricing-card"
+                  key={item.title}
+                  href={siteContent.admission.cta.href}
+                  target={siteContent.admission.cta.external ? "_blank" : undefined}
+                  rel={siteContent.admission.cta.external ? "noreferrer" : undefined}
+                  aria-label={`Open payment link for ${item.title}`}
+                >
+                  <div className="pricing-card-summary">
+                    <strong>{item.price}</strong>
+                    <div className="pricing-card-topline">
+                      <span className="pricing-label">{item.title}</span>
+                      <span className="pricing-badge">Early bird pricing</span>
+                    </div>
                   </div>
-                  <strong>{item.price}</strong>
                   <p>{item.description}</p>
                   {"note" in item && item.note ? <em>{item.note}</em> : null}
-                </article>
+                </a>
               ))}
             </div>
             <div className="button-row pricing-board-actions">
