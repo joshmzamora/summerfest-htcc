@@ -2818,6 +2818,20 @@ span.poster-sticker-family::after {
     align-self: stretch;
   }
 
+  .what-to-expect-page .pricing-card-summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .what-to-expect-page .pricing-card-topline {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .what-to-expect-page .pricing-label {
+    text-align: left;
+  }
+
   .process-diagram {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
