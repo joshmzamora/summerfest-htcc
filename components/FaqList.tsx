@@ -26,7 +26,7 @@ export function FaqList({ items }: FaqListProps) {
               aria-expanded={isOpen}
             >
               <span>{item.question}</span>
-              <span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+              <span aria-hidden="true">{isOpen ? "-" : "+"}</span>
             </button>
             <div className="faq-answer" hidden={!isOpen}>
               <p>{item.answer}</p>

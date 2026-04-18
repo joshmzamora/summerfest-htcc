@@ -140,13 +140,35 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
   await expect(page.getByText("Summer Fest sign-ups and donation responses now use the live Google Forms.")).toBeVisible();
 });
 
-test("event info admission explainer shows the custom wristband and ticket icons", async ({ page }) => {
-  await page.goto("/event-info");
+test("plan your visit page stays focused on logistics", async ({ page }) => {
+  await page.goto("/plan-your-visit");
 
-  await expect(page.getByRole("heading", { level: 2, name: "About Summer Fest" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Wristbands or tickets?" })).toBeVisible();
-  await expect(page.getByText("Unlimited games and activities")).toBeVisible();
-  await expect(page.getByText("Pay one item at a time")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Everything you need to know before festival day" })).toBeVisible();
+  await expect(page.getByText("Parking available in lot and marked field")).toBeVisible();
+  await expect(page.getByText("Tents, tables, and chairs provided")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "About Summer Fest" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Admission Overview" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Frequently Asked Questions" })).toBeVisible();
+
+  await expect(page.getByRole("heading", { level: 2, name: "Wristbands vs Tickets" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 2, name: "Pricing" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 2, name: "Food & Drink" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 2, name: "Activities & Games" })).toHaveCount(0);
+});
+
+test("what to expect page shows the festival experience sections in order", async ({ page }) => {
+  await page.goto("/what-to-expect");
+
+  await expect(page.getByRole("heading", { level: 1, name: "What to Expect at Summer Fest" })).toBeVisible();
+
+  const sectionHeadings = await page.locator(".section-heading h2").allTextContents();
+  expect(sectionHeadings).toEqual([
+    "Introduction",
+    "Wristbands vs Tickets",
+    "Pricing",
+    "Food & Drink",
+    "Activities & Games",
+  ]);
 
   const wristbandIcon = page.locator(".admission-explainer-icon.icon-wristband .admission-explainer-glyph-wristband");
   const ticketsIcon = page.locator(".admission-explainer-icon.icon-tickets .admission-explainer-glyph-tickets");
@@ -167,10 +189,6 @@ test("event info admission explainer shows the custom wristband and ticket icons
 
   expect(wristbandMask).not.toBe("none");
   expect(ticketsMask).not.toBe("none");
-});
-
-test("event info pricing cards link to the Vanco payment page", async ({ page }) => {
-  await page.goto("/event-info");
 
   const pricingCards = page.locator(".pricing-grid .pricing-card");
   const firstPricingSummary = pricingCards.first().locator(".pricing-card-summary");
@@ -182,10 +200,59 @@ test("event info pricing cards link to the Vanco payment page", async ({ page })
   await expect(pricingCards.nth(1)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
   await expect(pricingCards.nth(2)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
   await expect(pricingCards.nth(3)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+  await expect(page.getByRole("link", { name: "Open Vanco Payment Link" })).toHaveAttribute(
+    "href",
+    "https://secure.myvanco.com/L-ZFPW/home",
+  );
 
   const summaryColumns = await firstPricingSummary.evaluate((element) => window.getComputedStyle(element).gridTemplateColumns);
-
   expect(summaryColumns.split(" ").length).toBeGreaterThan(1);
+
+  await expect(page.getByText("Brisket sandwiches")).toBeVisible();
+  await expect(page.getByText("Turkey legs")).toBeVisible();
+  await expect(page.getByText("Funnel cakes")).toBeVisible();
+  await expect(page.getByText("Fruit cups")).toBeVisible();
+  await expect(page.getByText("Margaritas")).toBeVisible();
+  await expect(page.getByText("Beer")).toBeVisible();
+  await expect(page.getByText("Soda")).toBeVisible();
+  await expect(page.getByText("Water")).toBeVisible();
+  await expect(page.getByText("Family-friendly games")).toBeVisible();
+  await expect(page.getByText("Tournament competitions")).toBeVisible();
+  await expect(page.getByText("Volleyball")).toBeVisible();
+  await expect(page.getByText("Washers")).toBeVisible();
+  await expect(page.getByText("Tournament winner awards")).toBeVisible();
+  await expect(page.getByText("Gift card draw")).toBeVisible();
+  await expect(page.getByText("Silent auction", { exact: true })).toBeVisible();
+  await expect(page.getByText("Menu is still being finalized.")).toBeVisible();
+  await expect(page.getByText("Full lineup is still being finalized.")).toBeVisible();
+  await expect(page.locator("#primary-navigation a[aria-current='page']")).toHaveText("What to Expect");
+});
+
+test("navigation, discoverability links, and legacy routes reflect the page split", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByRole("link", { name: "Learn More" })).toHaveAttribute("href", "/plan-your-visit");
+  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Plan Your Visit" })).toBeVisible();
+  await expect(page.locator(".card-grid .content-card").filter({ hasText: "What to Expect" })).toBeVisible();
+
+  const footerNav = page.getByRole("navigation", { name: "Footer navigation" });
+  await expect(footerNav.getByRole("link", { name: "Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
+  await expect(footerNav.getByRole("link", { name: "What to Expect" })).toHaveAttribute("href", "/what-to-expect");
+
+  await page.goto("/event-info");
+  await expect(page).toHaveURL(/\/plan-your-visit$/);
+
+  await page.goto("/about");
+  await expect(page).toHaveURL(/\/plan-your-visit$/);
+
+  await page.goto("/faq");
+  await expect(page).toHaveURL(/\/plan-your-visit$/);
+
+  await page.goto("/food-drink");
+  await expect(page).toHaveURL(/\/what-to-expect$/);
+
+  await page.goto("/activities");
+  await expect(page).toHaveURL(/\/what-to-expect$/);
 });
 
 test("calendar route returns a downloadable ICS event", async ({ request }) => {

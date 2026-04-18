@@ -26,7 +26,8 @@ export const siteContent = {
   },
   navigation: [
     { label: "Home", href: "/" },
-    { label: "Event Info", href: "/event-info" },
+    { label: "Plan Your Visit", href: "/plan-your-visit" },
+    { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },
   ],
@@ -34,130 +35,184 @@ export const siteContent = {
     { label: "Volunteer", href: "/get-involved", variant: "primary" as const },
     { label: "Register", href: registrationFormUrl, variant: "secondary" as const, external: true },
     { label: "Donate", href: donationFormUrl, variant: "secondary" as const, external: true },
-    { label: "Learn More", href: "/event-info", variant: "ghost" as const },
+    { label: "Learn More", href: "/plan-your-visit", variant: "ghost" as const },
   ],
-  quickInfo: [
-    { label: "Date", value: "May 31, 2026", icon: "sun" },
-    { label: "Time", value: "11:30 AM - 5:00 PM", icon: "clock" },
-    {
-      label: "Location",
-      value: festivalLocation,
-      icon: "pin",
-      href: googleMapsLocationUrl,
-      external: true,
-      ariaLabel: "Open festival location in maps",
+  planYourVisit: {
+    intro: {
+      title: "Everything you need to know before festival day",
+      description:
+        "Find the essentials for festival day, including when to arrive, where to park, where to sit, and a few quick policies before you head over.",
     },
-    { label: "Parking", value: "Parking available in lot and marked field", icon: "wheel" },
-    {
-      label: "Seating",
-      value: "Tents, tables, and chairs provided (We strongly encourage guests to bring their own chairs!)",
-      icon: "chair",
-    },
-    { label: "Pets", value: "No pets allowed", icon: "paw" },
-  ],
-  admission: {
-    title: "Admission",
-    summary:
-      "Admission is free, and guests can buy Summer Fest wristbands, ticket bundles, and vendor booth fees ahead of time.",
-    bullets: [
-      "Free admission for all guests",
-      "Advance purchases are available online",
-      "Use the Summer Fest forms for vendor registration and silent auction details",
+    quickInfo: [
+      { label: "Date", value: "May 31, 2026", icon: "sun" },
+      { label: "Time", value: "11:30 AM - 5:00 PM", icon: "clock" },
+      {
+        label: "Location",
+        value: festivalLocation,
+        icon: "pin",
+        href: googleMapsLocationUrl,
+        external: true,
+        ariaLabel: "Open festival location in maps",
+      },
+      { label: "Parking", value: "Parking available in lot and marked field", icon: "wheel" },
+      {
+        label: "Seating",
+        value: "Tents, tables, and chairs provided (We strongly encourage guests to bring their own chairs!)",
+        icon: "chair",
+      },
+      { label: "Pets", value: "No pets allowed", icon: "paw" },
     ],
-    cta: {
-      label: "Open Vanco Payment Link",
-      href: paymentUrl,
-      external: true,
+    about: {
+      title: "About Summer Fest",
+      summary:
+        "Summer Fest is a parish celebration that brings families, friends, and neighbors together for a joyful day that also supports Holy Trinity's building fund.",
+      bullets: [
+        "Hosted by Holy Trinity Catholic Church",
+        "Open to parish families and the wider community",
+        "Built around fellowship, food, games, and support for the building fund",
+      ],
     },
-    explainer: [
+    admissionOverview: {
+      title: "Admission Overview",
+      summary:
+        "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
+      bullets: [
+        "Free admission for all guests",
+        "Optional purchases are available for festival experiences",
+        "Detailed wristband, ticket, and vendor pricing lives on What to Expect",
+      ],
+    },
+    faqs: [
       {
-        title: "Wristband",
-        icon: "wristband",
-        headline: "Unlimited games and activities",
-        description: "A wristband gives access to all games and activities throughout the day.",
-        note: "Great for kids and anyone planning to play all day.",
+        question: "Is admission free?",
+        answer: "Yes. Admission is free for everyone attending Summer Fest.",
       },
       {
-        title: "Tickets",
-        icon: "tickets",
-        headline: "Pay one item at a time",
-        description: "Tickets can be used for food and drink purchases and for individual games and activities.",
-        note: "Tickets are not unlimited like wristbands.",
-      },
-    ],
-    pricing: [
-      {
-        title: "1 wristband",
-        price: "$25",
-        description: "A simple option for one guest planning to enjoy the games and activities.",
+        question: "Can I bring my own chairs?",
+        answer:
+          "Yes. Tents, tables, and chairs will be available, and guests are welcome to bring chairs if they prefer.",
       },
       {
-        title: "3 wristbands",
-        price: "$65",
-        description: "A family-friendly bundle for three guests at a lower total price.",
+        question: "Where do I park?",
+        answer: "Parking will be available in the lot and marked field areas.",
       },
       {
-        title: "5 tickets",
-        price: "$5",
-        description: "A small ticket bundle for food, drinks, or select festival purchases.",
+        question: "Are pets allowed?",
+        answer: "No. Pets are not allowed at the event.",
       },
       {
-        title: "Vendor booth",
-        price: "$50 fee",
-        description: "Vendor booth fee, plus a contribution to the silent auction.",
-        note: "Silent auction contribution required",
+        question: "How do I volunteer?",
+        answer: "Use the Summer Fest Registration form on the Get Involved page to sign up as a volunteer.",
+      },
+      {
+        question: "How do I become a vendor?",
+        answer: "Use the Summer Fest Registration form on the Get Involved page to register as a vendor.",
+      },
+      {
+        question: "How do I donate to the silent auction or make a monetary donation?",
+        answer: "Use the Summer Fest Donation form on the Get Involved page to share silent auction items or make a monetary donation.",
       },
     ],
   },
-  foodAndDrink: [
-    "Brisket sandwiches",
-    "Turkey legs",
-    "Funnel cakes",
-    "Fruit cups",
-    "Margaritas",
-    "Beer",
-    "Soda",
-    "Water",
-  ],
-  foodHighlights: [
-    {
-      title: "Festival favorites",
-      body: "Expect savory classics, sweet treats, and easy options for families enjoying the day together.",
+  whatToExpect: {
+    intro: {
+      title: "What to Expect at Summer Fest",
+      description:
+        "Get a feel for the festival experience, from wristbands and ticket options to the food, drinks, games, and community fun planned for the day.",
+      welcome:
+        "Summer Fest is planned as a lively parish festival day with food booths, friendly competition, family activities, and plenty of reasons to stay awhile. Whether you're coming to eat, play, cheer on a tournament, or just enjoy the atmosphere, there will be something happening across the grounds all afternoon.",
     },
-    {
-      title: "Refreshing drinks",
-      body: "Cold water, soda, and adult beverage options will be offered respectfully and responsibly.",
+    wristbandsOrTickets: {
+      title: "Wristbands vs Tickets",
+      description: "Here is the simplest way to decide how you want to enjoy the day.",
+      items: [
+        {
+          title: "Wristband",
+          icon: "wristband",
+          headline: "Unlimited games and activities",
+          description: "A wristband gives access to all games and activities throughout the day.",
+          note: "Great for kids and anyone planning to play all day.",
+        },
+        {
+          title: "Tickets",
+          icon: "tickets",
+          headline: "Pay one item at a time",
+          description: "Tickets can be used for food and drink purchases and for individual games and activities.",
+          note: "Tickets are not unlimited like wristbands.",
+        },
+      ],
     },
-    {
-      title: "More to enjoy",
-      body: "The full menu is still coming together, and more festival favorites may be added as the day gets closer.",
+    pricing: {
+      title: "Pricing",
+      description: "Early bird pricing is available now through the Summer Fest Vanco payment page.",
+      cta: {
+        label: "Open Vanco Payment Link",
+        href: paymentUrl,
+        external: true,
+      },
+      items: [
+        {
+          title: "1 wristband",
+          price: "$25",
+          description: "A simple option for one guest planning to enjoy the games and activities.",
+        },
+        {
+          title: "3 wristbands",
+          price: "$65",
+          description: "A family-friendly bundle for three guests at a lower total price.",
+        },
+        {
+          title: "5 tickets",
+          price: "$5",
+          description: "A small ticket bundle for food, drinks, or select festival purchases.",
+        },
+        {
+          title: "Vendor booth",
+          price: "$50 fee",
+          description: "Vendor booth fee, plus a contribution to the silent auction.",
+          note: "Silent auction contribution required",
+        },
+      ],
     },
-  ],
-  foodNote: "Menu is still being finalized.",
-  activities: [
-    "Family-friendly games",
-    "Tournament competitions",
-    "Volleyball",
-    "Washers",
-    "Tournament winner awards",
-    "Gift card draw",
-    "Silent auction",
-  ],
-  activitiesHighlights: [
-    {
-      title: "Play together",
-      body: "Games and activities are being planned for children, teens, and adults to enjoy throughout the afternoon.",
+    foodAndDrink: {
+      title: "Food & Drink",
+      description: "Classic festival bites, sweet treats, and cold drinks are all part of the plan.",
+      note: "Menu is still being finalized.",
+      groups: [
+        {
+          title: "Savory favorites",
+          items: ["Brisket sandwiches", "Turkey legs"],
+        },
+        {
+          title: "Sweet and fresh picks",
+          items: ["Funnel cakes", "Fruit cups"],
+        },
+        {
+          title: "Cold drinks",
+          items: ["Margaritas", "Beer", "Soda", "Water"],
+        },
+      ],
     },
-    {
-      title: "Tournament energy",
-      body: "Friendly competition will be part of the celebration, with plenty of spirited fun for teams and spectators alike.",
+    activitiesAndGames: {
+      title: "Activities & Games",
+      description: "The festival lineup is designed to mix easy family fun with a few crowd-pleasing competitions.",
+      note: "Full lineup is still being finalized.",
+      groups: [
+        {
+          title: "Family fun",
+          items: ["Family-friendly games", "Gift card draw"],
+        },
+        {
+          title: "Tournament play",
+          items: ["Tournament competitions", "Volleyball", "Washers", "Tournament winner awards"],
+        },
+        {
+          title: "Festival extras",
+          items: ["Silent auction"],
+        },
+      ],
     },
-    {
-      title: "More to come",
-      body: "More games, contests, and festival fun will be shared as plans are finalized.",
-    },
-  ],
-  activitiesNote: "Full activity lineup coming soon.",
+  },
   signUps: [
     {
       title: "Register",
@@ -194,41 +249,6 @@ export const siteContent = {
     "Tents, tables, and chairs will be provided, and guests may bring chairs if preferred.",
     "No pets are allowed at the event.",
     "We ask all guests to help keep the day welcoming, respectful, and family-friendly.",
-  ],
-  faqs: [
-    {
-      question: "Is admission free?",
-      answer: "Yes. Admission is free for everyone attending Summer Fest.",
-    },
-    {
-      question: "What do wristbands include?",
-      answer: "Wristbands are expected to cover games and activities. Final pricing and details will be posted as they are confirmed.",
-    },
-    {
-      question: "Can I bring my own chairs?",
-      answer:
-        "Yes. Tents, tables, and chairs will be available, and guests are welcome to bring chairs if they prefer.",
-    },
-    {
-      question: "Where do I park?",
-      answer: "Parking will be available in the lot and marked field areas.",
-    },
-    {
-      question: "Are pets allowed?",
-      answer: "No. Pets are not allowed at the event.",
-    },
-    {
-      question: "How do I volunteer?",
-      answer: "Use the Summer Fest Registration form on the Get Involved page to sign up as a volunteer.",
-    },
-    {
-      question: "How do I become a vendor?",
-      answer: "Use the Summer Fest Registration form on the Get Involved page to register as a vendor.",
-    },
-    {
-      question: "How do I donate to the silent auction or make a monetary donation?",
-      answer: "Use the Summer Fest Donation form on the Get Involved page to share silent auction items or make a monetary donation.",
-    },
   ],
   sponsors: [
     "Sponsor logo",
@@ -281,7 +301,8 @@ export const siteContent = {
     },
   },
   footerLinks: [
-    { label: "Event Info", href: "/event-info" },
+    { label: "Plan Your Visit", href: "/plan-your-visit" },
+    { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Contact", href: "/contact" },
     { label: "Donate", href: donationFormUrl },
@@ -335,10 +356,16 @@ export const siteContent = {
   },
   homeHighlights: [
     {
-      title: "Event Info",
-      body: "Find the key details for the day in one place, including event basics, food, activities, and frequently asked questions.",
-      href: "/event-info",
-      label: "Event Info",
+      title: "Plan Your Visit",
+      body: "Find the practical details for the day in one place, including timing, location, parking, seating, policies, and FAQs.",
+      href: "/plan-your-visit",
+      label: "Plan Your Visit",
+    },
+    {
+      title: "What to Expect",
+      body: "Preview the festival experience with wristbands, pricing, food, drinks, activities, and games planned for the celebration.",
+      href: "/what-to-expect",
+      label: "What to Expect",
     },
     {
       title: "Get Involved",

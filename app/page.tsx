@@ -74,7 +74,7 @@ export default function Home() {
 
       <Section
         title="Plan your visit"
-        description="Explore festival details, ways to help, and parish contact information before the celebration begins."
+        description="Explore the practical details, festival highlights, ways to help, and parish contact information before the celebration begins."
       >
         <CardGrid
           items={siteContent.homeHighlights.map((item) => ({
