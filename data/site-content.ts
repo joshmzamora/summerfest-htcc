@@ -51,6 +51,22 @@ export const siteContent = {
       href: paymentUrl,
       external: true,
     },
+    explainer: [
+      {
+        title: "Wristband",
+        icon: "wristband",
+        headline: "Unlimited games and activities",
+        description: "A wristband gives access to all games and activities throughout the day.",
+        note: "Great for kids and anyone planning to play all day.",
+      },
+      {
+        title: "Tickets",
+        icon: "tickets",
+        headline: "Pay one item at a time",
+        description: "Tickets can be used for food and drink purchases and for individual games and activities.",
+        note: "Tickets are not unlimited like wristbands.",
+      },
+    ],
     pricing: [
       {
         title: "1 wristband",
