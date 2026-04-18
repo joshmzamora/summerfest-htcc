@@ -3,6 +3,9 @@ export const donationFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog";
 export const registrationFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSe9Z-FC43WnBFT__pQ3kTOlM_sxCGZFr0qVCkxr9oPAPj3j2A/viewform";
+export const festivalLocation = "3515 Trinity Dr, Mont Belvieu, TX 77580, USA";
+export const googleMapsLocationUrl =
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(festivalLocation)}`;
 
 export const siteContent = {
   churchName: "Holy Trinity Catholic Church",
@@ -10,7 +13,7 @@ export const siteContent = {
   tagline: "Food, games, tournaments, auctions, and family fun for the whole community",
   eventDate: "May 31, 2026",
   eventTime: "11:30 AM - 5:00 PM",
-  location: "Location details coming soon",
+  location: festivalLocation,
   heroNote: "A parish celebration and fundraiser benefitting the building fund.",
   countdownTarget: "2026-05-31T11:30:00-05:00",
   navigation: [
@@ -28,11 +31,18 @@ export const siteContent = {
   quickInfo: [
     { label: "Date", value: "May 31, 2026", icon: "sun" },
     { label: "Time", value: "11:30 AM - 5:00 PM", icon: "clock" },
-    { label: "Location", value: "Location details coming soon", icon: "pin" },
+    {
+      label: "Location",
+      value: festivalLocation,
+      icon: "pin",
+      href: googleMapsLocationUrl,
+      external: true,
+      ariaLabel: "Open festival location in maps",
+    },
     { label: "Parking", value: "Parking available in lot and marked field", icon: "wheel" },
     {
       label: "Seating",
-      value: "Tents, tables, and chairs provided (bring chairs if preferred)",
+      value: "Tents, tables, and chairs provided (We strongly encourage guests to bring their own chairs!)",
       icon: "chair",
     },
     { label: "Pets", value: "No pets allowed", icon: "paw" },

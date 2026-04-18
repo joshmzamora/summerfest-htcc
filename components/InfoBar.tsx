@@ -1,10 +1,77 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
+
 type InfoBarProps = {
   items: ReadonlyArray<{
     label: string;
     value: string;
     icon?: string;
+    href?: string;
+    external?: boolean;
+    ariaLabel?: string;
   }>;
 };
+
+const APPLE_DEVICE_PATTERN = /\b(iPad|iPhone|iPod|Macintosh|Mac OS X)\b/i;
+
+function getAppleMapsUrl(address: string) {
+  return `https://maps.apple.com/?q=${encodeURIComponent(address)}`;
+}
+
+function shouldUseAppleMaps() {
+  if (typeof navigator === "undefined") {
+    return false;
+  }
+
+  const userAgent = navigator.userAgent ?? "";
+  const userAgentData = (navigator as Navigator & { userAgentData?: { platform?: string } }).userAgentData;
+  const platform =
+    typeof userAgentData?.platform === "string" ? userAgentData.platform : navigator.platform ?? "";
+
+  return APPLE_DEVICE_PATTERN.test(userAgent) || APPLE_DEVICE_PATTERN.test(platform);
+}
+
+function subscribeToDeviceType() {
+  return () => undefined;
+}
+
+function getServerDeviceSnapshot() {
+  return false;
+}
+
+function InfoValue({
+  item,
+}: {
+  item: InfoBarProps["items"][number];
+}) {
+  const prefersAppleMaps = useSyncExternalStore(
+    subscribeToDeviceType,
+    shouldUseAppleMaps,
+    getServerDeviceSnapshot,
+  );
+
+  if (!item.href) {
+    return <strong>{item.value}</strong>;
+  }
+
+  const resolvedHref =
+    item.icon === "pin" && prefersAppleMaps ? getAppleMapsUrl(item.value) : item.href;
+
+  return (
+    <strong>
+      <a
+        className="info-value-link"
+        href={resolvedHref}
+        target={item.external ? "_blank" : undefined}
+        rel={item.external ? "noreferrer" : undefined}
+        aria-label={item.ariaLabel}
+      >
+        {item.value}
+      </a>
+    </strong>
+  );
+}
 
 function InfoIcon({ icon }: { icon?: string }) {
   switch (icon) {
@@ -109,7 +176,7 @@ export function InfoBar({ items }: InfoBarProps) {
               </div>
             </div>
             <span>{item.label}</span>
-            <strong>{item.value}</strong>
+            <InfoValue item={item} />
           </div>
         ))}
       </div>

@@ -748,21 +748,20 @@ main {
 }
 
 .info-item {
-  padding: 1rem 1rem 1rem 4rem;
+  padding: 0.85rem 0.95rem 0.85rem 3.35rem;
   border-radius: 26px 30px 24px 32px;
-  min-height: 8rem;
   background:
     linear-gradient(180deg, rgba(255, 252, 245, 0.96), rgba(255, 237, 190, 0.95));
 }
 
 .info-icon-wrap {
   position: absolute;
-  top: 1.1rem;
-  left: 1rem;
+  top: 0.85rem;
+  left: 0.8rem;
   display: grid;
   place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border-radius: 50%;
   background: linear-gradient(180deg, rgba(255, 248, 214, 0.98), rgba(255, 231, 164, 0.98));
   box-shadow:
@@ -772,8 +771,8 @@ main {
 
 .info-icon {
   position: relative;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 1.85rem;
+  height: 1.85rem;
   border-radius: 50%;
   background: rgba(255, 216, 61, 0.16);
   display: grid;
@@ -781,8 +780,8 @@ main {
 }
 
 .info-icon svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .icon-sun {
@@ -811,17 +810,32 @@ main {
 
 .info-item span {
   display: block;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
   color: #af3f23;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
 
 .info-item strong {
+  display: block;
   color: var(--text);
-  line-height: 1.45;
+  line-height: 1.32;
+  overflow-wrap: anywhere;
+}
+
+.info-value-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(122, 36, 24, 0.35);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
+}
+
+.info-value-link:hover {
+  color: #7a2418;
+  text-decoration-color: currentColor;
 }
 
 .detail-list {

@@ -84,7 +84,7 @@ export default function EventInfoPage() {
                   <span className="admission-explainer-label">{item.title}</span>
                   <h4>{item.headline}</h4>
                   <p>{item.description}</p>
-                  {item.note ? <em>{item.note}</em> : null}
+                  {"note" in item && item.note ? <em>{item.note}</em> : null}
                 </article>
               ))}
             </div>
@@ -103,7 +103,7 @@ export default function EventInfoPage() {
                   </div>
                   <strong>{item.price}</strong>
                   <p>{item.description}</p>
-                  {item.note ? <em>{item.note}</em> : null}
+                  {"note" in item && item.note ? <em>{item.note}</em> : null}
                 </article>
               ))}
             </div>
