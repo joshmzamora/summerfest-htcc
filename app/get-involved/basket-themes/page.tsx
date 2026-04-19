@@ -95,6 +95,18 @@ export default function BasketThemesPage() {
     }))
     .filter((group) => group.themes.length > 0);
 
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+
+    // Scroll to themes grid on selection
+    const themesSection = document.getElementById("themes");
+    if (themesSection) {
+      // Offset by 80px to account for the sticky header
+      const topOffset = themesSection.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: topOffset, behavior: "smooth" });
+    }
+  };
+
   React.useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -209,7 +221,7 @@ export default function BasketThemesPage() {
                     type="button"
                     layout={!reduceMotion}
                     className={`filter-pill ${activeCategory === category ? "is-active" : ""}`}
-                    onClick={() => setActiveCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                   >
                     {category}
                   </m.button>

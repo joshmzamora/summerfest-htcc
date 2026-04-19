@@ -4235,33 +4235,76 @@ span.poster-sticker-family::after {
 }
 
 .basket-theme-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.6rem;
-  border-radius: 1.4rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
+  padding: 1.85rem;
+  border-radius: 1.65rem;
+  background: var(--card-bg, var(--paper));
+  border: 1px solid var(--card-stroke, var(--line));
+  box-shadow: 
+    0 12px 28px rgba(125, 65, 32, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.basket-theme-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--card-image);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: sepia(0.05); 
+  transition: opacity 400ms ease, transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.basket-theme-card:hover {
+  background: white;
+  border-color: var(--card-stroke-hover, var(--orange));
+  box-shadow: 
+    0 28px 56px rgba(125, 65, 32, 0.16),
+    inset 0 1px 0 white;
+}
+
+.basket-theme-card:hover::before {
+  opacity: 0.5;
+  transform: scale(1.12);
 }
 
 .basket-card-content {
-  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.basket-card-action {
+  position: relative;
+  z-index: 2;
 }
 
 .basket-theme-card h5 {
-  margin: 0 0 0.5rem;
-  font-size: 1.35rem;
+  margin: 0 0 0.65rem;
+  font-size: 1.62rem;
   font-family: var(--font-display), cursive;
   font-weight: 400;
-  color: #7d241a;
+  color: #6d2417;
+  line-height: 1.15;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .theme-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  line-height: 1.58;
+  margin-bottom: 1.25rem;
+  font-weight: 500;
 }
 
 .button-secondary-sm {

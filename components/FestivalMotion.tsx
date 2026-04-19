@@ -119,7 +119,7 @@ type MotionPanelProps = {
   delay?: number;
   once?: boolean;
   amount?: number;
-} & Pick<HTMLMotionProps<"div">, "exit" | "id" | "role"> & {
+} & Pick<HTMLMotionProps<"div">, "exit" | "id" | "role" | "style"> & {
   "aria-hidden"?: boolean;
   "aria-label"?: string;
 };
@@ -136,6 +136,7 @@ export function MotionPanel({
   exit,
   id,
   role,
+  style,
   "aria-hidden": ariaHidden,
   "aria-label": ariaLabel,
 }: MotionPanelProps) {
@@ -157,7 +158,7 @@ export function MotionPanel({
       transition={reduceMotion ? undefined : getRevealTransition(reveal, delay)}
       whileHover={reduceMotion || hover === "none" ? undefined : hoverPresets[hover]}
       whileTap={reduceMotion || hover === "none" ? undefined : tapPresets[hover]}
-      style={{ transformOrigin: "center center" }}
+      style={{ transformOrigin: "center center", ...style }}
     >
       {children}
     </Tag>
