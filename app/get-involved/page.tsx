@@ -14,7 +14,7 @@ export default function GetInvolvedPage() {
         eventName={siteContent.eventName}
         navigation={siteContent.navigation}
       />
-      <PageIntro {...siteContent.pageIntros.involved} />
+      <PageIntro {...siteContent.pageIntros.involved} variant="text-first" />
 
       <Section
         className="involvement-forms-section"

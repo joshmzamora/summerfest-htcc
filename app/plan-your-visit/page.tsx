@@ -20,18 +20,17 @@ function AdmissionExplainerIcon({ icon }: { icon: string }) {
 
 export default function PlanYourVisitPage() {
   return (
-    <main>
+    <main className="plan-your-visit-page">
       <NavBar
         churchName={siteContent.churchName}
         eventName={siteContent.eventName}
         navigation={siteContent.navigation}
       />
-      <PageIntro
-        title={siteContent.planYourVisit.intro.title}
-      />
+      <PageIntro title={siteContent.planYourVisit.intro.title} variant="text-first" />
       <InfoBar title="Event Details" items={siteContent.planYourVisit.quickInfo} />
 
       <Section
+        className="visit-admission-section"
         id="admission-overview"
         headingMotion="ribbon"
         title={siteContent.planYourVisit.admissionOverview.title}
