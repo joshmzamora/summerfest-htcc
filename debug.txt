@@ -1,0 +1,10 @@
+﻿  span.poster-sticker-family {
+    left: 0.55rem;
+    bottom: 0.75rem;
+    min-height: 2.05rem;
+    max-width: 8.35rem;
+    padding: 0.3rem 0.85rem 0.34rem 1rem;
+    font-size: 0.67rem;
+    transform: rotate(-11deg);
+  }
+

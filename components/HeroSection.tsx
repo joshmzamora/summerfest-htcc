@@ -173,9 +173,7 @@ export function HeroSection({
               </MotionPanel>
             </MotionStagger>
             <m.p
-              animate={reduceMotion ? undefined : { y: [0, -2, 0], rotate: [-1.5, 0.5, -1.5] }}
               className="poster-ticket"
-              transition={{ duration: 7.2, ease: eases.settle, repeat: Infinity }}
             >
               Hosted by Holy Trinity Catholic Church
             </m.p>
