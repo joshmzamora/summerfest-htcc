@@ -27,7 +27,6 @@ export const siteContent = {
   navigation: [
     { label: "Home", href: "/" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
-    { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
   ],
   heroActions: [
@@ -73,15 +72,6 @@ export const siteContent = {
       title: "Admission Overview",
       summary:
         "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
-      bullets: [
-        "Free admission for all guests",
-        "Optional purchases for food, games, and activities",
-        "Detailed pricing is on the What to Expect page",
-      ],
-      cta: {
-        label: "View Pricing & Festival Details",
-        href: "/what-to-expect",
-      },
     },
     faqs: [
       {
@@ -141,7 +131,7 @@ export const siteContent = {
     },
     pricing: {
       title: "Pricing",
-      description: "Early bird pricing is available now through the Summer Fest Vanco payment page.",
+      description: "Early bird pricing is available now! Click below to be redirected to the Summer Fest Vanco payment page.",
       cta: {
         label: "Open Vanco Payment Link",
         href: paymentUrl,
@@ -165,9 +155,9 @@ export const siteContent = {
         },
         {
           title: "Vendor booth",
-          price: "$50 fee",
-          description: "Vendor booth fee, plus a contribution to the silent auction.",
-          note: "Silent auction contribution required",
+          price: "$50",
+          description: "For those who want to set up a booth and participate as a vendor at the festival.",
+          note: "Plus a required contribution to the silent auction",
         },
       ],
     },
@@ -268,7 +258,6 @@ export const siteContent = {
   },
   footerLinks: [
     { label: "Plan Your Visit", href: "/plan-your-visit" },
-    { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Donate", href: donationFormUrl },
   ],
@@ -312,26 +301,6 @@ export const siteContent = {
       title: "Donate, Register, Volunteer",
     },
   },
-  homeHighlights: [
-    {
-      title: "Plan Your Visit",
-      body: "Find the practical details for the day in one place, including timing, location, parking, seating, policies, and FAQs.",
-      href: "/plan-your-visit",
-      label: "Plan Your Visit",
-    },
-    {
-      title: "What to Expect",
-      body: "Preview the festival experience with wristbands, pricing, food, drinks, activities, and games planned for the celebration.",
-      href: "/what-to-expect",
-      label: "What to Expect",
-    },
-    {
-      title: "Get Involved",
-      body: "Open the live Summer Fest registration and donation forms for volunteers, vendors, tournament entries, and silent auction support.",
-      href: "/get-involved",
-      label: "Get Involved",
-    },
-  ],
 } as const;
 
 export type SiteContent = typeof siteContent;

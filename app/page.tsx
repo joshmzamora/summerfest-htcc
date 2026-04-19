@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { CardGrid } from "@/components/Cards";
 import { HeroSection } from "@/components/HeroSection";
 import { NavBar } from "@/components/NavBar";
 import { Section } from "@/components/Section";
@@ -32,6 +31,7 @@ export default function Home() {
         title="Festival Day for Families, Friends, and Neighbors"
       >
         <article className="highlight-panel">
+          <p>A full day of food, fun, and friendly competition.</p>
           <ul className="detail-list">
             {[
               "Food booths and sweet treats",
@@ -47,18 +47,55 @@ export default function Home() {
         </article>
       </Section>
 
-      <Section
-        title="Plan your visit"
-        description="Find the key details, festival experience, and ways to participate before the celebration begins."
-      >
-        <CardGrid
-          items={siteContent.homeHighlights.map((item) => ({
-            title: item.title,
-            body: item.body,
-            actions: [{ label: item.label, href: item.href, variant: "secondary" }],
-          }))}
-        />
-      </Section>
+      <div className="experience-band experience-band-food">
+        <div className="container experience-band-shell">
+          <Section
+            id="food-drink"
+            title={siteContent.whatToExpect.foodAndDrink.title}
+            description={siteContent.whatToExpect.foodAndDrink.description}
+            className="experience-band-section"
+          >
+            <div className="experience-list-grid">
+              {siteContent.whatToExpect.foodAndDrink.groups.map((group) => (
+                <article className="process-flow-card expectation-list-card" key={group.title}>
+                  <div className="admission-panel-header">
+                    <h3>{group.title}</h3>
+                  </div>
+                  <ul className="detail-list">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+            <p className="section-note">{siteContent.whatToExpect.foodAndDrink.note}</p>
+          </Section>
+
+          <Section
+            id="activities-games"
+            title={siteContent.whatToExpect.activitiesAndGames.title}
+            description={siteContent.whatToExpect.activitiesAndGames.description}
+            className="experience-band-section"
+          >
+            <div className="experience-list-grid">
+              {siteContent.whatToExpect.activitiesAndGames.groups.map((group) => (
+                <article className="process-flow-card expectation-list-card" key={group.title}>
+                  <div className="admission-panel-header">
+                    <h3>{group.title}</h3>
+                  </div>
+                  <ul className="detail-list">
+                    {group.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+            <p className="section-note">{siteContent.whatToExpect.activitiesAndGames.note}</p>
+          </Section>
+        </div>
+      </div>
 
       <section className="section cta-ribbon">
         <div className="container cta-ribbon-shell">

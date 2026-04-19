@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ActivitiesPage() {
-  redirect("/what-to-expect");
+  redirect("/#activities-games");
 }

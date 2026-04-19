@@ -149,112 +149,67 @@ test("plan your visit page stays focused on logistics", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Know Before You Go" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 3, name: "About Summer Fest" })).toHaveCount(0);
-  await expect(page.getByText("Free admission for all guests")).toBeVisible();
-  await expect(page.getByText("Optional purchases for food, games, and activities")).toBeVisible();
-  await expect(page.getByText("Detailed pricing is on the What to Expect page")).toBeVisible();
-  await expect(page.getByRole("link", { name: "View Pricing & Festival Details" })).toHaveAttribute(
-    "href",
-    "/what-to-expect",
-  );
+  await expect(page.getByText("Admission is free, and guests can choose optional purchases")).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Frequently Asked Questions" })).toBeVisible();
 
-  await expect(page.getByRole("heading", { level: 2, name: "Wristbands vs Tickets" })).toHaveCount(0);
-  await expect(page.getByRole("heading", { level: 2, name: "Pricing" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 3, name: "Wristbands vs Tickets" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Food & Drink" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "Activities & Games" })).toHaveCount(0);
-});
-
-test("what to expect page shows the festival experience sections in order", async ({ page }) => {
-  await page.goto("/what-to-expect");
-
-  await expect(page.getByRole("heading", { level: 1, name: "What to Expect at Summer Fest" })).toBeVisible();
-  await expect(page.getByText("Get a feel for the festival experience")).toHaveCount(0);
-  await expect(page.getByRole("heading", { level: 2, name: "Introduction" })).toHaveCount(0);
-
-  const sectionHeadings = await page.locator(".section-heading h2").allTextContents();
-  expect(sectionHeadings).toEqual([
-    "Wristbands vs Tickets",
-    "Pricing",
-    "Food & Drink",
-    "Activities & Games",
-  ]);
-
-  const wristbandIcon = page.locator(".admission-explainer-icon.icon-wristband .admission-explainer-glyph-wristband");
-  const ticketsIcon = page.locator(".admission-explainer-icon.icon-tickets .admission-explainer-glyph-tickets");
-
-  await expect(wristbandIcon).toBeVisible();
-  await expect(ticketsIcon).toBeVisible();
-
-  const [wristbandMask, ticketsMask] = await Promise.all([
-    wristbandIcon.evaluate((element) => {
-      const styles = window.getComputedStyle(element);
-      return styles.maskImage || styles.webkitMaskImage;
-    }),
-    ticketsIcon.evaluate((element) => {
-      const styles = window.getComputedStyle(element);
-      return styles.maskImage || styles.webkitMaskImage;
-    }),
-  ]);
-
-  expect(wristbandMask).not.toBe("none");
-  expect(ticketsMask).not.toBe("none");
-
-  const pricingCards = page.locator(".pricing-grid .pricing-card");
-  const firstPricingSummary = pricingCards.first().locator(".pricing-card-summary");
-
-  await expect(pricingCards).toHaveCount(4);
-  await expect(pricingCards.first()).toContainText("$25");
-  await expect(pricingCards.first()).toContainText("1 wristband");
-  await expect(pricingCards.first()).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
-  await expect(pricingCards.nth(1)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
-  await expect(pricingCards.nth(2)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
-  await expect(pricingCards.nth(3)).toHaveAttribute("href", "https://secure.myvanco.com/L-ZFPW/home");
+  await expect(page.getByText("Unlimited games and activities")).toBeVisible();
+  await expect(page.getByText("Pay one item at a time")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toHaveAttribute(
+    "href",
+    "https://secure.myvanco.com/L-ZFPW/home",
+  );
   await expect(page.getByRole("link", { name: "Open Vanco Payment Link" })).toHaveAttribute(
     "href",
     "https://secure.myvanco.com/L-ZFPW/home",
   );
-
-  const summaryColumns = await firstPricingSummary.evaluate((element) => window.getComputedStyle(element).gridTemplateColumns);
-  expect(summaryColumns.split(" ").length).toBeGreaterThan(0);
-
-  await expect(page.getByText("Brisket sandwiches")).toBeVisible();
-  await expect(page.getByText("Turkey legs")).toBeVisible();
-  await expect(page.getByText("Funnel cakes")).toBeVisible();
-  await expect(page.getByText("Fruit cups")).toBeVisible();
-  await expect(page.getByText("Margaritas")).toBeVisible();
-  await expect(page.getByText("Beer")).toBeVisible();
-  await expect(page.getByText("Soda")).toBeVisible();
-  await expect(page.getByText("Water")).toBeVisible();
-  await expect(page.getByText("Family-friendly games")).toBeVisible();
-  await expect(page.getByText("Tournament competitions")).toBeVisible();
-  await expect(page.getByText("Volleyball")).toBeVisible();
-  await expect(page.getByText("Washers")).toBeVisible();
-  await expect(page.getByText("Tournament winner awards")).toBeVisible();
-  await expect(page.getByText("Gift card draw")).toBeVisible();
-  await expect(page.getByText("Silent auction", { exact: true })).toBeVisible();
-  await expect(page.getByText("Menu is still being finalized.")).toBeVisible();
-  await expect(page.getByText("Full lineup is still being finalized.")).toBeVisible();
-  await expect(page.locator("#primary-navigation a[aria-current='page']")).toHaveText("What to Expect");
 });
 
-test("navigation, discoverability links, and legacy routes reflect the page split", async ({ page }) => {
+test("legacy what to expect route now redirects to plan your visit", async ({ page }) => {
+  await page.goto("/what-to-expect");
+
+  await expect(page).toHaveURL(/\/plan-your-visit$/);
+});
+
+test("navigation, home festival sections, and legacy routes reflect the consolidated pages", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.getByRole("link", { name: "Learn More" })).toHaveAttribute("href", "/plan-your-visit");
   await expect(page.getByRole("heading", { level: 2, name: "Festival Day for Families, Friends, and Neighbors" })).toBeVisible();
+  await expect(page.getByText("A full day of food, fun, and friendly competition.")).toBeVisible();
   await expect(page.getByText("Food booths and sweet treats")).toBeVisible();
+  const foodDrinkSection = page.locator("#food-drink");
+  const activitiesSection = page.locator("#activities-games");
+
+  await expect(foodDrinkSection.getByRole("heading", { level: 2, name: "Food & Drink" })).toBeVisible();
+  await expect(activitiesSection.getByRole("heading", { level: 2, name: "Activities & Games" })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Brisket sandwiches", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Turkey legs", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Funnel cakes", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Fruit cups", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Margaritas", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Beer", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Soda", { exact: true })).toBeVisible();
+  await expect(foodDrinkSection.getByText("Water", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Family-friendly games", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Tournament competitions", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Volleyball", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Washers", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Tournament winner awards", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Gift card draw", { exact: true })).toBeVisible();
+  await expect(activitiesSection.getByText("Silent auction", { exact: true })).toBeVisible();
   await expect(page.getByText("Festival board")).toHaveCount(0);
   await expect(page.getByText("Community partner banner row")).toHaveCount(0);
-  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Plan Your Visit" })).toBeVisible();
-  await expect(page.locator(".card-grid .content-card").filter({ hasText: "What to Expect" })).toBeVisible();
-  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Get Involved" })).toBeVisible();
-  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Contact" })).toHaveCount(0);
+  await expect(page.locator(".card-grid .content-card")).toHaveCount(0);
 
   const footerNav = page.getByRole("navigation", { name: "Footer navigation" });
   await expect(footerNav.getByRole("link", { name: "Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
-  await expect(footerNav.getByRole("link", { name: "What to Expect" })).toHaveAttribute("href", "/what-to-expect");
   await expect(footerNav.getByRole("link", { name: "Get Involved" })).toHaveAttribute("href", "/get-involved");
   await expect(footerNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(page.locator("#primary-navigation").getByRole("link", { name: "What to Expect" })).toHaveCount(0);
   await expect(page.locator("#primary-navigation").getByRole("link", { name: "Contact" })).toHaveCount(0);
 
   await page.goto("/event-info");
@@ -267,10 +222,10 @@ test("navigation, discoverability links, and legacy routes reflect the page spli
   await expect(page).toHaveURL(/\/plan-your-visit$/);
 
   await page.goto("/food-drink");
-  await expect(page).toHaveURL(/\/what-to-expect$/);
+  await expect(page).toHaveURL(/\/#food-drink$/);
 
   await page.goto("/activities");
-  await expect(page).toHaveURL(/\/what-to-expect$/);
+  await expect(page).toHaveURL(/\/#activities-games$/);
 
   await page.goto("/contact");
   await expect(page).toHaveURL(/\/get-involved$/);
