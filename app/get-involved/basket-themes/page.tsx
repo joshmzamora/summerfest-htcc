@@ -162,19 +162,39 @@ export default function BasketThemesPage() {
             className={`basket-controls ${isCategoryCondensed ? "is-condensed" : ""}`.trim()}
             data-condensed={isCategoryCondensed ? "true" : "false"}
           >
-            <div className="basket-search-wrapper large">
-              <input
-                type="text"
-                placeholder="Search 50+ themes (e.g. 'Coffee', 'Tequila', 'Kids')..."
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                className="basket-search-input"
-              />
-              {searchQuery ? (
-                <button className="basket-search-clear" onClick={() => setSearchQuery("")} type="button">
-                  x
-                </button>
-              ) : null}
+            <div className="basket-search-container">
+              <div className="basket-search-wrapper">
+                <div className="search-icon">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  placeholder={isCategoryCondensed ? "Search themes..." : "Search 50+ themes (e.g. 'Coffee', 'Tequila')..."}
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  className="basket-search-input"
+                />
+                {searchQuery ? (
+                  <button className="basket-search-clear" onClick={() => setSearchQuery("")} type="button" aria-label="Clear search">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                ) : null}
+              </div>
+
+              {!isCategoryCondensed && (
+                <div className="basket-results-meta">
+                  <span className="results-label">
+                    {searchQuery || activeCategory !== "All" ? "Filtered Results" : "All Auction Themes"}
+                  </span>
+                  <span className="results-count">
+                    {filteredGroups.reduce((acc, g) => acc + g.themes.length, 0)} Options
+                  </span>
+                </div>
+              )}
             </div>
 
             <div className="basket-category-filter">
@@ -242,8 +262,19 @@ export default function BasketThemesPage() {
           </MotionStagger>
 
           {(searchQuery || activeCategory !== "All") && filteredGroups.length === 0 ? (
-            <div className="basket-no-results large">
-              <p>No themes found matching your criteria.</p>
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="basket-no-results large"
+            >
+              <div className="no-results-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M8 11H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <h3>No themes found</h3>
+              <p>We couldn't find any themes matching "{searchQuery}". Try a different term or browse categories.</p>
               <button
                 className="button button-ghost"
                 onClick={() => {
@@ -252,9 +283,9 @@ export default function BasketThemesPage() {
                 }}
                 type="button"
               >
-                Reset Filters
+                Clear all filters
               </button>
-            </div>
+            </m.div>
           ) : null}
         </div>
       </section>
