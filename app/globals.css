@@ -101,7 +101,7 @@ main {
 
 .section {
   position: relative;
-  padding: 4.5rem 0;
+  padding: 3.5rem 0;
 }
 
 .festival-layer::after {
@@ -146,14 +146,14 @@ main {
 .section-heading,
 .page-intro-copy {
   max-width: 46rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-heading h2,
 .hero-copy h1,
 .page-intro-copy h1,
 .cta-ribbon-shell h2 {
-  margin: 0.8rem 0 0.9rem;
+  margin: 0 0 0.9rem;
   font-family: var(--font-display), cursive;
   line-height: 1;
   letter-spacing: 0.03em;
@@ -1320,7 +1320,7 @@ main {
 }
 
 .get-involved-page .page-intro {
-  padding-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
 }
 
 .get-involved-page .page-intro-shell,
@@ -1329,7 +1329,7 @@ main {
 }
 
 .involvement-forms-section {
-  padding-top: 1.2rem;
+  padding-top: 0.75rem;
 }
 
 .involvement-guidance-section {
@@ -2678,6 +2678,10 @@ span.poster-sticker-family::after {
 }
 
 @media (max-width: 520px) {
+  .section {
+    padding: 2.25rem 0;
+  }
+
   .countdown-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2741,6 +2745,10 @@ span.poster-sticker-family::after {
     margin-bottom: 1.9rem;
   }
 
+  .involvement-forms-section {
+    padding-top: 0.75rem;
+  }
+
   .get-involved-page .sign-up-card,
   .involvement-support-panel,
   .get-involved-page .content-card {
@@ -2756,7 +2764,7 @@ span.poster-sticker-family::after {
   }
 
   .festival-scene h2 {
-    margin-top: 3.35rem;
+    margin-top: 2rem;
     font-size: clamp(1.7rem, 8vw, 2.2rem);
   }
 
