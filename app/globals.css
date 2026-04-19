@@ -4005,7 +4005,7 @@ span.poster-sticker-family::after {
 
 /* Basket Themes Dedicated Page */
 .basket-themes-page .page-intro-mini {
-  padding: 4rem 0 2rem;
+  padding: 4rem 0 1.45rem;
   background: linear-gradient(180deg, rgba(255, 248, 230, 0.5), transparent);
 }
 
@@ -4025,15 +4025,32 @@ span.poster-sticker-family::after {
   font-family: var(--font-display), cursive;
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: #7d241a;
-  margin-bottom: 0.5rem;
+  margin: 0;
   font-weight: 400;
 }
 
+.basket-page-header {
+  display: grid;
+  gap: 0.8rem;
+}
+
 .basket-page-intro {
+  margin: 0;
   max-width: 32rem;
   font-size: 1.05rem;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.basket-main-section {
+  padding-top: 1.3rem;
+}
+
+.basket-controls-sentinel {
+  width: 100%;
+  height: 1px;
+  margin-top: -1px;
+  pointer-events: none;
 }
 
 .basket-controls {
@@ -4041,11 +4058,23 @@ span.poster-sticker-family::after {
   top: 5.5rem;
   z-index: 20;
   display: grid;
-  gap: 1.25rem;
-  padding: 1.25rem 0;
-  background: var(--background);
-  margin-bottom: 2.5rem;
+  gap: 1rem;
+  padding: 1.05rem 0 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 240, 0.97), rgba(255, 249, 240, 0.92)),
+    radial-gradient(circle at top right, rgba(240, 190, 66, 0.14), transparent 32%);
+  margin-bottom: 2.75rem;
   border-bottom: 1px solid var(--line);
+  transition:
+    padding 240ms ease,
+    box-shadow 240ms ease,
+    background-color 240ms ease,
+    border-color 240ms ease;
+}
+
+.basket-controls.is-condensed {
+  box-shadow: 0 14px 28px rgba(117, 54, 33, 0.12);
+  border-bottom-color: rgba(159, 78, 48, 0.22);
 }
 
 .basket-themes-page .basket-search-wrapper.large {
@@ -4055,15 +4084,19 @@ span.poster-sticker-family::after {
 
 .basket-category-filter {
   position: relative;
+  min-width: 0;
 }
 
 .filter-scroll {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
+  min-width: 0;
+  overflow: visible;
+  padding-bottom: 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transition: gap 240ms ease, max-height 240ms ease, padding-bottom 240ms ease;
 }
 
 .filter-scroll::-webkit-scrollbar {
@@ -4073,12 +4106,14 @@ span.poster-sticker-family::after {
 .filter-pill {
   flex: 0 0 auto;
   padding: 0.55rem 1.15rem;
+  min-height: 2.7rem;
   border-radius: 999px;
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.88rem;
   font-weight: 700;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 200ms ease;
 }
@@ -4180,11 +4215,87 @@ span.poster-sticker-family::after {
 @media (max-width: 768px) {
   .basket-controls {
     top: 4.8rem;
-    padding: 1rem 0;
+    padding: 0.95rem 0 1.05rem;
   }
 }
 
 @media (max-width: 640px) {
+  .basket-themes-page .page-intro-mini {
+    padding: 3.45rem 0 0.95rem;
+  }
+
+  .basket-themes-page .back-link {
+    margin-bottom: 1rem;
+  }
+
+  .basket-page-header {
+    gap: 0.65rem;
+  }
+
+  .basket-main-section {
+    padding-top: 0.7rem;
+  }
+
+  .basket-controls {
+    margin-inline: calc(50% - 50vw);
+    gap: 0.85rem;
+    padding:
+      0.92rem max(0.85rem, env(safe-area-inset-right))
+      1.05rem max(0.85rem, env(safe-area-inset-left));
+    margin-bottom: 2rem;
+    background:
+      linear-gradient(180deg, rgba(255, 249, 240, 0.99), rgba(255, 247, 236, 0.96)),
+      radial-gradient(circle at top right, rgba(240, 190, 66, 0.18), transparent 36%);
+  }
+
+  .basket-controls.is-condensed {
+    padding-top: 0.74rem;
+    padding-bottom: 0.8rem;
+    box-shadow: 0 14px 28px rgba(117, 54, 33, 0.16);
+    backdrop-filter: blur(12px);
+  }
+
+  .basket-category-filter::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0.15rem;
+    width: 2.25rem;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(90deg, rgba(255, 249, 240, 0), rgba(255, 249, 240, 0.98));
+    transition: opacity 220ms ease;
+  }
+
+  .basket-controls.is-condensed .basket-category-filter::after {
+    opacity: 1;
+  }
+
+  .filter-scroll {
+    gap: 0.62rem;
+  }
+
+  .basket-controls.is-condensed .filter-scroll {
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.4rem;
+    padding-right: 1.25rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    scroll-snap-type: x proximity;
+    -webkit-mask-image: linear-gradient(90deg, black 0, black calc(100% - 1.6rem), transparent 100%);
+    mask-image: linear-gradient(90deg, black 0, black calc(100% - 1.6rem), transparent 100%);
+  }
+
+  .basket-controls.is-condensed .filter-pill {
+    scroll-snap-align: start;
+  }
+
   .basket-theme-grid {
     grid-template-columns: 1fr;
   }
@@ -4195,6 +4306,10 @@ span.poster-sticker-family::after {
 
   .basket-theme-card {
     padding: 1.35rem;
+  }
+
+  .basket-themes-page .cta-ribbon {
+    padding-top: 1.7rem;
   }
 }
 

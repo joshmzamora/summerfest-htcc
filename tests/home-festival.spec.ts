@@ -170,6 +170,85 @@ test("donate basket ideas stay compact on mobile", async ({ page }) => {
   expect(triggerBox?.height ?? 0).toBeGreaterThan(44);
 });
 
+test("basket themes page expands mobile controls near the top and condenses them on scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/get-involved/basket-themes");
+
+  await expect(page.getByRole("heading", { level: 1, name: "Silent Auction Basket Theme Ideas" })).toBeVisible();
+
+  const controls = page.locator(".basket-controls");
+  const filterScroll = controls.locator(".filter-scroll");
+  const searchInput = controls.locator(".basket-search-input");
+  const categoryTab = page.getByRole("button", { name: "Relaxation & Self-Care" });
+  const main = page.locator("main");
+
+  await expect(controls).toHaveAttribute("data-condensed", "false");
+  await expect(categoryTab).toBeVisible();
+
+  const searchBox = await searchInput.boundingBox();
+
+  expect(searchBox).not.toBeNull();
+
+  if (!searchBox) {
+    throw new Error("Expected the basket search input to be measurable.");
+  }
+
+  expect(searchBox.x).toBeLessThan(18);
+  expect(390 - (searchBox.x + searchBox.width)).toBeLessThan(18);
+
+  const expandedFilterState = await filterScroll.evaluate((element) => {
+    const styles = window.getComputedStyle(element);
+
+    return {
+      flexWrap: styles.flexWrap,
+      clientWidth: element.clientWidth,
+      scrollWidth: element.scrollWidth,
+    };
+  });
+
+  expect(expandedFilterState.flexWrap).toBe("wrap");
+  expect(expandedFilterState.scrollWidth).toBeLessThanOrEqual(expandedFilterState.clientWidth + 1);
+
+  const initialOverflow = await main.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+
+  expect(initialOverflow.scrollWidth).toBeLessThanOrEqual(initialOverflow.clientWidth + 1);
+
+  await page.evaluate(() => window.scrollTo(0, 720));
+  await expect(controls).toHaveAttribute("data-condensed", "true");
+
+  const condensedFilterState = await filterScroll.evaluate((element) => {
+    const styles = window.getComputedStyle(element);
+
+    return {
+      flexWrap: styles.flexWrap,
+      clientWidth: element.clientWidth,
+      scrollWidth: element.scrollWidth,
+      overflowX: styles.overflowX,
+    };
+  });
+
+  expect(condensedFilterState.flexWrap).toBe("nowrap");
+  expect(condensedFilterState.overflowX).toBe("auto");
+  expect(condensedFilterState.scrollWidth).toBeGreaterThan(condensedFilterState.clientWidth + 1);
+
+  await categoryTab.click();
+  await expect(categoryTab).toHaveClass(/is-active/);
+
+  await searchInput.fill("Whiskey");
+  await expect(page.getByRole("heading", { level: 5, name: "Whiskey" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 5, name: "Book Lover" })).toHaveCount(0);
+
+  const finalOverflow = await main.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+
+  expect(finalOverflow.scrollWidth).toBeLessThanOrEqual(finalOverflow.clientWidth + 1);
+});
+
 test("home and contact pages reflect the new two-form signup flow", async ({ page }) => {
   await page.goto("/");
 
