@@ -15,6 +15,8 @@ type InfoBarProps = {
     external?: boolean;
     ariaLabel?: string;
   }>;
+  centered?: boolean;
+  carnival?: boolean;
 };
 
 const APPLE_DEVICE_PATTERN = /\b(iPad|iPhone|iPod|Macintosh|Mac OS X)\b/i;
