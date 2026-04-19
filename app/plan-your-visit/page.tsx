@@ -26,7 +26,7 @@ export default function PlanYourVisitPage() {
         eventName={siteContent.eventName}
         navigation={siteContent.navigation}
       />
-      <PageIntro title={siteContent.planYourVisit.intro.title} variant="text-first" marquee />
+      <PageIntro title={siteContent.planYourVisit.intro.title} variant="text-first" />
       <InfoBar title="Event Details" items={siteContent.planYourVisit.quickInfo} carnival />
 
       <Section

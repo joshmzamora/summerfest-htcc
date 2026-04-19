@@ -6,40 +6,20 @@ type PageIntroProps = {
   title: string;
   description?: string;
   variant?: "default" | "text-first";
-  marquee?: boolean;
 };
 
-export function PageIntro({ title, description, variant = "default", marquee = false }: PageIntroProps) {
+export function PageIntro({ title, description, variant = "default" }: PageIntroProps) {
   const reduceMotion = useReducedMotion();
   const showArt = variant !== "text-first";
-
-  const renderTitle = () => {
-    const titleEl = (
-      <m.h1 variants={{ hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } }}>
-        {title}
-      </m.h1>
-    );
-
-    if (marquee) {
-      return (
-        <div className="marquee-title-wrap">
-          <div className="marquee-title">
-            {titleEl}
-            <div className="marquee-bulbs" aria-hidden="true" />
-          </div>
-        </div>
-      );
-    }
-
-    return titleEl;
-  };
 
   return (
     <section className={`page-intro section festival-layer${showArt ? "" : " page-intro-text-first"}`}>
       <div className="container page-intro-shell">
-        <MotionPanel className={`page-intro-copy ${marquee ? "has-marquee" : ""}`.trim()} reveal="poster">
+        <MotionPanel className="page-intro-copy" reveal="poster">
           <MotionStagger className="page-intro-copy-inner" stagger={0.1}>
-            {renderTitle()}
+            <m.h1 variants={{ hidden: { opacity: 0, y: 22 }, visible: { opacity: 1, y: 0 } }}>
+              {title}
+            </m.h1>
             {description ? (
               <m.p variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}>
                 {description}
