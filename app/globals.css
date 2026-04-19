@@ -4026,6 +4026,7 @@ span.poster-sticker-family::after {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: #7d241a;
   margin-bottom: 0.5rem;
+  font-weight: 400;
 }
 
 .basket-page-intro {
@@ -4110,6 +4111,7 @@ span.poster-sticker-family::after {
   font-family: var(--font-display), cursive;
   font-size: 2.2rem;
   color: #6d2418;
+  font-weight: 400;
 }
 
 .basket-category-block .category-title small {

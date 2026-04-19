@@ -8,6 +8,80 @@ import { siteContent } from "@/data/site-content";
 import { MotionPanel, MotionPressableLink, MotionStagger } from "@/components/FestivalMotion";
 import Link from "next/link";
 
+const themeDescriptions: Record<string, string> = {
+  // Food & Hosting
+  "Tequila": "The ultimate fiesta starter with everything needed for craft margaritas.",
+  "Movie Night": "A complete cinema experience for the whole family, from popcorn to streaming.",
+  "Coffee": "Start the morning right with premium beans and cafe-quality accessories.",
+  "Hot Cocoa": "A cozy collection for chilly evenings with gourmet chocolate and sweet toppings.",
+  "Pizza": "Everything but the dough for a high-end Italian pizza night at home.",
+  "Breakfast": "Gourmet mixes and local syrups for a Sunday morning family tradition.",
+  "Italian Dinner": "A taste of Italy with artisanal pasta, fine oil, and red wine.",
+  "Date Night": "A romantic evening planned for you, featuring dinner, candles, and treats.",
+  "Southern Comfort": "Classic hospitality with local honey and southern-style mixes.",
+  "Buc-ee's": "The ultimate Texas road trip stash from everyone's favorite beaver.",
+  "Tailgate": "Be the MVP of the parking lot with these game-day essentials.",
+  "Crawfish": "Everything needed for a classic backyard seafood boil.",
+  "Brunch": "Elevate your weekend with mimosa glasses and muffin mixes.",
+  "Charcuterie": "Craft the perfect spread with artisanal boards and accessories.",
+  "Picnic": "A complete set for an afternoon in the park with friends.",
+  "S'mores": "The classic campfire tradition with a gourmet chocolate twist.",
+  "Sweet Tooth": "A curated collection for the candy lover in your life.",
+  "Hosting": "Impress your guests with elegant serving tools and wine essentials.",
+  "Healthy Habits": "Fuel your fitness goals with protein snacks and workout gear.",
+
+  // Home & Kitchen
+  "Sourdough": "The complete starter kit for your artisanal bread-making journey.",
+  "Grill": "Everything the pitmaster needs for the perfect backyard BBQ.",
+  "Baking Basket": "Sweeten any afternoon with professional tools and fun toppings.",
+  "Gardening": "Everything needed to grow your own herbs and beautiful flowers.",
+  "Lemons": "Brighten any kitchen with citrus-themed decor and sweet treats.",
+  "Deep Cleaning": "The ultimate stash of high-end tools to make any home sparkle.",
+  "Kitchen Essentials": "Upgrade your culinary space with high-quality daily tools.",
+  "New Homeowner": "The perfect welcome gift with tools and essentials for a new space.",
+
+  // Relaxation & Self-Care
+  "Whiskey": "A sophisticated collection for the connoisseur of fine spirits.",
+  "Spa / Self Care": "Transform your bathroom into a luxury retreat with these soothing treats.",
+  "Middle Age Starter Pack": "Practical comfort for the 'vintage' years, from ice packs to antacids.",
+  "Beard Care": "Grooming essentials to keep any beard looking and feeling its best.",
+  "Mom's Night In": "A relaxing evening designed specifically to pamper hard-working moms.",
+  "Dad's Favorites": "A curated stash of rugged gear and snacks any dad would love.",
+  "Book Lover": "Everything needed for a cozy afternoon lost in a great novel.",
+  "Rainy Day": "Turn a gray afternoon into fun with puzzles, hot tea, and games.",
+  "Crocs": "Style and comfort for the fan of the world's most versatile footwear.",
+
+  // Family, Kids & Pets
+  "Family Game Night": "Bring everyone to the table for an evening of friendly competition.",
+  "Kids Summer Fun": "Be the hero of the backyard with water toys and outdoor games.",
+  "Pet Lover": "Special treats and toys for the four-legged family members.",
+  "Kids Activities": "Creative tools to keep small hands and big imaginations busy.",
+  "Crafts": "A complete makerspace in a box for your next creative project.",
+  "Baby": "Soft essentials and sweet toys for the newest addition to the family.",
+
+  // Sports, Outdoors & Local Pride
+  "Texas": "Deeply local pride with iconic Texas-shaped treats and decor.",
+  "Beach": "Everything needed for a sun-soaked afternoon on the sand.",
+  "Astros": "Show your H-Town pride with gear for the World Series champions.",
+  "Barbers Hill": "Support the home team with local blue and white spirit gear.",
+  "Pool Day": "Inflatables and accessories for the perfect summer afternoon.",
+  "Fishing": "Practical gear and snacks for a successful day on the water.",
+  "College-Specific": "Tailgate-ready gear for your favorite university fan.",
+
+  // Faith, School & Seasonal
+  "Teacher Appreciation": "Give back to our educators with classroom tools and self-care.",
+  "Catholic": "A beautiful collection of devotionals, rosaries, and parish-focused items.",
+  "Faith": "Spiritual essentials for quiet reflection and daily prayer.",
+  "USA": "Patriotic decor and snacks for your next holiday celebration.",
+  "Christmas": "Celebrate the season with festive decor and holiday treats.",
+  "Easter": "Everything needed for a joyful and sweet spring celebration.",
+  "Fall": "Warm up the season with autumn scents and pumpkin-spiced treats.",
+};
+
+const getThemeDescription = (name: string) => {
+  return themeDescriptions[name] || "A carefully curated gift basket perfect for our silent auction.";
+};
+
 export default function BasketThemesPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const section = siteContent.signUps[1].basketThemeSection!;
@@ -97,7 +171,7 @@ export default function BasketThemesPage() {
                     <div className="basket-card-content">
                       <h5>{theme.name}</h5>
                       <p className="theme-description">
-                        Perfect for the silent auction. Items include: {theme.items.slice(0, 3).join(", ")}...
+                        {getThemeDescription(theme.name)}
                       </p>
                       <div className="basket-item-tags">
                         {theme.items.map((item, idx) => (
