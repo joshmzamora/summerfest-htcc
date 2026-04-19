@@ -43,6 +43,10 @@ export const siteContent = {
       description:
         "Find the essentials for festival day, including when to arrive, where to park, where to sit, and a few quick policies before you head over.",
     },
+    sectionIntro: {
+      title: "Know Before You Go",
+      description: "A quick overview of what to expect before you arrive at Summer Fest.",
+    },
     quickInfo: [
       { label: "Date", value: "May 31, 2026", icon: "sun" },
       { label: "Time", value: "11:30 AM - 5:00 PM", icon: "clock" },
@@ -65,11 +69,11 @@ export const siteContent = {
     about: {
       title: "About Summer Fest",
       summary:
-        "Summer Fest is a parish celebration that brings families, friends, and neighbors together for a joyful day that also supports Holy Trinity's building fund.",
+        "Summer Fest is a community celebration bringing families, friends, and neighbors together for a full day of food, games, and fellowship—while supporting Holy Trinity's building fund.",
       bullets: [
         "Hosted by Holy Trinity Catholic Church",
-        "Open to parish families and the wider community",
-        "Built around fellowship, food, games, and support for the building fund",
+        "Open to the entire community",
+        "A day of food, games, and fellowship supporting the building fund",
       ],
     },
     admissionOverview: {
@@ -81,6 +85,10 @@ export const siteContent = {
         "Optional purchases are available for festival experiences",
         "Detailed wristband, ticket, and vendor pricing lives on What to Expect",
       ],
+      cta: {
+        label: "View Pricing & Festival Details",
+        href: "/what-to-expect",
+      },
     },
     faqs: [
       {

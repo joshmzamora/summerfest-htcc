@@ -5,6 +5,7 @@ import { PageIntro } from "@/components/PageIntro";
 import { Section } from "@/components/Section";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteContent } from "@/data/site-content";
+import Link from "next/link";
 
 export default function PlanYourVisitPage() {
   return (
@@ -20,7 +21,10 @@ export default function PlanYourVisitPage() {
       />
       <InfoBar items={siteContent.planYourVisit.quickInfo} />
 
-      <Section title="Before You Go" description="The quick logistics and context most guests want before heading to festival day.">
+      <Section
+        title={siteContent.planYourVisit.sectionIntro.title}
+        description={siteContent.planYourVisit.sectionIntro.description}
+      >
         <div className="split-layout visit-overview-grid">
           <article className="highlight-panel admission-panel">
             <div className="admission-panel-header">
@@ -43,6 +47,11 @@ export default function PlanYourVisitPage() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <div className="button-row visit-overview-actions">
+              <Link className="button button-primary" href={siteContent.planYourVisit.admissionOverview.cta.href}>
+                {siteContent.planYourVisit.admissionOverview.cta.label}
+              </Link>
+            </div>
           </article>
         </div>
       </Section>
