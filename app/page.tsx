@@ -30,8 +30,16 @@ export default function Home() {
         headingMotion="ribbon"
         title="Festival Day for Families, Friends, and Neighbors"
       >
-        <MotionPanel as="article" className="highlight-panel" hover="panel" reveal="signboard">
-          <p>A full day of food, fun, and friendly competition.</p>
+        <MotionPanel
+          as="article"
+          className="process-flow-card expectation-list-card"
+          hover="card"
+          reveal="card"
+        >
+          <div className="admission-panel-header">
+            <h3>Festival Highlights</h3>
+            <p>A full day of food, fun, and friendly competition.</p>
+          </div>
           <ul className="detail-list">
             {[
               "Food booths and sweet treats",
