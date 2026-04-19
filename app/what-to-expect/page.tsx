@@ -25,7 +25,6 @@ export default function WhatToExpectPage() {
       />
       <PageIntro
         title={siteContent.whatToExpect.intro.title}
-        description={siteContent.whatToExpect.intro.description}
       />
 
       <div className="experience-band experience-band-ticketing">

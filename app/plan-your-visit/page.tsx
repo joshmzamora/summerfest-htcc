@@ -17,7 +17,6 @@ export default function PlanYourVisitPage() {
       />
       <PageIntro
         title={siteContent.planYourVisit.intro.title}
-        description={siteContent.planYourVisit.intro.description}
       />
       <InfoBar title="Event Details" items={siteContent.planYourVisit.quickInfo} />
 
