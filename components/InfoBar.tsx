@@ -168,14 +168,29 @@ function InfoIcon({ icon }: { icon?: string }) {
   }
 }
 
-export function InfoBar({ title, description, items }: InfoBarProps) {
+export function InfoBar({ title, description, items, centered = false, carnival = false }: InfoBarProps) {
   return (
     <section className="info-bar" aria-label="Quick event information">
       {title || description ? (
         <div className="container">
-          <MotionPanel as="header" className="section-heading" reveal="ribbon">
+          <MotionPanel 
+            as="header" 
+            className={`section-heading ${centered || carnival ? "is-centered" : ""}`.trim()} 
+            reveal="ribbon"
+          >
             <MotionStagger className="section-heading-inner" stagger={0.08}>
-              {title ? <m.h2 variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>{title}</m.h2> : null}
+              {carnival && title ? (
+                <div className="carnival-banner">
+                  <m.h2 variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>
+                    {title}
+                  </m.h2>
+                </div>
+              ) : title ? (
+                <m.h2 variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>
+                  {title}
+                </m.h2>
+              ) : null}
+
               {description ? (
                 <m.p variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}>
                   {description}
