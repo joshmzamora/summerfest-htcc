@@ -26,6 +26,29 @@ export default function GetInvolvedPage() {
       </Section>
 
       <Section
+        className="basket-themes-promo-section"
+        headingMotion="signboard"
+        title="Auction Basket Theme Ideas"
+        carnival
+      >
+        <MotionPanel as="article" className="support-panel" hover="panel" reveal="card">
+          <div className="promo-layout">
+            <div className="promo-copy">
+              <p>
+                Not sure what to donate for the silent auction? We've compiled over 50 themed basket
+                ideas—from movie nights to local BBQ kits—to help you get started.
+              </p>
+            </div>
+            <div className="button-row">
+              <MotionPressableLink className="button button-ghost" href="/get-involved/basket-themes">
+                <span className="button-label">Explore 50+ Theme Ideas</span>
+              </MotionPressableLink>
+            </div>
+          </div>
+        </MotionPanel>
+      </Section>
+
+      <Section
         className="involvement-guidance-section"
         headingMotion="ribbon"
         title="Need the Parish Payment Portal?"
