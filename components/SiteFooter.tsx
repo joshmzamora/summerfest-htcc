@@ -1,5 +1,6 @@
-import Link from "next/link";
+"use client";
 
+import { MotionPanel, MotionPressableLink, MotionStagger, eases, m, useReducedMotion } from "@/components/FestivalMotion";
 import { SiteContent } from "@/data/site-content";
 
 type SiteFooterProps = {
@@ -41,6 +42,7 @@ export function SiteFooter({
   socialLinks,
 }: SiteFooterProps) {
   const footerNote = "A parish celebration supporting our building fund";
+  const reduceMotion = useReducedMotion();
 
   return (
     <footer className="site-footer">
@@ -50,42 +52,52 @@ export function SiteFooter({
         </div>
         <div className="footer-panel">
           <div className="footer-layout">
-            <div className="footer-brand-block">
-              <p className="footer-brand">{churchName}</p>
-              <p className="footer-event">{eventName}</p>
+            <MotionPanel as="div" className="footer-brand-block" hover="panel" reveal="signboard">
+              <m.p
+                animate={reduceMotion ? undefined : { y: [0, -1.5, 0] }}
+                className="footer-brand"
+                transition={{ duration: 6.2, ease: eases.settle, repeat: Infinity }}
+              >
+                {churchName}
+              </m.p>
+              <m.p className="footer-event" initial={reduceMotion ? false : { opacity: 0, y: 10 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true }}>
+                {eventName}
+              </m.p>
               <p className="footer-note">{footerNote}</p>
-            </div>
+            </MotionPanel>
             <div className="footer-actions-block">
-              <nav className="footer-nav" aria-label="Footer navigation">
+              <MotionPanel as="nav" className="footer-nav" aria-label="Footer navigation" hover="panel" reveal="ribbon">
                 <p className="footer-column-title">Explore</p>
-                <div className="footer-link-list">
+                <MotionStagger className="footer-link-list" stagger={0.07}>
                   {footerLinks.map((link) => (
-                    <Link key={link.href} href={link.href}>
-                      {link.label}
-                    </Link>
+                    <MotionPressableLink className="footer-link" href={link.href} key={link.href}>
+                      <m.span className="footer-link-label" whileHover={reduceMotion ? undefined : { x: 3 }}>
+                        {link.label}
+                      </m.span>
+                    </MotionPressableLink>
                   ))}
-                </div>
-              </nav>
-              <div className="footer-social">
+                </MotionStagger>
+              </MotionPanel>
+              <MotionPanel as="div" className="footer-social" hover="panel" reveal="sticker">
                 <p className="footer-social-title">Stay connected</p>
-                <div className="footer-social-list">
+                <MotionStagger className="footer-social-list" stagger={0.08}>
                   {socialLinks.map((item) => (
-                    <a
+                    <MotionPressableLink
                       key={item.href}
                       className={`footer-social-link platform-${item.platform}`}
+                      external={item.external}
+                      hover="social"
                       href={item.href}
-                      target={item.external ? "_blank" : undefined}
-                      rel={item.external ? "noreferrer" : undefined}
                       aria-label={`${item.label} (opens in a new tab)`}
                     >
                       <span className="footer-social-icon" aria-hidden="true">
                         <SocialIcon platform={item.platform} />
                       </span>
                       <span>{item.label}</span>
-                    </a>
+                    </MotionPressableLink>
                   ))}
-                </div>
-              </div>
+                </MotionStagger>
+              </MotionPanel>
             </div>
           </div>
           <div className="footer-meta">

@@ -1,4 +1,5 @@
 import { FaqList } from "@/components/FaqList";
+import { MotionPanel, MotionPressableLink, MotionStagger } from "@/components/FestivalMotion";
 import { InfoBar } from "@/components/InfoBar";
 import { NavBar } from "@/components/NavBar";
 import { PageIntro } from "@/components/PageIntro";
@@ -32,18 +33,25 @@ export default function PlanYourVisitPage() {
 
       <Section
         id="admission-overview"
+        headingMotion="ribbon"
         title={siteContent.planYourVisit.admissionOverview.title}
         description={siteContent.planYourVisit.admissionOverview.summary}
       >
         <div className="split-layout visit-overview-grid">
-          <article className="admission-explainer">
+          <MotionPanel as="article" className="admission-explainer" hover="panel" reveal="signboard">
             <div className="admission-explainer-heading">
               <h3>{siteContent.whatToExpect.wristbandsOrTickets.title}</h3>
               <p>{siteContent.whatToExpect.wristbandsOrTickets.description}</p>
             </div>
-            <div className="admission-explainer-grid">
+            <MotionStagger className="admission-explainer-grid" stagger={0.1}>
               {siteContent.whatToExpect.wristbandsOrTickets.items.map((item) => (
-                <article className="admission-explainer-card" key={item.title}>
+                <MotionPanel
+                  as="article"
+                  className="admission-explainer-card"
+                  hover="card"
+                  key={item.title}
+                  reveal="card"
+                >
                   <div className={`admission-explainer-icon icon-${item.icon}`}>
                     <AdmissionExplainerIcon icon={item.icon} />
                   </div>
@@ -51,24 +59,24 @@ export default function PlanYourVisitPage() {
                   <h4>{item.headline}</h4>
                   <p>{item.description}</p>
                   {"note" in item && item.note ? <em>{item.note}</em> : null}
-                </article>
+                </MotionPanel>
               ))}
-            </div>
-          </article>
+            </MotionStagger>
+          </MotionPanel>
 
-          <article className="pricing-board">
+          <MotionPanel as="article" className="pricing-board" hover="panel" reveal="poster">
             <div className="pricing-board-header">
               <h3>{siteContent.whatToExpect.pricing.title}</h3>
               <p>{siteContent.whatToExpect.pricing.description}</p>
             </div>
-            <div className="pricing-grid">
+            <MotionStagger className="pricing-grid" stagger={0.1}>
               {siteContent.whatToExpect.pricing.items.map((item) => (
-                <a
+                <MotionPressableLink
                   className="pricing-card"
+                  external={siteContent.whatToExpect.pricing.cta.external}
+                  fillWidth
                   key={item.title}
                   href={siteContent.whatToExpect.pricing.cta.href}
-                  target={siteContent.whatToExpect.pricing.cta.external ? "_blank" : undefined}
-                  rel={siteContent.whatToExpect.pricing.cta.external ? "noreferrer" : undefined}
                   aria-label={`Open payment link for ${item.title}`}
                 >
                   <div className="pricing-card-summary">
@@ -80,24 +88,24 @@ export default function PlanYourVisitPage() {
                   </div>
                   <p>{item.description}</p>
                   {"note" in item && item.note ? <em>{item.note}</em> : null}
-                </a>
+                </MotionPressableLink>
               ))}
-            </div>
+            </MotionStagger>
             <div className="button-row pricing-board-actions">
-              <a
+              <MotionPressableLink
                 className="button button-primary"
+                external={siteContent.whatToExpect.pricing.cta.external}
                 href={siteContent.whatToExpect.pricing.cta.href}
-                target={siteContent.whatToExpect.pricing.cta.external ? "_blank" : undefined}
-                rel={siteContent.whatToExpect.pricing.cta.external ? "noreferrer" : undefined}
               >
-                {siteContent.whatToExpect.pricing.cta.label}
-              </a>
+                <span className="button-label">{siteContent.whatToExpect.pricing.cta.label}</span>
+              </MotionPressableLink>
             </div>
-          </article>
+          </MotionPanel>
         </div>
       </Section>
 
       <Section
+        headingMotion="signboard"
         title="Frequently Asked Questions"
         description="These answers cover the most common logistics questions about attendance, seating, parking, pets, and getting involved."
       >

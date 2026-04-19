@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { MotionPanel, MotionPressableLink, MotionStagger } from "@/components/FestivalMotion";
 import { HeroSection } from "@/components/HeroSection";
 import { NavBar } from "@/components/NavBar";
 import { Section } from "@/components/Section";
@@ -28,9 +27,10 @@ export default function Home() {
       />
 
       <Section
+        headingMotion="ribbon"
         title="Festival Day for Families, Friends, and Neighbors"
       >
-        <article className="highlight-panel">
+        <MotionPanel as="article" className="highlight-panel" hover="panel" reveal="signboard">
           <p>A full day of food, fun, and friendly competition.</p>
           <ul className="detail-list">
             {[
@@ -41,23 +41,30 @@ export default function Home() {
               "Free admission",
               "Open to the community",
             ].map((item) => (
-              <li key={item}>{item}</li>
-            ))}
+                <li key={item}>{item}</li>
+              ))}
           </ul>
-        </article>
+        </MotionPanel>
       </Section>
 
       <div className="experience-band experience-band-food">
         <div className="container experience-band-shell">
           <Section
             id="food-drink"
+            headingMotion="poster"
             title={siteContent.whatToExpect.foodAndDrink.title}
             description={siteContent.whatToExpect.foodAndDrink.description}
             className="experience-band-section"
           >
-            <div className="experience-list-grid">
+            <MotionStagger className="experience-list-grid" stagger={0.12}>
               {siteContent.whatToExpect.foodAndDrink.groups.map((group) => (
-                <article className="process-flow-card expectation-list-card" key={group.title}>
+                <MotionPanel
+                  as="article"
+                  className="process-flow-card expectation-list-card"
+                  hover="card"
+                  key={group.title}
+                  reveal="card"
+                >
                   <div className="admission-panel-header">
                     <h3>{group.title}</h3>
                   </div>
@@ -66,21 +73,32 @@ export default function Home() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </article>
+                </MotionPanel>
               ))}
-            </div>
-            <p className="section-note">{siteContent.whatToExpect.foodAndDrink.note}</p>
+            </MotionStagger>
+            <MotionPanel className="section-note-motion" reveal="sticker">
+              <p className="section-note">
+              {siteContent.whatToExpect.foodAndDrink.note}
+              </p>
+            </MotionPanel>
           </Section>
 
           <Section
             id="activities-games"
+            headingMotion="signboard"
             title={siteContent.whatToExpect.activitiesAndGames.title}
             description={siteContent.whatToExpect.activitiesAndGames.description}
             className="experience-band-section"
           >
-            <div className="experience-list-grid">
+            <MotionStagger className="experience-list-grid" stagger={0.12}>
               {siteContent.whatToExpect.activitiesAndGames.groups.map((group) => (
-                <article className="process-flow-card expectation-list-card" key={group.title}>
+                <MotionPanel
+                  as="article"
+                  className="process-flow-card expectation-list-card"
+                  hover="card"
+                  key={group.title}
+                  reveal="card"
+                >
                   <div className="admission-panel-header">
                     <h3>{group.title}</h3>
                   </div>
@@ -89,28 +107,32 @@ export default function Home() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
-                </article>
+                </MotionPanel>
               ))}
-            </div>
-            <p className="section-note">{siteContent.whatToExpect.activitiesAndGames.note}</p>
+            </MotionStagger>
+            <MotionPanel className="section-note-motion" reveal="sticker">
+              <p className="section-note">
+              {siteContent.whatToExpect.activitiesAndGames.note}
+              </p>
+            </MotionPanel>
           </Section>
         </div>
       </div>
 
       <section className="section cta-ribbon">
-        <div className="container cta-ribbon-shell">
+        <MotionPanel as="div" className="container cta-ribbon-shell" hover="panel" reveal="ribbon">
           <div>
             <h2>Ready to register, volunteer, or donate?</h2>
           </div>
           <div className="button-row">
-            <Link className="button button-primary" href="/get-involved">
-              Get Involved
-            </Link>
-            <Link className="button button-ghost" href="/get-involved">
-              Open Live Forms
-            </Link>
+            <MotionPressableLink className="button button-primary" href="/get-involved">
+              <span className="button-label">Get Involved</span>
+            </MotionPressableLink>
+            <MotionPressableLink className="button button-ghost" href="/get-involved">
+              <span className="button-label">Open Live Forms</span>
+            </MotionPressableLink>
           </div>
-        </div>
+        </MotionPanel>
       </section>
 
       <SiteFooter

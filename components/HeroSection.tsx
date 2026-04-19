@@ -1,5 +1,13 @@
-import Link from "next/link";
+"use client";
 
+import {
+  MotionPanel,
+  MotionPressableLink,
+  MotionStagger,
+  eases,
+  m,
+  useReducedMotion,
+} from "@/components/FestivalMotion";
 import { Countdown } from "@/components/Countdown";
 import { Action } from "@/components/types";
 
@@ -15,21 +23,25 @@ type HeroSectionProps = {
   calendarLabel: string;
 };
 
-const renderAction = (action: Action) => {
+const renderAction = (action: Action, reduceMotion: boolean | null) => {
   const className = `button button-${action.variant ?? "primary"}`;
 
-  if (action.external) {
-    return (
-      <a key={action.label} className={className} href={action.href} target="_blank" rel="noreferrer">
-        {action.label}
-      </a>
-    );
-  }
-
   return (
-    <Link key={action.label} className={className} href={action.href}>
-      {action.label}
-    </Link>
+    <MotionPressableLink
+      key={action.label}
+      className={className}
+      external={action.external}
+      fillWidth
+      href={action.href}
+    >
+      <m.span
+        animate={reduceMotion ? undefined : { y: [0, -1.5, 0] }}
+        className="button-label"
+        transition={{ duration: 5.2, ease: eases.settle, repeat: Infinity, repeatDelay: 2.4 }}
+      >
+        {action.label}
+      </m.span>
+    </MotionPressableLink>
   );
 };
 
@@ -44,72 +56,146 @@ export function HeroSection({
   calendarHref,
   calendarLabel,
 }: HeroSectionProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="hero-section section festival-layer" id="top">
       <div className="container hero-layout">
-        <div className="hero-copy">
+        <MotionPanel className="hero-copy" reveal="poster">
           <div className="hero-pennants" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
+            {Array.from({ length: 7 }).map((_, index) => (
+              <m.span
+                key={index}
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        rotate: index % 2 === 0 ? [-2, 2, -2] : [2, -2, 2],
+                        y: [0, 2, 0],
+                      }
+                }
+                transition={{
+                  duration: 3.8 + index * 0.22,
+                  ease: eases.settle,
+                  repeat: Infinity,
+                  repeatType: "mirror",
+                }}
+              />
+            ))}
           </div>
-          <p className="hero-kicker">
-            <span>Parish Festival</span>
-            <span>Open to the Community</span>
-          </p>
-          <h1>{title}</h1>
-          <p className="hero-meta">
-            <strong>{date}</strong>
-            <span>{time}</span>
-          </p>
-          <p className="hero-tagline">{tagline}</p>
-          {note ? <p className="hero-note">{note}</p> : null}
-          <div className="button-row hero-actions">{actions.map(renderAction)}</div>
-        </div>
+          <MotionStagger className="hero-copy-stack" stagger={0.11}>
+            <m.p className="hero-kicker" variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}>
+              <m.span variants={{ hidden: { opacity: 0, x: -12 }, visible: { opacity: 1, x: 0 } }}>
+                Parish Festival
+              </m.span>
+              <m.span variants={{ hidden: { opacity: 0, x: 12 }, visible: { opacity: 1, x: 0 } }}>
+                Open to the Community
+              </m.span>
+            </m.p>
+            <m.h1 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>{title}</m.h1>
+            <m.p className="hero-meta" variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}>
+              <strong>{date}</strong>
+              <span>{time}</span>
+            </m.p>
+            <m.p
+              className="hero-tagline"
+              variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}
+            >
+              {tagline}
+            </m.p>
+            {note ? (
+              <m.p className="hero-note" variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}>
+                {note}
+              </m.p>
+            ) : null}
+            <MotionStagger className="button-row hero-actions" stagger={0.09}>
+              {actions.map((action) => (
+                <m.div key={action.label} variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}>
+                  {renderAction(action, reduceMotion)}
+                </m.div>
+              ))}
+            </MotionStagger>
+          </MotionStagger>
+        </MotionPanel>
         <div className="hero-aside">
-          <div className="festival-scene" aria-label="Festival poster panel">
+          <MotionPanel as="aside" className="festival-scene" hover="panel" reveal="signboard">
             <div className="poster-head">
               <div className="poster-stickers" aria-label="Festival highlights">
-                <span className="poster-sticker poster-sticker-top">Food, Games, Auction</span>
-                <span className="poster-sticker poster-sticker-family">Family Friendly</span>
+                <m.span
+                  animate={reduceMotion ? undefined : { rotate: [-2, 1, -2], y: [0, -2, 0] }}
+                  className="poster-sticker poster-sticker-top"
+                  transition={{ duration: 4.4, ease: eases.settle, repeat: Infinity }}
+                >
+                  Food, Games, Auction
+                </m.span>
+                <m.span
+                  animate={reduceMotion ? undefined : { rotate: [-10, -8, -10], scale: [1, 1.03, 1] }}
+                  className="poster-sticker poster-sticker-family"
+                  transition={{ duration: 5.6, ease: eases.quick, repeat: Infinity }}
+                >
+                  Family Friendly
+                </m.span>
               </div>
-              <p className="poster-burst">Free Admission</p>
+              <m.p
+                animate={reduceMotion ? undefined : { scale: [1, 1.045, 1], rotate: [-4, -2, -4] }}
+                className="poster-burst"
+                transition={{ duration: 3.8, ease: eases.quick, repeat: Infinity }}
+              >
+                Free Admission
+              </m.p>
             </div>
-            <h2>Festival Grounds</h2>
-            <p className="poster-benefit">Support Our New Building</p>
-            <ul className="poster-list">
-              <li className="poster-item poster-food">
+            <m.h2 initial={reduceMotion ? false : { opacity: 0, y: 16 }} whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.48, ease: eases.settle }}>
+              Festival Grounds
+            </m.h2>
+            <m.p
+              animate={reduceMotion ? undefined : { rotate: [7, 5, 7], y: [0, -2, 0] }}
+              className="poster-benefit"
+              transition={{ duration: 6, ease: eases.settle, repeat: Infinity }}
+            >
+              Support Our New Building
+            </m.p>
+            <MotionStagger className="poster-list" delayChildren={0.16} stagger={0.08}>
+              <MotionPanel as="li" className="poster-item poster-food" hover="card">
                 <span>Food Booths</span>
                 <strong>Brisket, turkey legs, funnel cakes</strong>
-              </li>
-              <li className="poster-item poster-games">
+              </MotionPanel>
+              <MotionPanel as="li" className="poster-item poster-games" hover="card">
                 <span>Game Tents</span>
                 <strong>Family games and prize stations</strong>
-              </li>
-              <li className="poster-item poster-tournament">
+              </MotionPanel>
+              <MotionPanel as="li" className="poster-item poster-tournament" hover="card">
                 <span>Tournaments</span>
                 <strong>Volleyball and washers sign-up</strong>
-              </li>
-              <li className="poster-item poster-auction">
+              </MotionPanel>
+              <MotionPanel as="li" className="poster-item poster-auction" hover="card">
                 <span>Silent Auction</span>
                 <strong>Gift baskets and community bids</strong>
-              </li>
-            </ul>
-            <p className="poster-ticket">Hosted by Holy Trinity Catholic Church</p>
-          </div>
+              </MotionPanel>
+            </MotionStagger>
+            <m.p
+              animate={reduceMotion ? undefined : { y: [0, -2, 0], rotate: [-1.5, 0.5, -1.5] }}
+              className="poster-ticket"
+              transition={{ duration: 7.2, ease: eases.settle, repeat: Infinity }}
+            >
+              Hosted by Holy Trinity Catholic Church
+            </m.p>
+          </MotionPanel>
           <Countdown target={countdownTarget} />
-          <a
+          <MotionPressableLink
             className="button button-primary hero-calendar-button"
-            href={calendarHref}
             download
+            fillWidth
+            href={calendarHref}
             aria-label={`${calendarLabel} for ${title}`}
           >
-            {calendarLabel}
-          </a>
+            <m.span
+              animate={reduceMotion ? undefined : { y: [0, -1.5, 0] }}
+              className="button-label"
+              transition={{ duration: 4.6, ease: eases.settle, repeat: Infinity, repeatDelay: 2.2 }}
+            >
+              {calendarLabel}
+            </m.span>
+          </MotionPressableLink>
         </div>
       </div>
     </section>

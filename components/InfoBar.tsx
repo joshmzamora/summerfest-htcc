@@ -2,6 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 
+import { MotionPanel, MotionStagger, m } from "@/components/FestivalMotion";
+
 type InfoBarProps = {
   title?: string;
   description?: string;
@@ -171,15 +173,21 @@ export function InfoBar({ title, description, items }: InfoBarProps) {
     <section className="info-bar" aria-label="Quick event information">
       {title || description ? (
         <div className="container">
-          <div className="section-heading">
-            {title ? <h2>{title}</h2> : null}
-            {description ? <p>{description}</p> : null}
-          </div>
+          <MotionPanel as="header" className="section-heading" reveal="ribbon">
+            <MotionStagger className="section-heading-inner" stagger={0.08}>
+              {title ? <m.h2 variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}>{title}</m.h2> : null}
+              {description ? (
+                <m.p variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}>
+                  {description}
+                </m.p>
+              ) : null}
+            </MotionStagger>
+          </MotionPanel>
         </div>
       ) : null}
-      <div className="container info-grid">
+      <MotionStagger className="container info-grid" stagger={0.1}>
         {items.map((item) => (
-          <div className="info-item" key={item.label}>
+          <MotionPanel as="div" className="info-item" key={item.label} hover="card" reveal="card">
             <div className="info-icon-wrap" aria-hidden="true">
               <div className={`info-icon icon-${item.icon ?? "spark"}`}>
                 <InfoIcon icon={item.icon} />
@@ -187,9 +195,9 @@ export function InfoBar({ title, description, items }: InfoBarProps) {
             </div>
             <span>{item.label}</span>
             <InfoValue item={item} />
-          </div>
+          </MotionPanel>
         ))}
-      </div>
+      </MotionStagger>
     </section>
   );
 }

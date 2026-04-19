@@ -1,3 +1,6 @@
+"use client";
+
+import { MotionPanel, MotionPressableLink, MotionStagger, m, useReducedMotion } from "@/components/FestivalMotion";
 import { Action } from "@/components/types";
 
 type CardGridProps = {
@@ -11,30 +14,37 @@ type CardGridProps = {
 };
 
 export function CardGrid({ items, className }: CardGridProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <div className={`card-grid ${className ?? ""}`.trim()}>
+    <MotionStagger className={`card-grid ${className ?? ""}`.trim()} stagger={0.12}>
       {items.map((item) => (
-        <article className="content-card" key={item.title}>
+        <MotionPanel as="article" className="content-card" hover="card" key={item.title} reveal="card">
           <h3>{item.title}</h3>
           {item.body ? <p>{item.body}</p> : null}
           {item.note ? <p className="card-note">{item.note}</p> : null}
           {item.actions?.length ? (
             <div className="button-row">
               {item.actions.map((action) => (
-                <a
+                <MotionPressableLink
                   key={action.label}
                   className={`button button-${action.variant ?? "primary"}`}
+                  external={action.external}
                   href={action.href}
-                  target={action.external ? "_blank" : undefined}
-                  rel={action.external ? "noreferrer" : undefined}
                 >
-                  {action.label}
-                </a>
+                  <m.span
+                    animate={reduceMotion ? undefined : { y: [0, -1.5, 0] }}
+                    className="button-label"
+                    transition={{ duration: 4.8, repeat: Infinity, repeatDelay: 2.4 }}
+                  >
+                    {action.label}
+                  </m.span>
+                </MotionPressableLink>
               ))}
             </div>
           ) : null}
-        </article>
+        </MotionPanel>
       ))}
-    </div>
+    </MotionStagger>
   );
 }

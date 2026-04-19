@@ -1,3 +1,4 @@
+import { MotionPanel, MotionPressableLink } from "@/components/FestivalMotion";
 import { NavBar } from "@/components/NavBar";
 import { PageIntro } from "@/components/PageIntro";
 import { Section } from "@/components/Section";
@@ -17,6 +18,7 @@ export default function GetInvolvedPage() {
 
       <Section
         className="involvement-forms-section"
+        headingMotion="poster"
         title="Choose a Form"
       >
         <SignUpCards items={siteContent.signUps} />
@@ -24,19 +26,20 @@ export default function GetInvolvedPage() {
 
       <Section
         className="involvement-guidance-section"
+        headingMotion="ribbon"
         title="Need the Parish Payment Portal?"
       >
-        <article className="support-panel involvement-support-panel">
+        <MotionPanel as="article" className="support-panel involvement-support-panel" hover="panel" reveal="signboard">
           <p>
             For Summer Fest registrations and donation interest, use the forms above. The parish payment
             portal remains available for other church payments.
           </p>
           <div className="button-row">
-            <a className="button button-secondary" href={paymentUrl} target="_blank" rel="noreferrer">
-              Open Payment Portal
-            </a>
+            <MotionPressableLink className="button button-secondary" external href={paymentUrl}>
+              <span className="button-label">Open Payment Portal</span>
+            </MotionPressableLink>
           </div>
-        </article>
+        </MotionPanel>
       </Section>
 
       <SiteFooter

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Barlow } from "next/font/google";
 
+import { SiteMotionProvider } from "@/components/FestivalMotion";
 import { ShareSavePrompt } from "@/components/ShareSavePrompt";
 import { siteContent } from "@/data/site-content";
 
@@ -34,8 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${festivalDisplay.variable} ${barlow.variable}`}>
-        {children}
-        <ShareSavePrompt eventName={siteContent.eventName} config={siteContent.sharePrompt} />
+        <SiteMotionProvider>
+          {children}
+          <ShareSavePrompt eventName={siteContent.eventName} config={siteContent.sharePrompt} />
+        </SiteMotionProvider>
       </body>
     </html>
   );

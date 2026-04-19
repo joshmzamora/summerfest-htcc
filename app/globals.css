@@ -3413,6 +3413,274 @@ span.poster-sticker-family::after {
   }
 }
 
+.motion-pressable {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.motion-pressable.is-full-width {
+  width: 100%;
+}
+
+.motion-pressable > a,
+.motion-pressable > button {
+  width: 100%;
+}
+
+.motion-pressable .button:hover,
+.motion-pressable .button:focus-visible,
+.motion-pressable .pricing-card:hover,
+.motion-pressable .pricing-card:focus-visible,
+.motion-pressable .footer-social-link:hover,
+.motion-pressable .footer-social-link:focus-visible {
+  transform: none;
+}
+
+.section-heading-inner,
+.page-intro-copy-inner,
+.hero-copy-stack {
+  display: grid;
+}
+
+.hero-copy-stack {
+  gap: 0;
+}
+
+.section-note-motion {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.section-note-motion .section-note {
+  margin-bottom: 0;
+}
+
+.site-nav-item,
+.site-nav-link,
+.site-nav-pill,
+.button-label,
+.faq-indicator,
+.art-ticket,
+.art-swirl,
+.art-star,
+.poster-burst,
+.poster-sticker,
+.poster-benefit,
+.poster-ticket,
+.hero-pennants span,
+.countdown-unit strong,
+.footer-social-link,
+.footer-link,
+.festival-scene,
+.countdown-card,
+.highlight-panel,
+.content-card,
+.sign-up-card,
+.support-panel,
+.page-intro-art,
+.info-item,
+.cta-ribbon-shell,
+.admission-explainer,
+.pricing-board,
+.process-flow-card,
+.admission-explainer-card,
+.pricing-card,
+.faq-item {
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.festival-scene,
+.countdown-card,
+.highlight-panel,
+.content-card,
+.sign-up-card,
+.support-panel,
+.page-intro-art,
+.info-item,
+.cta-ribbon-shell,
+.admission-explainer,
+.pricing-board,
+.process-flow-card,
+.admission-explainer-card,
+.pricing-card,
+.faq-item {
+  transition:
+    box-shadow 240ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.festival-scene:hover,
+.countdown-card:hover,
+.highlight-panel:hover,
+.content-card:hover,
+.sign-up-card:hover,
+.support-panel:hover,
+.page-intro-art:hover,
+.info-item:hover,
+.cta-ribbon-shell:hover,
+.admission-explainer:hover,
+.pricing-board:hover,
+.process-flow-card:hover,
+.admission-explainer-card:hover,
+.pricing-card:hover,
+.faq-item:hover {
+  box-shadow:
+    0 22px 38px rgba(125, 65, 32, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.18) 48%, transparent 72%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.motion-pressable:hover .button::after,
+.motion-pressable:focus-within .button::after {
+  opacity: 1;
+}
+
+.button-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.button-row > .motion-pressable {
+  flex: 0 0 auto;
+}
+
+.hero-actions > .motion-pressable,
+.hero-actions > div {
+  width: 100%;
+}
+
+.hero-actions > div > .motion-pressable {
+  width: 100%;
+}
+
+.site-nav {
+  overflow: hidden;
+}
+
+.site-nav-desktop {
+  display: none;
+}
+
+.site-nav-item {
+  position: relative;
+}
+
+.site-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  isolation: isolate;
+  background: transparent;
+}
+
+.site-nav-link.is-active {
+  background: transparent;
+}
+
+.site-nav-pill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(41, 195, 255, 0.14);
+  border: 1px solid rgba(29, 123, 115, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  z-index: 0;
+}
+
+.site-nav-label {
+  position: relative;
+  z-index: 1;
+}
+
+.faq-trigger {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.faq-answer {
+  overflow: hidden;
+}
+
+.poster-list {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+}
+
+.poster-list .poster-item {
+  list-style: none;
+  position: relative;
+  padding: 0.45rem 0.85rem;
+  background:
+    linear-gradient(0deg, rgba(255, 248, 233, 0.9), rgba(255, 248, 233, 0.9)),
+    radial-gradient(circle at 12% 20%, rgba(122, 56, 33, 0.07) 0.6px, transparent 1px);
+  border-radius: 0.38rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.footer-link-list,
+.footer-social-list {
+  display: grid;
+}
+
+.footer-link-list > .motion-pressable,
+.footer-social-list > .motion-pressable {
+  width: 100%;
+}
+
+.footer-link {
+  display: inline-flex;
+  width: 100%;
+}
+
+.footer-link-label {
+  display: inline-flex;
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .site-nav-desktop {
+    display: flex;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

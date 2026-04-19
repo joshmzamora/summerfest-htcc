@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { MotionPanel, MotionStagger, eases, m, useReducedMotion } from "@/components/FestivalMotion";
+
 type CountdownProps = {
   target: string;
 };
@@ -42,6 +44,7 @@ const getCountdownState = (target: string): CountdownState => {
 
 export function Countdown({ target }: CountdownProps) {
   const [timeLeft, setTimeLeft] = useState<CountdownState>(initialCountdownState);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     const frameId = window.requestAnimationFrame(() => {
@@ -60,10 +63,16 @@ export function Countdown({ target }: CountdownProps) {
 
   if (timeLeft.expired) {
     return (
-      <div className="countdown-card" aria-live="polite">
-        <span className="countdown-ribbon">Festival day is here</span>
+      <MotionPanel className="countdown-card" hover="panel" reveal="signboard">
+        <m.span
+          animate={reduceMotion ? undefined : { x: [0, 3, 0], rotate: [-1, 0.8, -1] }}
+          className="countdown-ribbon"
+          transition={{ duration: 4.5, ease: eases.settle, repeat: Infinity }}
+        >
+          Festival day is here
+        </m.span>
         <p className="countdown-expired">Today is the day. We look forward to welcoming the community.</p>
-      </div>
+      </MotionPanel>
     );
   }
 
@@ -75,16 +84,34 @@ export function Countdown({ target }: CountdownProps) {
   ];
 
   return (
-    <div className="countdown-card" aria-label="Countdown to Summer Fest">
-      <span className="countdown-ribbon">Countdown to festival day</span>
-      <div className="countdown-grid">
-        {units.map((unit) => (
-          <div className="countdown-unit" key={unit.label}>
-            <strong>{unit.value.toString().padStart(2, "0")}</strong>
+    <MotionPanel className="countdown-card" hover="panel" reveal="signboard">
+      <m.span
+        animate={reduceMotion ? undefined : { x: [0, 4, 0], rotate: [-1.2, 0.6, -1.2] }}
+        className="countdown-ribbon"
+        transition={{ duration: 4.2, ease: eases.settle, repeat: Infinity }}
+      >
+        Countdown to festival day
+      </m.span>
+      <MotionStagger className="countdown-grid" stagger={0.07}>
+        {units.map((unit, index) => (
+          <MotionPanel
+            as="div"
+            className="countdown-unit"
+            key={unit.label}
+            reveal="card"
+            hover="card"
+            delay={index * 0.04}
+          >
+            <m.strong
+              animate={reduceMotion ? undefined : { y: [0, -1.5, 0] }}
+              transition={{ duration: 2.6 + index * 0.18, ease: eases.settle, repeat: Infinity, repeatDelay: 1.2 }}
+            >
+              {unit.value.toString().padStart(2, "0")}
+            </m.strong>
             <span>{unit.label}</span>
-          </div>
+          </MotionPanel>
         ))}
-      </div>
-    </div>
+      </MotionStagger>
+    </MotionPanel>
   );
 }
