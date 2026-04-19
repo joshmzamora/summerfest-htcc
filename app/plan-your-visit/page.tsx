@@ -19,41 +19,21 @@ export default function PlanYourVisitPage() {
         title={siteContent.planYourVisit.intro.title}
         description={siteContent.planYourVisit.intro.description}
       />
-      <InfoBar items={siteContent.planYourVisit.quickInfo} />
+      <InfoBar title="Event Details" items={siteContent.planYourVisit.quickInfo} />
 
-      <Section
-        title={siteContent.planYourVisit.sectionIntro.title}
-        description={siteContent.planYourVisit.sectionIntro.description}
-      >
-        <div className="split-layout visit-overview-grid">
-          <article className="highlight-panel admission-panel">
-            <div className="admission-panel-header">
-              <h3>{siteContent.planYourVisit.about.title}</h3>
-              <p>{siteContent.planYourVisit.about.summary}</p>
-            </div>
-            <ul className="detail-list">
-              {siteContent.planYourVisit.about.bullets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-          <article className="highlight-panel admission-panel">
-            <div className="admission-panel-header">
-              <h3>{siteContent.planYourVisit.admissionOverview.title}</h3>
-              <p>{siteContent.planYourVisit.admissionOverview.summary}</p>
-            </div>
-            <ul className="detail-list">
-              {siteContent.planYourVisit.admissionOverview.bullets.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            <div className="button-row visit-overview-actions">
-              <Link className="button button-primary" href={siteContent.planYourVisit.admissionOverview.cta.href}>
-                {siteContent.planYourVisit.admissionOverview.cta.label}
-              </Link>
-            </div>
-          </article>
-        </div>
+      <Section title={siteContent.planYourVisit.admissionOverview.title}>
+        <article className="highlight-panel admission-panel">
+          <ul className="detail-list">
+            {siteContent.planYourVisit.admissionOverview.bullets.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <div className="button-row visit-overview-actions">
+            <Link className="button button-primary" href={siteContent.planYourVisit.admissionOverview.cta.href}>
+              {siteContent.planYourVisit.admissionOverview.cta.label}
+            </Link>
+          </div>
+        </article>
       </Section>
 
       <Section

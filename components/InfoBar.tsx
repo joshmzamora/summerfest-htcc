@@ -3,6 +3,8 @@
 import { useSyncExternalStore } from "react";
 
 type InfoBarProps = {
+  title?: string;
+  description?: string;
   items: ReadonlyArray<{
     label: string;
     value: string;
@@ -164,9 +166,17 @@ function InfoIcon({ icon }: { icon?: string }) {
   }
 }
 
-export function InfoBar({ items }: InfoBarProps) {
+export function InfoBar({ title, description, items }: InfoBarProps) {
   return (
     <section className="info-bar" aria-label="Quick event information">
+      {title || description ? (
+        <div className="container">
+          <div className="section-heading">
+            {title ? <h2>{title}</h2> : null}
+            {description ? <p>{description}</p> : null}
+          </div>
+        </div>
+      ) : null}
       <div className="container info-grid">
         {items.map((item) => (
           <div className="info-item" key={item.label}>

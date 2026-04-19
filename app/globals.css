@@ -1195,12 +1195,69 @@ main {
   position: relative;
 }
 
-.experience-intro-panel {
-  max-width: 58rem;
+.experience-band {
+  position: relative;
+  margin: 0;
+  padding: clamp(2rem, 4vw, 3.4rem) 0;
 }
 
-.experience-intro-panel .admission-panel-header p {
-  max-width: 52rem;
+.experience-band-shell {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.experience-band-heading {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.25rem 0 0.35rem;
+}
+
+.experience-band-heading p {
+  margin: 0;
+  color: #8a2d21;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.experience-band-heading h2 {
+  margin: 0;
+  color: #7a2418;
+  font-family: var(--font-display), cursive;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+}
+
+.experience-band-section {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.experience-band-section .container {
+  padding-inline: 0;
+}
+
+.experience-band-ticketing {
+  background: transparent;
+}
+
+.experience-band-ticketing::before,
+.experience-band-food::before {
+  content: none;
+}
+
+.experience-band-food {
+  background: transparent;
+}
+
+.experience-band-food .expectation-list-card {
+  background:
+    linear-gradient(180deg, rgba(255, 251, 242, 0.98), rgba(255, 241, 210, 0.92)),
+    radial-gradient(circle at top right, rgba(240, 190, 66, 0.14), transparent 36%);
 }
 
 .experience-list-grid {
@@ -2571,6 +2628,10 @@ span.poster-sticker-family::after {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .experience-band-shell {
+    gap: 1.8rem;
+  }
+
   .admission-panel,
   .admission-explainer,
   .pricing-board {
@@ -2693,6 +2754,14 @@ span.poster-sticker-family::after {
   .admission-explainer-heading,
   .pricing-board-header {
     padding-right: 0;
+  }
+
+  .experience-band {
+    padding: 1.75rem 0;
+  }
+
+  .experience-band-heading h2 {
+    font-size: clamp(1.8rem, 10vw, 2.35rem);
   }
 
   .visit-overview-grid {
@@ -2834,6 +2903,10 @@ span.poster-sticker-family::after {
 
   .what-to-expect-page .pricing-label {
     text-align: left;
+  }
+
+  .experience-band-shell {
+    gap: 2rem;
   }
 
   .process-diagram {

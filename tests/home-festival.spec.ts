@@ -78,7 +78,8 @@ test("home page shows strong festival branding", async ({ page }) => {
 test("get involved page exposes only the two live Summer Fest forms", async ({ page }) => {
   await page.goto("/get-involved");
 
-  await expect(page.getByRole("heading", { level: 2, name: "Choose the form that fits your role" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Donate, Register, Volunteer" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Choose a Form" })).toBeVisible();
 
   const registrationLink = page.getByRole("link", { name: "Open Registration Form" });
   const donationLink = page.getByRole("link", { name: "Open Donation Form" });
@@ -100,6 +101,7 @@ test("get involved page exposes only the two live Summer Fest forms", async ({ p
   await expect(signUpGrid.locator("li").filter({ hasText: "Tournament registration" })).toBeVisible();
   await expect(signUpGrid.locator("li").filter({ hasText: "Silent auction items" })).toBeVisible();
   await expect(signUpGrid.locator("li").filter({ hasText: "Monetary donations" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Need the Parish Payment Portal?" })).toBeVisible();
   await expect(page.locator("body")).not.toContainText("1Gr_VpCTN1gbnyRrS_VXAmGgqlcWsQgErWRmKhDVUO3g");
 });
 
@@ -134,29 +136,22 @@ test("home and contact pages reflect the new two-form signup flow", async ({ pag
   await expect(page.getByRole("link", { name: "Open Live Forms" })).toBeVisible();
 
   await page.goto("/contact");
-
-  await expect(page.getByRole("heading", { level: 3, name: "Summer Fest form links" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Parish payment portal" })).toBeVisible();
-  await expect(page.getByText("Summer Fest sign-ups and donation responses now use the live Google Forms.")).toBeVisible();
+  await expect(page).toHaveURL(/\/get-involved$/);
 });
 
 test("plan your visit page stays focused on logistics", async ({ page }) => {
   await page.goto("/plan-your-visit");
 
-  await expect(page.getByRole("heading", { level: 1, name: "Everything you need to know before festival day" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Know Before You Go" })).toBeVisible();
-  await expect(page.getByText("A quick overview of what to expect before you arrive at Summer Fest.")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "What You Need to Know" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Event Details" })).toBeVisible();
   await expect(page.getByText("Parking available in lot and marked field")).toBeVisible();
   await expect(page.getByText("Tents, tables, and chairs provided")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "About Summer Fest" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Admission Overview" })).toBeVisible();
-  await expect(
-    page.getByText(
-      "Summer Fest is a community celebration bringing families, friends, and neighbors together for a full day of food, games, and fellowship—while supporting Holy Trinity's building fund.",
-    ),
-  ).toBeVisible();
-  await expect(page.getByText("Open to the entire community")).toBeVisible();
-  await expect(page.getByText("A day of food, games, and fellowship supporting the building fund")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Know Before You Go" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 3, name: "About Summer Fest" })).toHaveCount(0);
+  await expect(page.getByText("Free admission for all guests")).toBeVisible();
+  await expect(page.getByText("Optional purchases for food, games, and activities")).toBeVisible();
+  await expect(page.getByText("Detailed pricing is on the What to Expect page")).toBeVisible();
   await expect(page.getByRole("link", { name: "View Pricing & Festival Details" })).toHaveAttribute(
     "href",
     "/what-to-expect",
@@ -173,10 +168,11 @@ test("what to expect page shows the festival experience sections in order", asyn
   await page.goto("/what-to-expect");
 
   await expect(page.getByRole("heading", { level: 1, name: "What to Expect at Summer Fest" })).toBeVisible();
+  await expect(page.getByText("Get a feel for the festival experience")).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 2, name: "Introduction" })).toHaveCount(0);
 
   const sectionHeadings = await page.locator(".section-heading h2").allTextContents();
   expect(sectionHeadings).toEqual([
-    "Introduction",
     "Wristbands vs Tickets",
     "Pricing",
     "Food & Drink",
@@ -245,12 +241,21 @@ test("navigation, discoverability links, and legacy routes reflect the page spli
   await page.goto("/");
 
   await expect(page.getByRole("link", { name: "Learn More" })).toHaveAttribute("href", "/plan-your-visit");
+  await expect(page.getByRole("heading", { level: 2, name: "Festival Day for Families, Friends, and Neighbors" })).toBeVisible();
+  await expect(page.getByText("Food booths and sweet treats")).toBeVisible();
+  await expect(page.getByText("Festival board")).toHaveCount(0);
+  await expect(page.getByText("Community partner banner row")).toHaveCount(0);
   await expect(page.locator(".card-grid .content-card").filter({ hasText: "Plan Your Visit" })).toBeVisible();
   await expect(page.locator(".card-grid .content-card").filter({ hasText: "What to Expect" })).toBeVisible();
+  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Get Involved" })).toBeVisible();
+  await expect(page.locator(".card-grid .content-card").filter({ hasText: "Contact" })).toHaveCount(0);
 
   const footerNav = page.getByRole("navigation", { name: "Footer navigation" });
   await expect(footerNav.getByRole("link", { name: "Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
   await expect(footerNav.getByRole("link", { name: "What to Expect" })).toHaveAttribute("href", "/what-to-expect");
+  await expect(footerNav.getByRole("link", { name: "Get Involved" })).toHaveAttribute("href", "/get-involved");
+  await expect(footerNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
+  await expect(page.locator("#primary-navigation").getByRole("link", { name: "Contact" })).toHaveCount(0);
 
   await page.goto("/event-info");
   await expect(page).toHaveURL(/\/plan-your-visit$/);
@@ -266,6 +271,9 @@ test("navigation, discoverability links, and legacy routes reflect the page spli
 
   await page.goto("/activities");
   await expect(page).toHaveURL(/\/what-to-expect$/);
+
+  await page.goto("/contact");
+  await expect(page).toHaveURL(/\/get-involved$/);
 });
 
 test("calendar route returns a downloadable ICS event", async ({ request }) => {

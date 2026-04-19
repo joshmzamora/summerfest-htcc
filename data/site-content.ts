@@ -29,7 +29,6 @@ export const siteContent = {
     { label: "Plan Your Visit", href: "/plan-your-visit" },
     { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
-    { label: "Contact", href: "/contact" },
   ],
   heroActions: [
     { label: "Volunteer", href: "/get-involved", variant: "primary" as const },
@@ -39,13 +38,7 @@ export const siteContent = {
   ],
   planYourVisit: {
     intro: {
-      title: "Everything you need to know before festival day",
-      description:
-        "Find the essentials for festival day, including when to arrive, where to park, where to sit, and a few quick policies before you head over.",
-    },
-    sectionIntro: {
-      title: "Know Before You Go",
-      description: "A quick overview of what to expect before you arrive at Summer Fest.",
+      title: "What You Need to Know",
     },
     quickInfo: [
       { label: "Date", value: "May 31, 2026", icon: "sun" },
@@ -82,8 +75,8 @@ export const siteContent = {
         "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
       bullets: [
         "Free admission for all guests",
-        "Optional purchases are available for festival experiences",
-        "Detailed wristband, ticket, and vendor pricing lives on What to Expect",
+        "Optional purchases for food, games, and activities",
+        "Detailed pricing is on the What to Expect page",
       ],
       cta: {
         label: "View Pricing & Festival Details",
@@ -125,14 +118,10 @@ export const siteContent = {
   whatToExpect: {
     intro: {
       title: "What to Expect at Summer Fest",
-      description:
-        "Get a feel for the festival experience, from wristbands and ticket options to the food, drinks, games, and community fun planned for the day.",
-      welcome:
-        "Summer Fest is planned as a lively parish festival day with food booths, friendly competition, family activities, and plenty of reasons to stay awhile. Whether you're coming to eat, play, cheer on a tournament, or just enjoy the atmosphere, there will be something happening across the grounds all afternoon.",
     },
     wristbandsOrTickets: {
       title: "Wristbands vs Tickets",
-      description: "Here is the simplest way to decide how you want to enjoy the day.",
+      description: "Choose the option that best fits how you want to enjoy the day.",
       items: [
         {
           title: "Wristband",
@@ -184,7 +173,7 @@ export const siteContent = {
     },
     foodAndDrink: {
       title: "Food & Drink",
-      description: "Classic festival bites, sweet treats, and cold drinks are all part of the plan.",
+      description: "Classic festival bites, sweet treats, and cold drinks are planned throughout the day.",
       note: "Menu is still being finalized.",
       groups: [
         {
@@ -203,7 +192,7 @@ export const siteContent = {
     },
     activitiesAndGames: {
       title: "Activities & Games",
-      description: "The festival lineup is designed to mix easy family fun with a few crowd-pleasing competitions.",
+      description: "Expect a mix of family fun, tournament play, and a few festival favorites.",
       note: "Full lineup is still being finalized.",
       groups: [
         {
@@ -237,43 +226,12 @@ export const siteContent = {
       details: ["Silent auction items", "Monetary donations", "Physical item", "Gift certificate", "Service", "Experience"],
     },
   ],
-  involvementHighlights: [
-    {
-      title: "Registration in one place",
-      body: "Volunteers, vendors, and tournament participants can all use the live registration form instead of waiting for separate sign-up links.",
-    },
-    {
-      title: "Donation form is live",
-      body: "Supporters can now submit silent auction item information and monetary donations through the live Summer Fest donation form.",
-    },
-    {
-      title: "Payment portal still available",
-      body: "The parish payment portal remains available for church payments, but the Google Forms are now the main way to register and share donation interest for Summer Fest.",
-    },
-  ],
-  donationOptions: ["Silent auction item donations", "Monetary donations"],
   policies: [
     "Parking is available in the church lot and marked field areas.",
     "Tents, tables, and chairs will be provided, and guests may bring chairs if preferred.",
     "No pets are allowed at the event.",
     "We ask all guests to help keep the day welcoming, respectful, and family-friendly.",
   ],
-  sponsors: [
-    "Sponsor logo",
-    "Sponsor logo",
-    "Sponsor logo",
-    "Sponsor logo",
-  ],
-  sponsorCallout:
-    "Local businesses, parish supporters, and community partners will be recognized here as sponsor information is confirmed.",
-  logoPlaceholder: {
-    title: "Church or Event Logo",
-    description: "The official church or event logo will be featured here.",
-  },
-  contact: {
-    heading: "Questions, sign-ups, and support links",
-    body: "Use the Summer Fest forms for registration and donations, and check back here for parish office contact details and festival updates.",
-  },
   sharePrompt: {
     title: "Enjoying the Summer Fest site?",
     intro: "Share it with family and friends or save it for later. Every share helps more neighbors hear about the day.",
@@ -312,7 +270,6 @@ export const siteContent = {
     { label: "Plan Your Visit", href: "/plan-your-visit" },
     { label: "What to Expect", href: "/what-to-expect" },
     { label: "Get Involved", href: "/get-involved" },
-    { label: "Contact", href: "/contact" },
     { label: "Donate", href: donationFormUrl },
   ],
   socialLinks: [
@@ -352,14 +309,7 @@ export const siteContent = {
         "The activity lineup is coming together with all-ages games, tournament moments, and classic festival fun.",
     },
     involved: {
-      title: "Volunteer, register, support the fest, or help it grow",
-      description:
-        "Find the live registration and donation forms for volunteers, vendors, tournament entries, silent auction items, and festival support.",
-    },
-    contactPage: {
-      title: "Stay connected with the latest Summer Fest links",
-      description:
-        "Use this page to find current festival form links, the parish payment portal, and upcoming contact updates.",
+      title: "Donate, Register, Volunteer",
     },
   },
   homeHighlights: [
@@ -380,12 +330,6 @@ export const siteContent = {
       body: "Open the live Summer Fest registration and donation forms for volunteers, vendors, tournament entries, and silent auction support.",
       href: "/get-involved",
       label: "Get Involved",
-    },
-    {
-      title: "Contact",
-      body: "Visit the contact page for parish contact details and the latest festival communication updates.",
-      href: "/contact",
-      label: "Contact",
     },
   ],
 } as const;

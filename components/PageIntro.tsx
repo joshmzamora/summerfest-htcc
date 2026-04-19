@@ -1,6 +1,6 @@
 type PageIntroProps = {
   title: string;
-  description: string;
+  description?: string;
 };
 
 export function PageIntro({ title, description }: PageIntroProps) {
@@ -9,7 +9,7 @@ export function PageIntro({ title, description }: PageIntroProps) {
       <div className="container page-intro-shell">
         <div className="page-intro-copy">
           <h1>{title}</h1>
-          <p>{description}</p>
+          {description ? <p>{description}</p> : null}
         </div>
         <div className="page-intro-art" aria-hidden="true">
           <div className="art-ticket">Summer Fest</div>
