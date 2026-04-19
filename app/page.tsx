@@ -29,6 +29,7 @@ export default function Home() {
       <Section
         headingMotion="ribbon"
         title="Festival Day for Families, Friends, and Neighbors"
+        carnival
       >
         <MotionPanel
           as="article"
@@ -63,6 +64,7 @@ export default function Home() {
             title={siteContent.whatToExpect.foodAndDrink.title}
             description={siteContent.whatToExpect.foodAndDrink.description}
             className="experience-band-section"
+            carnival
           >
             <MotionStagger className="experience-list-grid" stagger={0.12}>
               {siteContent.whatToExpect.foodAndDrink.groups.map((group) => (
@@ -97,6 +99,7 @@ export default function Home() {
             title={siteContent.whatToExpect.activitiesAndGames.title}
             description={siteContent.whatToExpect.activitiesAndGames.description}
             className="experience-band-section"
+            carnival
           >
             <MotionStagger className="experience-list-grid" stagger={0.12}>
               {siteContent.whatToExpect.activitiesAndGames.groups.map((group) => (

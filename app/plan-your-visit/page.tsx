@@ -35,6 +35,7 @@ export default function PlanYourVisitPage() {
         headingMotion="ribbon"
         title={siteContent.planYourVisit.admissionOverview.title}
         description={siteContent.planYourVisit.admissionOverview.summary}
+        carnival
       >
         <div className="split-layout visit-overview-grid">
           <MotionPanel as="article" className="admission-explainer" hover="panel" reveal="signboard">
@@ -107,6 +108,7 @@ export default function PlanYourVisitPage() {
         headingMotion="signboard"
         title="Frequently Asked Questions"
         description="These answers cover the most common logistics questions about attendance, seating, parking, pets, and getting involved."
+        carnival
       >
         <FaqList items={siteContent.planYourVisit.faqs} />
       </Section>

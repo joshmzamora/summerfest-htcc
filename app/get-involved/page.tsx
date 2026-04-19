@@ -20,6 +20,7 @@ export default function GetInvolvedPage() {
         className="involvement-forms-section"
         headingMotion="poster"
         title="Choose a Form"
+        carnival
       >
         <SignUpCards items={siteContent.signUps} />
       </Section>
@@ -28,6 +29,7 @@ export default function GetInvolvedPage() {
         className="involvement-guidance-section"
         headingMotion="ribbon"
         title="Need the Parish Payment Portal?"
+        carnival
       >
         <MotionPanel as="article" className="support-panel involvement-support-panel" hover="panel" reveal="signboard">
           <p>

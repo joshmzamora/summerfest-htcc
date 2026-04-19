@@ -161,6 +161,50 @@ main {
   font-weight: 400;
 }
 
+.section-heading.is-centered {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-heading.is-centered .section-heading-inner {
+  justify-items: center;
+}
+
+.carnival-banner {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 1.15rem 4.5rem;
+  background: #d2452f;
+  color: #fff8ee;
+  margin-bottom: 1.6rem;
+  clip-path: polygon(7% 0%, 93% 0%, 100% 50%, 93% 100%, 7% 100%, 0% 50%);
+  filter: drop-shadow(0 12px 28px rgba(210, 69, 47, 0.28));
+  isolation: isolate;
+}
+
+.carnival-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0.45rem;
+  border: 4px dotted rgba(232, 134, 36, 0.6);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.carnival-banner h2 {
+  margin: 0 !important;
+  color: #fff8ee !important;
+  text-shadow: 0.04em 0.04em 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 520px) {
+  .carnival-banner {
+    padding: 0.85rem 2.8rem;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  }
+}
+
 .section-heading h2,
 .cta-ribbon-shell h2 {
   font-size: clamp(2.15rem, 6vw, 3.5rem);
