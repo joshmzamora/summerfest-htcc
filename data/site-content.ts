@@ -7,6 +7,294 @@ export const festivalLocation = "3515 Trinity Dr, Mont Belvieu, TX 77580, USA";
 export const googleMapsLocationUrl =
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(festivalLocation)}`;
 
+const silentAuctionBasketThemeSection = {
+  title: "Silent Auction Basket Theme Ideas",
+  intro: "Choose one full theme or mix and match items below to build a basket donation.",
+  groups: [
+    {
+      title: "Food & Hosting",
+      themes: [
+        {
+          name: "Tequila",
+          items: ["Margarita glasses", "Margarita mix", "Salt or Tajin", "Lime juicer"],
+        },
+        {
+          name: "Movie Night",
+          items: [
+            "Popcorn and seasoning",
+            "Candy assortment",
+            "Blanket",
+            "Streaming service gift card or theater gift card",
+            "Reusable popcorn bowls",
+          ],
+        },
+        {
+          name: "Coffee",
+          items: ["Bag of ground beans", "Mug or travel tumbler", "Flavored syrups", "Biscotti", "Small French press"],
+        },
+        {
+          name: "Hot Cocoa",
+          items: [
+            "Hot cocoa mix",
+            "Marshmallows and peppermint sticks",
+            "Seasonal mugs",
+            "Fuzzy socks or blanket",
+            "Brownie mix",
+          ],
+        },
+        {
+          name: "Pizza",
+          items: [
+            "Pizza stone or pan",
+            "Pizza cutter or rocker",
+            "Gourmet pizza sauce",
+            "Pizza crust mix",
+            "Italian seasoning and red pepper flakes",
+            "Oven mitt",
+            "Gift card to local pizza place",
+          ],
+        },
+        {
+          name: "Breakfast",
+          items: ["Pancake or waffle mix", "Syrup", "Coffee or tea", "Jam or local honey", "Tea towel or serving tray"],
+        },
+        {
+          name: "Italian Dinner",
+          items: ["Pasta and sauce", "Olive oil", "Breadsticks", "Cheese grater", "Pasta spoon", "Wine"],
+        },
+        {
+          name: "Date Night",
+          items: ["Restaurant gift card", "Candles", "Chocolates", "Wine glasses", "Dessert plates", "Movie gift card"],
+        },
+        {
+          name: "Southern Comfort",
+          items: [
+            "Biscuit or cornbread mix",
+            "Local jam or honey",
+            "Sweet tea mix",
+            "Kitchen towel",
+            "Wooden spoon",
+            "Serving dish",
+          ],
+        },
+        {
+          name: "Buc-ee's",
+          items: ["Beaver Nuggets", "Travel tumbler", "Car air freshener", "Road trip games", "Puzzle book", "Gas gift card"],
+        },
+        {
+          name: "Tailgate",
+          items: ["Cooler bag", "Chips, dip, and snack mix", "Team-colored cups", "Grill tools", "Serving trays", "Folding camp chair"],
+        },
+        {
+          name: "Crawfish",
+          items: ["Seafood boil seasoning", "Crawfish tray", "Bibs", "Hand wipes", "Hot sauce", "Cajun snack mix"],
+        },
+        {
+          name: "Brunch",
+          items: ["Muffin mix", "Jam or preserves", "Coffee or tea", "Cute serving board", "Mimosa glasses", "Orange juice mixer", "Pitchers", "Coasters"],
+        },
+        {
+          name: "Charcuterie",
+          items: ["Wooden serving board", "Crackers", "Jam or honey", "Cheese knives", "Nuts or olives", "Serving tongs"],
+        },
+        {
+          name: "Picnic",
+          items: ["Outdoor picnic blanket", "Reusable plates and cups", "Snack crackers and cookies", "Cheese board items", "Insulated tote", "Bug spray"],
+        },
+        {
+          name: "S'mores",
+          items: ["Graham crackers", "Chocolate bars", "Marshmallows", "Roasting sticks", "Small fire pit accessory", "Blanket"],
+        },
+        {
+          name: "Sweet Tooth",
+          items: ["Assorted chocolates", "Gummies or sour candy", "Cookies or brownie bites", "Caramel popcorn", "Candy jar or treat container"],
+        },
+        {
+          name: "Hosting",
+          items: ["Serving tray and utensils", "Cloth napkins", "Dip bowl set", "Appetizer plates", "Bottle of wine", "Wine or champagne chiller"],
+        },
+        {
+          name: "Healthy Habits",
+          items: ["Protein bars", "Water bottle", "Electrolytes", "Resistance bands", "Trail mix or nuts", "Meal prep containers"],
+        },
+      ],
+    },
+    {
+      title: "Home & Kitchen",
+      themes: [
+        {
+          name: "Sourdough",
+          items: ["Banneton proofing basket", "Bread lame or scoring tool", "Bench scraper", "Bread flour", "Sourdough starter", "Tea towel or bread bag", "Bread recipe book or sourdough guide"],
+        },
+        {
+          name: "Grill",
+          items: ["BBQ rubs and sauces", "Grill utensils", "Apron", "Pellets or wood chips", "Oven mitt or grilling gloves", "Meat thermometer"],
+        },
+        {
+          name: "Baking Basket",
+          items: ["Mixing bowl", "Rubber spatula set", "Sprinkles", "Vanilla extract", "Measuring cups or spoons", "Recipe cards", "Apron"],
+        },
+        {
+          name: "Gardening",
+          items: ["Gloves", "Hand tools", "Flower or herb seeds", "Plant pot", "Watering can", "Garden decor"],
+        },
+        {
+          name: "Lemons",
+          items: ["Lemon kitchen towel", "Lemon candle", "Lemon cookies", "Lemon loaf mix", "Lemon hand soap or lotion", "Pitcher or drink dispenser"],
+        },
+        {
+          name: "Deep Cleaning",
+          items: ["Multi-surface cleaner", "Glass cleaner", "Microfiber cloth set", "Scrub brushes or sponges", "Rubber gloves", "Laundry pods", "Disinfecting wipes"],
+        },
+        {
+          name: "Kitchen Essentials",
+          items: ["Nice dish towels", "Olive oil", "Seasoning blends", "Wooden spoon set", "Measuring cups", "Recipe cards"],
+        },
+        {
+          name: "New Homeowner",
+          items: ["Welcome mat", "Hand soap", "Dish towels or reusable towels", "Basic toolbox", "Measuring tape", "Home improvement gift card"],
+        },
+      ],
+    },
+    {
+      title: "Relaxation & Self-Care",
+      themes: [
+        {
+          name: "Whiskey",
+          items: ["Whiskey or rocks glasses", "Whiskey stones", "Ice mold", "Cocktail cherries or bitters", "Cigar cutter", "Bottle of whiskey", "Cigars"],
+        },
+        {
+          name: "Spa / Self Care",
+          items: ["Bath salts or bath bombs", "Lotion or hand cream", "Face masks", "Soft robe", "Slippers"],
+        },
+        {
+          name: "Middle Age Starter Pack",
+          items: ["Reusable ice pack", "Icy Hot", "Epsom salts", "Compression socks", "Antacids", "Heating pad"],
+        },
+        {
+          name: "Beard Care",
+          items: ["Beard oil", "Beard balm or butter", "Beard wash", "Beard comb or brush", "Beard trimming scissors", "Men's grooming gift card"],
+        },
+        {
+          name: "Mom's Night In",
+          items: ["Wine glasses or tumblers", "Chocolates or snacks", "Face mask", "Cozy socks", "Manicure set"],
+        },
+        {
+          name: "Dad's Favorites",
+          items: ["Jerky or snack mixes", "BBQ sauces or rubs", "Nice tumbler or whiskey glass", "Pocket tool", "Flashlight or headlamp", "Lighter", "Tire pressure gauge", "Gift card to Home Depot, Lowe's, or Academy"],
+        },
+        {
+          name: "Book Lover",
+          items: ["Popular novel", "Cozy blanket", "Bookmarks", "Tea or coffee", "Reading light", "Bookstore gift card"],
+        },
+        {
+          name: "Rainy Day",
+          items: ["Puzzle", "Card game", "Blanket", "Hot tea or hot cocoa", "Soup mix", "Crackers"],
+        },
+        {
+          name: "Crocs",
+          items: ["Gift card", "Charms", "Crocs socks", "Shoe bag"],
+        },
+      ],
+    },
+    {
+      title: "Family, Kids & Pets",
+      themes: [
+        {
+          name: "Family Game Night",
+          items: ["Board or card game", "Snacks or candy", "Puzzle", "Cozy blanket"],
+        },
+        {
+          name: "Kids Summer Fun",
+          items: ["Slip n slide", "Water balloons", "Water guns", "Sidewalk chalk", "Bubbles", "Popsicle molds"],
+        },
+        {
+          name: "Pet Lover",
+          items: ["Dog or cat treats", "Toy", "Food or water bowl", "Pet blanket or bandana", "Pet store gift card"],
+        },
+        {
+          name: "Kids Activities",
+          items: ["Coloring books", "Crayons or markers", "Small toys", "Crafts", "Bubbles", "Sidewalk chalk", "Treats"],
+        },
+        {
+          name: "Crafts",
+          items: ["Paint set or markers", "Sketchbook or craft paper", "Glue, tape, and scissors", "DIY kit", "Apron", "Storage tote"],
+        },
+        {
+          name: "Baby",
+          items: ["Plush blanket", "Baby bibs", "Board book", "Teether or toy", "Baby lotion and wash"],
+        },
+      ],
+    },
+    {
+      title: "Sports, Outdoors & Local Pride",
+      themes: [
+        {
+          name: "Texas",
+          items: ["Texas-shaped cutting board", "Local salsa or BBQ sauce", "Bluebonnet towel", "Lone Star mug"],
+        },
+        {
+          name: "Beach",
+          items: ["Towel", "Sunscreen or aloe vera gel", "Insulated tumbler or water bottle", "Beach tote", "Beach toys"],
+        },
+        {
+          name: "Astros",
+          items: ["Astros cap or t-shirt", "Baseball themed snacks", "Astros cup or koozie", "Baseball or souvenir"],
+        },
+        {
+          name: "Barbers Hill",
+          items: ["T-shirt or sweater", "Baseball cap or beanie", "Cup or tumbler", "Blue and white pom-poms", "Stadium blanket"],
+        },
+        {
+          name: "Pool Day",
+          items: ["Pool floaties", "Inflatable lounge", "Waterproof speaker", "Towel", "Sunscreen", "Insulated tumbler", "Pool toys or diving rings", "Sunglasses"],
+        },
+        {
+          name: "Fishing",
+          items: ["Tackle box", "Fishing gear", "Baseball cap or bucket hat", "Insulated cooler bag", "Jerky or trail snacks", "Sunglasses strap", "Sunscreen", "Gaiters"],
+        },
+        {
+          name: "College-Specific",
+          items: ["T-shirt or sweatshirt", "Hat or beanie", "Tumbler, mug, or cup", "Car decal or window sticker", "Stadium blanket", "Clear game day bag"],
+        },
+      ],
+    },
+    {
+      title: "Faith, School & Seasonal",
+      themes: [
+        {
+          name: "Teacher Appreciation",
+          items: ["Nice pens", "Classroom supplies", "Coffee shop gift card", "Amazon gift card", "Target gift card", "Rechargeable hand warmer", "Instant espresso", "Self-care items or nail polish"],
+        },
+        {
+          name: "Catholic",
+          items: ["Chrism candle", "Rosary", "Saint medal or Tiny Saints", "Crucifix", "Devotional or prayer book", "Holy water bottle", "Catholic books"],
+        },
+        {
+          name: "Faith",
+          items: ["Devotional book", "Journal", "Scripture mug", "Prayer cards", "Candle or blanket"],
+        },
+        {
+          name: "USA",
+          items: ["Red, white, and blue decor", "Flag-themed towel", "Sparkling drink mix", "Summer snacks", "Serving tray"],
+        },
+        {
+          name: "Christmas",
+          items: ["Ornament set", "Kitchen towel", "Holiday candle", "Cookie mix", "Serving platter", "Cookie cutters"],
+        },
+        {
+          name: "Easter",
+          items: ["Chocolate bunnies", "Spring decor", "Pastel table runner", "Gift card for brunch", "Bunny-themed serveware"],
+        },
+        {
+          name: "Fall",
+          items: ["Pumpkin spice", "Fall-scented candle", "Fall seasonings", "Pumpkin bread mix", "Decorative mini pumpkins"],
+        },
+      ],
+    },
+  ],
+} as const;
+
 export const siteContent = {
   churchName: "Holy Trinity Catholic Church",
   eventName: "Summer Fest at Holy Trinity",
@@ -214,6 +502,7 @@ export const siteContent = {
       buttonLabel: "Open Donation Form",
       formUrl: donationFormUrl,
       details: ["Silent auction items", "Monetary donations", "Physical item", "Gift certificate", "Service", "Experience"],
+      basketThemeSection: silentAuctionBasketThemeSection,
     },
   ],
   policies: [

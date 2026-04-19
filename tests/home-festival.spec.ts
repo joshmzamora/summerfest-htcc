@@ -84,6 +84,12 @@ test("get involved page exposes only the two live Summer Fest forms", async ({ p
   const registrationLink = page.getByRole("link", { name: "Open Registration Form" });
   const donationLink = page.getByRole("link", { name: "Open Donation Form" });
   const signUpGrid = page.locator(".sign-up-grid");
+  const registerCard = signUpGrid.locator(".sign-up-card").filter({
+    has: page.getByRole("heading", { level: 3, name: "Register" }),
+  });
+  const donateCard = signUpGrid.locator(".sign-up-card").filter({
+    has: page.getByRole("heading", { level: 3, name: "Donate" }),
+  });
 
   await expect(registrationLink).toBeVisible();
   await expect(donationLink).toBeVisible();
@@ -101,8 +107,67 @@ test("get involved page exposes only the two live Summer Fest forms", async ({ p
   await expect(signUpGrid.locator("li").filter({ hasText: "Tournament registration" })).toBeVisible();
   await expect(signUpGrid.locator("li").filter({ hasText: "Silent auction items" })).toBeVisible();
   await expect(signUpGrid.locator("li").filter({ hasText: "Monetary donations" })).toBeVisible();
+  await expect(donateCard.getByRole("heading", { level: 4, name: "Silent Auction Basket Theme Ideas" })).toBeVisible();
+  await expect(registerCard.getByText("Silent Auction Basket Theme Ideas")).toHaveCount(0);
+
+  const sportsGroup = donateCard.locator(".basket-theme-group").filter({ hasText: "Sports, Outdoors & Local Pride" });
+  const sportsTrigger = sportsGroup.locator(".basket-theme-trigger");
+
+  await sportsTrigger.scrollIntoViewIfNeeded();
+  await sportsTrigger.click();
+  await expect(sportsGroup.locator(".basket-theme-toggle")).toBeChecked();
+  await expect(sportsGroup.getByText("Texas", { exact: true })).toBeVisible();
+  await expect(sportsGroup.getByText("Pool Day", { exact: true })).toBeVisible();
+  await expect(sportsGroup.getByText("Texas-shaped cutting board")).toBeVisible();
+
+  const foodGroup = donateCard.locator(".basket-theme-group").filter({ hasText: "Food & Hosting" });
+
+  await foodGroup.locator(".basket-theme-trigger").click();
+  await expect(foodGroup.locator(".basket-theme-toggle")).toBeChecked();
+  await expect(foodGroup.getByText("Movie Night", { exact: true })).toBeVisible();
+  await expect(foodGroup.getByText("Reusable popcorn bowls")).toBeVisible();
+
+  const faithGroup = donateCard.locator(".basket-theme-group").filter({ hasText: "Faith, School & Seasonal" });
+
+  await faithGroup.locator(".basket-theme-trigger").click();
+  await expect(faithGroup.locator(".basket-theme-toggle")).toBeChecked();
+  await expect(faithGroup.getByText("Catholic", { exact: true })).toBeVisible();
+  await expect(faithGroup.getByText("Holy water bottle")).toBeVisible();
+
   await expect(page.getByRole("heading", { level: 2, name: "Need the Parish Payment Portal?" })).toBeVisible();
   await expect(page.locator("body")).not.toContainText("1Gr_VpCTN1gbnyRrS_VXAmGgqlcWsQgErWRmKhDVUO3g");
+});
+
+test("donate basket ideas stay compact on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/get-involved");
+
+  const donateCard = page.locator(".sign-up-card").filter({
+    has: page.getByRole("heading", { level: 3, name: "Donate" }),
+  });
+  const basketSection = donateCard.locator(".basket-theme-section");
+  const sportsGroup = donateCard.locator(".basket-theme-group").filter({ hasText: "Sports, Outdoors & Local Pride" });
+  const sportsTrigger = sportsGroup.locator(".basket-theme-trigger");
+
+  await expect(donateCard.getByRole("link", { name: "Open Donation Form" })).toBeVisible();
+  await expect(basketSection).toBeVisible();
+
+  const widths = await basketSection.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+
+  expect(widths.scrollWidth).toBeLessThanOrEqual(widths.clientWidth + 1);
+
+  await sportsTrigger.scrollIntoViewIfNeeded();
+  await sportsTrigger.click();
+  await expect(sportsGroup.locator(".basket-theme-toggle")).toBeChecked();
+  await expect(sportsGroup.getByText("Pool Day", { exact: true })).toBeVisible();
+
+  const triggerBox = await sportsTrigger.boundingBox();
+
+  expect(triggerBox).not.toBeNull();
+  expect(triggerBox?.height ?? 0).toBeGreaterThan(44);
 });
 
 test("home and contact pages reflect the new two-form signup flow", async ({ page }) => {
