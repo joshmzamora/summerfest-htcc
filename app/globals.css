@@ -264,8 +264,8 @@ main {
 }
 
 .site-nav a.is-active {
-  background: rgba(41, 195, 255, 0.14);
-  color: var(--teal);
+  background: rgba(240, 216, 175, 0.78);
+  color: #7f2f1f;
 }
 
 .site-nav a:hover,
@@ -2839,13 +2839,13 @@ span.poster-sticker-family::after {
 @media (min-width: 960px) {
   .nav-shell {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
   }
 
   .nav-topline {
     flex: 0 0 auto;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .nav-toggle {
@@ -2858,10 +2858,28 @@ span.poster-sticker-family::after {
     align-items: center;
     justify-content: flex-end;
     gap: 0.85rem;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    box-shadow: none;
+    padding: 0.45rem 0.55rem;
+    border: 1px solid rgba(136, 58, 35, 0.16);
+    border-radius: 999px;
+    background:
+      linear-gradient(180deg, rgba(255, 249, 239, 0.96), rgba(247, 236, 213, 0.92)),
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 58%);
+    box-shadow:
+      0 16px 34px rgba(118, 66, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+
+  .site-nav-desktop {
+    backdrop-filter: blur(10px);
+  }
+
+  .site-nav-desktop .site-nav-link {
+    width: auto;
+  }
+
+  .site-nav-desktop .site-nav-link,
+  .site-nav-desktop .site-nav-pill {
+    border-radius: 999px;
   }
 
   .hero-layout,
@@ -3606,9 +3624,11 @@ span.poster-sticker-family::after {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: rgba(41, 195, 255, 0.14);
-  border: 1px solid rgba(29, 123, 115, 0.18);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  background: linear-gradient(180deg, rgba(244, 223, 182, 0.96), rgba(234, 196, 137, 0.88));
+  border: 1px solid rgba(136, 58, 35, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 8px 18px rgba(136, 58, 35, 0.08);
   z-index: 0;
 }
 
