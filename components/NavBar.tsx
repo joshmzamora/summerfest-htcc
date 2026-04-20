@@ -20,7 +20,7 @@ export function NavBar({ churchName, eventName, navigation }: NavBarProps) {
   const navContent = (
     <>
       {navigation.map((item, index) => {
-        const isActive = pathname === item.href;
+        const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
 
         return (
           <m.div
