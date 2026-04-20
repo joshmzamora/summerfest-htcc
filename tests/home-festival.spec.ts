@@ -176,6 +176,35 @@ test("basket themes page expands mobile controls near the top and condenses them
 
   await expect(page.getByRole("heading", { level: 1, name: "Silent Auction Basket Theme Ideas" })).toBeVisible();
 
+  const tequilaCard = page.locator(".basket-theme-card").filter({
+    has: page.getByRole("heading", { level: 5, name: "Tequila" }),
+  });
+  const faithCard = page.locator(".basket-theme-card").filter({
+    has: page.getByRole("heading", { level: 5, name: "Faith" }),
+  });
+
+  const tequilaBackground = await tequilaCard.evaluate((element) => {
+    return window.getComputedStyle(element, "::before").backgroundImage;
+  });
+  const faithBackground = await faithCard.evaluate((element) => {
+    return window.getComputedStyle(element, "::before").backgroundImage;
+  });
+
+  expect(tequilaBackground).toContain("/images/basket-themes/tequila.webp");
+  expect(faithBackground).toContain("/images/basket-themes/faith.webp");
+
+  const imageToggle = page.getByRole("switch", { name: "Show background images" });
+  await expect(imageToggle).toHaveAttribute("aria-checked", "true");
+  await imageToggle.click();
+  await expect(imageToggle).toHaveAttribute("aria-checked", "false");
+  await expect(page.locator("main")).toHaveAttribute("data-background-images", "false");
+
+  const tequilaBackgroundAfterToggle = await tequilaCard.evaluate((element) => {
+    return window.getComputedStyle(element, "::before").opacity;
+  });
+
+  expect(tequilaBackgroundAfterToggle).toBe("0");
+
   const controls = page.locator(".basket-controls");
   const filterScroll = controls.locator(".filter-scroll");
   const searchInput = controls.locator(".basket-search-input");
@@ -218,6 +247,7 @@ test("basket themes page expands mobile controls near the top and condenses them
 
   await page.evaluate(() => window.scrollTo(0, 720));
   await expect(controls).toHaveAttribute("data-condensed", "true");
+  await expect(page.getByRole("switch", { name: "Show background images" })).toHaveCount(0);
 
   const condensedFilterState = await filterScroll.evaluate((element) => {
     const styles = window.getComputedStyle(element);

@@ -2,10 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
 import { NavBar } from "@/components/NavBar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { MotionPanel, MotionPressableLink, MotionStagger, eases, m, useReducedMotion } from "@/components/FestivalMotion";
+import { getBasketThemeCardImage } from "@/app/get-involved/basket-themes/theme-card-images";
 import { siteContent } from "@/data/site-content";
 
 const themeDescriptions: Record<string, string> = {
@@ -71,10 +73,26 @@ const getThemeDescription = (name: string) => {
   return themeDescriptions[name] || "A carefully curated gift basket perfect for our silent auction.";
 };
 
+type ThemeCardStyle = CSSProperties & Record<`--${string}`, string>;
+
+const getThemeCardStyle = (themeName: string): ThemeCardStyle | undefined => {
+  const themeImage = getBasketThemeCardImage(themeName);
+
+  if (!themeImage) {
+    return undefined;
+  }
+
+  return {
+    "--card-image": `url("${themeImage.src}")`,
+    "--card-image-position": themeImage.position,
+  };
+};
+
 export default function BasketThemesPage() {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [activeCategory, setActiveCategory] = React.useState("All");
   const [isCategoryCondensed, setIsCategoryCondensed] = React.useState(false);
+  const [showBackgroundImages, setShowBackgroundImages] = React.useState(true);
   const reduceMotion = useReducedMotion();
   const section = siteContent.signUps[1].basketThemeSection!;
 
@@ -147,7 +165,10 @@ export default function BasketThemesPage() {
   }, []);
 
   return (
-    <main className="get-involved-page basket-themes-page">
+    <main
+      className="get-involved-page basket-themes-page"
+      data-background-images={showBackgroundImages ? "true" : "false"}
+    >
       <NavBar
         churchName={siteContent.churchName}
         eventName={siteContent.eventName}
@@ -228,6 +249,22 @@ export default function BasketThemesPage() {
                 ))}
               </m.div>
             </div>
+
+            {!isCategoryCondensed && (
+              <button
+                aria-checked={showBackgroundImages}
+                className="basket-visual-toggle"
+                data-enabled={showBackgroundImages ? "true" : "false"}
+                onClick={() => setShowBackgroundImages((current) => !current)}
+                role="switch"
+                type="button"
+              >
+                <span className="basket-visual-toggle-box" aria-hidden="true" />
+                <span className="basket-visual-toggle-copy">
+                  Show background images
+                </span>
+              </button>
+            )}
           </div>
 
           <MotionStagger className="basket-full-grid" stagger={0.05}>
@@ -245,6 +282,7 @@ export default function BasketThemesPage() {
                       key={theme.name}
                       hover="card"
                       reveal="card"
+                      style={getThemeCardStyle(theme.name)}
                     >
                       <div className="basket-card-content">
                         <h5>{theme.name}</h5>
@@ -286,7 +324,10 @@ export default function BasketThemesPage() {
                 </svg>
               </div>
               <h3>No themes found</h3>
-              <p>We couldn't find any themes matching "{searchQuery}". Try a different term or browse categories.</p>
+              <p>
+                We couldn&apos;t find any themes matching &quot;{searchQuery}&quot;. Try a different term or browse
+                categories.
+              </p>
               <button
                 className="button button-ghost"
                 onClick={() => {
