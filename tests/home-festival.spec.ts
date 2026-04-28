@@ -380,6 +380,16 @@ test("navigation, home festival sections, and legacy routes reflect the consolid
   await expect(page.locator(".card-grid .content-card")).toHaveCount(0);
 
   const footerNav = page.getByRole("navigation", { name: "Footer navigation" });
+  const viewport = page.viewportSize();
+
+  if ((viewport?.width ?? 0) < 960) {
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
+    await expect(page.locator("#primary-navigation").getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
+  } else {
+    await expect(page.locator("#primary-navigation-desktop").getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
+  }
+
+  await expect(footerNav.getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
   await expect(footerNav.getByRole("link", { name: "Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
   await expect(footerNav.getByRole("link", { name: "Get Involved" })).toHaveAttribute("href", "/get-involved");
   await expect(footerNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
@@ -399,10 +409,59 @@ test("navigation, home festival sections, and legacy routes reflect the consolid
   await expect(page).toHaveURL(/\/#food-drink$/);
 
   await page.goto("/activities");
-  await expect(page).toHaveURL(/\/#activities-games$/);
+  await expect(page).toHaveURL(/\/day-of-guide$/);
 
   await page.goto("/contact");
   await expect(page).toHaveURL(/\/get-involved$/);
+});
+
+test("day-of guide renders tentative schedule and activity content", async ({ page }) => {
+  await page.goto("/day-of-guide");
+
+  await expect(page.getByRole("heading", { level: 1, name: "Day-Of Guide" })).toBeVisible();
+  await expect(page.getByText("tentative schedule and tentative activity lineup")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Tentative Schedule" })).toBeVisible();
+  await expect(page.getByText("Tentative schedule: times and match order may shift on festival day.")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Tentative Activities" })).toBeVisible();
+  await expect(page.getByText("Tentative activities: booths, contests, and game stations may be adjusted before or during the event.")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Need parking, seating, or location info?" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
+
+  const scheduleSection = page.locator(".day-of-schedule-section");
+  await expect(scheduleSection.getByRole("heading", { level: 3, name: "11:30 AM" })).toBeVisible();
+  await expect(scheduleSection.getByText("Prayer and welcome", { exact: true })).toBeVisible();
+  await expect(scheduleSection.getByText("Volleyball tournament playoff game", { exact: true })).toBeVisible();
+  await expect(scheduleSection.getByText("Tug of war championships", { exact: true })).toBeVisible();
+  await expect(scheduleSection.getByText("Watermelon eating contest", { exact: true })).toBeVisible();
+  await expect(scheduleSection.getByText("Horseshoes / Corn Hole Tournament, match 3 and 4 winners", { exact: true })).toBeVisible();
+
+  const activitySection = page.locator(".day-of-activities-section");
+  await expect(activitySection.getByRole("heading", { level: 3, name: "Games & Family Fun" })).toBeVisible();
+  await expect(activitySection.getByRole("heading", { level: 3, name: "Contests & Tournament Activities" })).toBeVisible();
+  await expect(activitySection.getByRole("heading", { level: 3, name: "Booths & Festival Extras" })).toBeVisible();
+  await expect(activitySection.getByText("Duck Pond", { exact: true })).toBeVisible();
+  await expect(activitySection.getByText("Bean Bag Toss", { exact: true })).toBeVisible();
+  await expect(activitySection.getByText("Tug of War Contest", { exact: true })).toBeVisible();
+  await expect(activitySection.getByText("Mary's Crafts", { exact: true })).toBeVisible();
+  await expect(activitySection.getByText("Paper Bag Booth", { exact: true })).toBeVisible();
+});
+
+test("day-of guide stays mobile friendly without horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/day-of-guide");
+
+  const main = page.locator("main");
+  const overflow = await main.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+
+  expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.clientWidth + 1);
+  await expect(page.locator("#primary-navigation-desktop")).toBeHidden();
+  await expect(page.getByRole("heading", { level: 2, name: "Tentative Schedule" })).toBeVisible();
+  await expect(page.getByText("Prayer and welcome", { exact: true })).toBeVisible();
+  await expect(page.getByText("Nerf or Water Gun Ping Pong Ball Shoot", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open Plan Your Visit" })).toBeVisible();
 });
 
 test("calendar route returns a downloadable ICS event", async ({ request }) => {

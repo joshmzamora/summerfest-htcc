@@ -25,8 +25,6 @@ export function Section({
   centered = false,
   carnival = false,
 }: SectionProps) {
-  const TitleTag = carnival ? "div" : MotionStagger;
-
   return (
     <section className={`section ${className ?? ""}`.trim()} id={id}>
       <div className="container">

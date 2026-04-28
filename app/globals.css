@@ -1420,6 +1420,106 @@ main {
   opacity: 0.55;
 }
 
+.day-of-guide-page .page-intro {
+  padding-bottom: 0.75rem;
+}
+
+.day-of-guide-page .page-intro-copy {
+  max-width: 42rem;
+}
+
+.day-of-guide-page .page-intro-copy p {
+  max-width: 36rem;
+}
+
+.day-of-guide-page .section-heading {
+  margin-bottom: 2rem;
+}
+
+.day-of-schedule-grid,
+.day-of-activity-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.day-of-schedule-card,
+.day-of-activity-card,
+.day-of-guide-logistics-card {
+  min-width: 0;
+}
+
+.day-of-card-header,
+.day-of-activity-header {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 0.9rem;
+}
+
+.day-of-card-header h3,
+.day-of-activity-header h3 {
+  margin: 0;
+  color: #7a2418;
+  font-family: var(--font-display), cursive;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+}
+
+.day-of-time-chip,
+.day-of-group-chip {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.9rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.day-of-time-chip {
+  border: 1px solid rgba(29, 123, 115, 0.24);
+  background: rgba(238, 251, 247, 0.94);
+  color: #15635c;
+}
+
+.day-of-group-chip {
+  border: 1px solid rgba(181, 42, 42, 0.2);
+  background: rgba(255, 246, 238, 0.94);
+  color: #962a24;
+}
+
+.day-of-detail-list {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.9rem;
+}
+
+.day-of-detail-list li::marker,
+.day-of-guide-page .day-of-activity-card .detail-list li::marker {
+  color: #b43a24;
+}
+
+.day-of-guide-logistics-section .section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.day-of-guide-logistics-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.day-of-guide-logistics-card p {
+  margin: 0;
+}
+
 .get-involved-page .sign-up-grid {
   gap: 1.35rem;
   align-items: stretch;
@@ -2973,6 +3073,11 @@ span.poster-sticker-family::after {
     min-height: 100%;
   }
 
+  .day-of-schedule-grid,
+  .day-of-activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .involvement-support-panel .button {
     width: auto;
     min-width: 13rem;
@@ -3098,6 +3203,20 @@ span.poster-sticker-family::after {
     grid-template-columns: 1fr;
   }
 
+  .day-of-guide-page .section {
+    padding: 2.8rem 0;
+  }
+
+  .day-of-schedule-card,
+  .day-of-activity-card {
+    padding: 1.2rem;
+  }
+
+  .day-of-card-header h3,
+  .day-of-activity-header h3 {
+    font-size: clamp(1.35rem, 7vw, 1.7rem);
+  }
+
   .get-involved-page .section-heading {
     margin-bottom: 1.9rem;
   }
@@ -3196,6 +3315,10 @@ span.poster-sticker-family::after {
 
   .nav-toggle {
     display: none;
+  }
+
+  .day-of-activity-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .site-nav {

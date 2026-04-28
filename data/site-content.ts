@@ -314,6 +314,7 @@ export const siteContent = {
   },
   navigation: [
     { label: "Home", href: "/" },
+    { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
     { label: "Get Involved", href: "/get-involved" },
   ],
@@ -488,6 +489,138 @@ export const siteContent = {
       ],
     },
   },
+  dayOfGuide: {
+    intro: {
+      title: "Day-Of Guide",
+      description:
+        "A mobile-friendly guide for festival day so guests can quickly check the tentative schedule and tentative activity lineup while they are on the grounds.",
+    },
+    schedule: {
+      title: "Tentative Schedule",
+      description:
+        "These time blocks are tentative and will help guests quickly check what is planned throughout the afternoon.",
+      note: "Tentative schedule: times and match order may shift on festival day.",
+      items: [
+        {
+          time: "11:30 AM",
+          events: ["Prayer and welcome"],
+        },
+        {
+          time: "12:00 PM",
+          events: [
+            "Volleyball tournament, match 1",
+            "Washers tournament, match 1",
+            "Bingo games",
+          ],
+        },
+        {
+          time: "12:30 PM",
+          events: ["Three-legged race", "Washers tournament, match 2"],
+        },
+        {
+          time: "1:00 PM",
+          events: ["Volleyball tournament, match 2", "Washers tournament, match 3"],
+        },
+        {
+          time: "1:30 PM",
+          events: [
+            "Sack race",
+            "Washers tournament, match 4",
+            "Horseshoes / Corn Hole Tournament, match 1",
+          ],
+        },
+        {
+          time: "2:00 PM",
+          events: [
+            "Volleyball tournament playoff game",
+            "Washers tournament, match 1 and 2 winners",
+            "Bingo games",
+            "Horseshoes / Corn Hole Tournament, match 2",
+          ],
+        },
+        {
+          time: "2:30 PM",
+          events: [
+            "Tug of war matches 1 and 2 (kids division and adult division)",
+            "Washers tournament, match 3 and 4 winners",
+            "Horseshoes / Corn Hole Tournament, match 3",
+          ],
+        },
+        {
+          time: "3:00 PM",
+          events: [
+            "Tug of war matches 3 and 4 (kids division and adult division)",
+            "Washers tournament championship",
+            "Horseshoes / Corn Hole Tournament, match 4",
+          ],
+        },
+        {
+          time: "3:30 PM",
+          events: [
+            "Tug of war championships",
+            "Horseshoes / Corn Hole Tournament, match 1 and 2 winners",
+          ],
+        },
+        {
+          time: "4:00 PM",
+          events: ["Bingo games", "Horseshoes / Corn Hole Tournament, match 3 and 4 winners"],
+        },
+        {
+          time: "4:30 PM",
+          events: ["Watermelon eating contest", "Horseshoes / Corn Hole Tournament championship"],
+        },
+      ],
+    },
+    activities: {
+      title: "Tentative Activities",
+      description:
+        "This tentative activity list is organized for quick scanning on your phone while you walk the festival grounds.",
+      note: "Tentative activities: booths, contests, and game stations may be adjusted before or during the event.",
+      groups: [
+        {
+          title: "Games & Family Fun",
+          items: [
+            "Duck Pond",
+            "Lollipop Pull",
+            "Ring Toss",
+            "Ladder Ball",
+            "Basketball Throw",
+            "Football Throw",
+            "Face Painting",
+            "Bounce House",
+            "Water Balloon Launch",
+            "Plinko",
+            "Nerf or Water Gun Ping Pong Ball Shoot",
+            "Bean Bag Toss",
+            "Balloon Darts",
+            "Tin Can Toss",
+          ],
+        },
+        {
+          title: "Contests & Tournament Activities",
+          items: [
+            "Sack Race",
+            "Three-legged Race",
+            "Tug of War Contest",
+            "Washers Tournament",
+            "Horseshoes Tournament",
+            "Watermelon Eating Contest",
+          ],
+        },
+        {
+          title: "Booths & Festival Extras",
+          items: ["Mary's Crafts", "Dessert Table - CDA", "Paper Bag Booth"],
+        },
+      ],
+    },
+    logisticsCta: {
+      title: "Need parking, seating, or location info?",
+      description:
+        "For festival logistics like parking, seating, pets, and directions, head back to Plan Your Visit.",
+      label: "Open Plan Your Visit",
+      href: "/plan-your-visit",
+    },
+  },
   signUps: [
     {
       title: "Register",
@@ -546,6 +679,7 @@ export const siteContent = {
     },
   },
   footerLinks: [
+    { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Donate", href: donationFormUrl },

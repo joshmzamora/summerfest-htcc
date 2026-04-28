@@ -35,7 +35,7 @@ export default function GetInvolvedPage() {
           <div className="promo-layout">
             <div className="promo-copy">
               <p>
-                Not sure what to donate for the silent auction? We've compiled over 50 themed basket
+                Not sure what to donate for the silent auction? We&apos;ve compiled over 50 themed basket
                 ideas—from movie nights to local BBQ kits—to help you get started.
               </p>
             </div>
