@@ -492,13 +492,9 @@ export const siteContent = {
   dayOfGuide: {
     intro: {
       title: "Day-Of Guide",
-      description:
-        "A mobile-friendly guide for festival day so guests can quickly check the tentative schedule and tentative activity lineup while they are on the grounds.",
     },
     schedule: {
       title: "Tentative Schedule",
-      description:
-        "These time blocks are tentative and will help guests quickly check what is planned throughout the afternoon.",
       note: "Tentative schedule: times and match order may shift on festival day.",
       items: [
         {
@@ -573,8 +569,6 @@ export const siteContent = {
     },
     activities: {
       title: "Tentative Activities",
-      description:
-        "This tentative activity list is organized for quick scanning on your phone while you walk the festival grounds.",
       note: "Tentative activities: booths, contests, and game stations may be adjusted before or during the event.",
       groups: [
         {
