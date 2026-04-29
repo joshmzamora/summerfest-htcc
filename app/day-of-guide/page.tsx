@@ -51,7 +51,6 @@ export default function DayOfGuidePage() {
         className="day-of-activities-section"
         headingMotion="signboard"
         title={siteContent.dayOfGuide.activities.title}
-        description={siteContent.dayOfGuide.activities.description}
         carnival
       >
         <MotionStagger className="day-of-activity-grid" stagger={0.1}>
