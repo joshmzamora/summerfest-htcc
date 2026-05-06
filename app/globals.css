@@ -695,6 +695,17 @@ main {
   border-radius: 1.2rem 1.5rem 1.2rem 1.65rem;
 }
 
+button.button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+  transform: none;
+}
+
 .hero-actions {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1434,6 +1445,221 @@ main {
 
 .day-of-guide-page .section-heading {
   margin-bottom: 2rem;
+}
+
+.silent-auction-page .page-intro {
+  padding-bottom: 2rem;
+}
+
+.silent-auction-page .page-intro-copy {
+  max-width: 48rem;
+}
+
+.silent-auction-section {
+  padding-top: 2rem;
+}
+
+.silent-auction-shell {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.silent-auction-disclaimer,
+.silent-auction-status {
+  max-width: 54rem;
+  margin-inline: auto;
+}
+
+.silent-auction-disclaimer {
+  position: relative;
+  padding: 1rem 1.25rem;
+  border: 1px dashed rgba(127, 47, 31, 0.35);
+  border-radius: 1.25rem 1.65rem 1.25rem 1.5rem;
+  background: rgba(255, 248, 236, 0.92);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.silent-auction-disclaimer p,
+.silent-auction-form-note,
+.silent-auction-feedback {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.silent-auction-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.silent-auction-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.silent-auction-image-wrap {
+  aspect-ratio: 4 / 3;
+  margin: 0.75rem 0.75rem 0;
+  overflow: hidden;
+  border: 1px solid rgba(127, 47, 31, 0.14);
+  border-radius: 1.1rem 1.35rem 1rem 1.25rem;
+  background:
+    linear-gradient(135deg, rgba(210, 69, 47, 0.12), rgba(240, 190, 66, 0.22)),
+    var(--cream);
+}
+
+.silent-auction-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.silent-auction-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #8f2a1c;
+  background:
+    repeating-linear-gradient(-12deg,
+      rgba(255, 248, 236, 0.55) 0 14px,
+      rgba(232, 134, 36, 0.18) 14px 28px),
+    linear-gradient(135deg, rgba(210, 69, 47, 0.16), rgba(29, 123, 115, 0.13));
+}
+
+.silent-auction-placeholder span {
+  display: grid;
+  place-items: center;
+  width: 4.7rem;
+  height: 4.7rem;
+  border: 2px dashed rgba(127, 47, 31, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 248, 236, 0.8);
+  font-family: var(--font-display), cursive;
+  font-size: 2rem;
+}
+
+.silent-auction-card-body {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+}
+
+.silent-auction-card-header {
+  gap: 0.5rem;
+}
+
+.silent-auction-chip {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.32rem 0.72rem;
+  border: 1px solid rgba(181, 42, 42, 0.22);
+  border-radius: 999px;
+  background: rgba(240, 190, 66, 0.24);
+  color: #8f2a1c;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.silent-auction-bid-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.silent-auction-bid-meta div {
+  padding: 0.85rem;
+  border: 1px solid rgba(127, 47, 31, 0.12);
+  border-radius: 1rem 1.15rem 1rem 1.25rem;
+  background: rgba(255, 253, 248, 0.62);
+}
+
+.silent-auction-bid-meta dt {
+  margin-bottom: 0.3rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.silent-auction-bid-meta dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.silent-auction-actions .button {
+  width: 100%;
+}
+
+.silent-auction-form {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px dashed rgba(127, 47, 31, 0.28);
+  border-radius: 1rem 1.3rem 1rem 1.2rem;
+  background: rgba(255, 248, 236, 0.72);
+}
+
+.silent-auction-form label {
+  display: grid;
+  gap: 0.38rem;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.silent-auction-form label span {
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.silent-auction-form input {
+  min-height: 2.9rem;
+  width: 100%;
+  border: 1px solid rgba(127, 47, 31, 0.2);
+  border-radius: 0.85rem 1rem 0.85rem 1.05rem;
+  background: rgba(255, 253, 248, 0.94);
+  color: var(--text);
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.silent-auction-form input:focus {
+  border-color: rgba(210, 69, 47, 0.72);
+  box-shadow:
+    0 0 0 3px rgba(240, 190, 66, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  outline: none;
+}
+
+.silent-auction-feedback {
+  padding: 0.78rem 0.9rem;
+  border-radius: 0.9rem 1rem 0.9rem 1.1rem;
+  font-weight: 700;
+}
+
+.silent-auction-feedback.is-success {
+  border: 1px solid rgba(29, 123, 115, 0.22);
+  background: rgba(29, 123, 115, 0.1);
+  color: #155f59;
+}
+
+.silent-auction-feedback.is-error {
+  border: 1px solid rgba(181, 42, 42, 0.24);
+  background: rgba(181, 42, 42, 0.1);
+  color: #8f2a1c;
 }
 
 .day-of-schedule-grid,
@@ -3074,7 +3300,8 @@ span.poster-sticker-family::after {
   }
 
   .day-of-schedule-grid,
-  .day-of-activity-grid {
+  .day-of-activity-grid,
+  .silent-auction-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -3142,6 +3369,14 @@ span.poster-sticker-family::after {
 @media (max-width: 520px) {
   .section {
     padding: 2.25rem 0;
+  }
+
+  .silent-auction-bid-meta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .silent-auction-card-body {
+    padding: 0.95rem;
   }
 
   .countdown-grid {
@@ -3318,6 +3553,10 @@ span.poster-sticker-family::after {
   }
 
   .day-of-activity-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .silent-auction-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
