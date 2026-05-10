@@ -3,6 +3,8 @@ export const donationFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSdJRIpv0jbFyApfKM7SmREz85SOJ8odNe12Ex0SKPaE71NsbA/viewform?usp=dialog";
 export const registrationFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSe9Z-FC43WnBFT__pQ3kTOlM_sxCGZFr0qVCkxr9oPAPj3j2A/viewform";
+export const vendorRegistrationEmail = "htcc_festival@yahoo.com";
+export const vendorRegistrationEmailUrl = `mailto:${vendorRegistrationEmail}`;
 export const festivalLocation = "3515 Trinity Dr, Mont Belvieu, TX 77580, USA";
 export const googleMapsLocationUrl =
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(festivalLocation)}`;
@@ -387,7 +389,7 @@ export const siteContent = {
       },
       {
         question: "How do I become a vendor?",
-        answer: "Use the Summer Fest Registration form on the Get Involved page to register as a vendor.",
+        answer: `Email ${vendorRegistrationEmail} for vendor registration.`,
       },
       {
         question: "How do I donate to the silent auction or make a monetary donation?",
@@ -447,7 +449,7 @@ export const siteContent = {
           title: "Vendor booth",
           price: "$50",
           description: "For those who want to set up a booth and participate as a vendor at the festival.",
-          note: "Plus a required contribution to the silent auction",
+          note: `Email ${vendorRegistrationEmail} to register. Plus a required contribution to the silent auction.`,
         },
       ],
     },
@@ -627,10 +629,14 @@ export const siteContent = {
   signUps: [
     {
       title: "Register",
-      description: "For volunteers, vendors, and tournament registration so teams and helpers can sign up in one place.",
+      description: "For volunteers and tournament registration so teams and helpers can sign up in one place.",
       buttonLabel: "Open Registration Form",
       formUrl: registrationFormUrl,
-      details: ["Volunteer sign-ups", "Vendor registration", "Tournament registration"],
+      details: [
+        "Volunteer sign-ups",
+        { label: `Vendor registration: ${vendorRegistrationEmail}`, href: vendorRegistrationEmailUrl },
+        "Tournament registration",
+      ],
     },
     {
       title: "Donate",

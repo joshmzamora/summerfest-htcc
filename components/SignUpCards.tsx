@@ -30,7 +30,7 @@ type SignUpCardItem = {
   description: string;
   buttonLabel: string;
   formUrl: string;
-  details: ReadonlyArray<string>;
+  details: ReadonlyArray<string | { label: string; href: string; external?: boolean }>;
   basketThemeSection?: BasketThemeSection;
 };
 
@@ -60,7 +60,15 @@ export function SignUpCards({ items }: SignUpCardsProps) {
             </div>
             <ul className="detail-list">
               {item.details.map((detail) => (
-                <li key={detail}>{detail}</li>
+                <li key={typeof detail === "string" ? detail : detail.label}>
+                  {typeof detail === "string" ? (
+                    detail
+                  ) : (
+                    <a href={detail.href} rel={detail.external ? "noreferrer" : undefined} target={detail.external ? "_blank" : undefined}>
+                      {detail.label}
+                    </a>
+                  )}
+                </li>
               ))}
             </ul>
             <div className="button-row">
