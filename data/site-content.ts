@@ -318,7 +318,6 @@ export const siteContent = {
     { label: "Home", href: "/" },
     { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
-    { label: "Silent Auction", href: "/silent-auction" },
     { label: "Get Involved", href: "/get-involved" },
   ],
   heroActions: [
@@ -618,14 +617,6 @@ export const siteContent = {
       href: "/plan-your-visit",
     },
   },
-  silentAuction: {
-    intro: {
-      title: "Silent Auction",
-      description:
-        "Browse pledge-style auction items, place bids during the event, and let the committee contact winners directly after closing.",
-    },
-    itemsTitle: "Auction Items",
-  },
   signUps: [
     {
       title: "Register",
@@ -690,7 +681,6 @@ export const siteContent = {
   footerLinks: [
     { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
-    { label: "Silent Auction", href: "/silent-auction" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Donate", href: donationFormUrl },
   ],
