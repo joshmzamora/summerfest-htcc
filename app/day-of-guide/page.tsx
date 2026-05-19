@@ -31,7 +31,6 @@ export default function DayOfGuidePage() {
               reveal="card"
             >
               <div className="day-of-card-header">
-                <span className="day-of-time-chip">Time slot</span>
                 <h3>{item.time}</h3>
               </div>
               <ul className="detail-list day-of-detail-list">
@@ -63,7 +62,6 @@ export default function DayOfGuidePage() {
               reveal="card"
             >
               <div className="admission-panel-header day-of-activity-header">
-                <span className="day-of-group-chip">Tentative</span>
                 <h3>{group.title}</h3>
               </div>
               <ul className="detail-list">

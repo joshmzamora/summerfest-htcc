@@ -1630,33 +1630,6 @@ main>.page-intro-text-first+.info-bar {
   font-weight: 400;
 }
 
-.day-of-time-chip,
-.day-of-group-chip {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  min-height: 1.9rem;
-  padding: 0.28rem 0.72rem;
-  border-radius: 999px;
-  font-size: 0.73rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.day-of-time-chip {
-  border: 1px solid rgba(29, 123, 115, 0.24);
-  background: rgba(238, 251, 247, 0.94);
-  color: #15635c;
-}
-
-.day-of-group-chip {
-  border: 1px solid rgba(181, 42, 42, 0.2);
-  background: rgba(255, 246, 238, 0.94);
-  color: #962a24;
-}
-
 .day-of-detail-list {
   position: relative;
   z-index: 1;

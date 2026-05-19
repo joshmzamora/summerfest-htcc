@@ -478,6 +478,8 @@ test("day-of guide renders tentative schedule and activity content", async ({ pa
 
   await expect(page.getByRole("heading", { level: 1, name: "Day-Of Guide" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Tentative Schedule" })).toBeVisible();
+  await expect(page.getByText("Time slot")).toHaveCount(0);
+  await expect(page.locator(".day-of-activity-card").getByText("Tentative", { exact: true })).toHaveCount(0);
   const titleToScheduleGap = await page.evaluate(() => {
     const title = document.querySelector(".page-intro h1");
     const schedule = document.querySelector(".day-of-schedule-section");
