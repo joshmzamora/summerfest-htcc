@@ -401,13 +401,10 @@ export const siteContent = {
   buyWristbandsTickets: {
     intro: {
       title: "Buy Wristbands & Tickets",
-      description:
-        "Admission is free. Use this page to compare wristbands, tickets, and vendor booth pricing before opening the Summer Fest Vanco payment page.",
     },
     admissionOverview: {
       title: "Admission Overview",
-      summary:
-        "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
+      banner: "Admission is free",
     },
     wristbandsOrTickets: {
       title: "Wristbands vs Tickets",
@@ -431,8 +428,9 @@ export const siteContent = {
     },
     pricing: {
       title: "Pricing",
-      description: "Prices go up Thursday, May 21. Click below to be redirected to the Summer Fest Vanco payment page.",
+      description: "Early bird pricing is available now. Prices go up Thursday, May 21. Click below to be redirected to the Summer Fest Vanco payment page.",
       urgency: "Prices go up Thursday, May 21",
+      badge: "Early bird pricing",
       cta: {
         label: "Open Vanco Payment Link",
         href: paymentUrl,

@@ -366,6 +366,43 @@ main {
   align-items: center;
 }
 
+.page-intro-text-first .page-intro-shell {
+  display: block;
+}
+
+.page-intro-text-first .page-intro-copy {
+  max-width: min(100%, 50rem);
+  margin-inline: auto;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.page-intro-text-first .page-intro-copy-inner {
+  justify-items: center;
+}
+
+.page-intro-text-first .page-intro-copy h1 {
+  margin-bottom: 0;
+}
+
+.page-intro-text-first .page-intro-copy p {
+  max-width: 38rem;
+  margin: 1rem auto 0;
+}
+
+main>.page-intro-text-first {
+  padding-bottom: clamp(0.85rem, 2vw, 1.2rem);
+}
+
+main>.page-intro-text-first+.section {
+  padding-top: clamp(1.35rem, 3vw, 2rem);
+}
+
+main>.page-intro-text-first+.info-bar {
+  margin-top: 0;
+  padding-top: clamp(1.35rem, 3vw, 2rem);
+}
+
 .hero-copy {
   position: relative;
   text-align: center;
@@ -912,6 +949,36 @@ main {
   margin-top: 1rem;
 }
 
+.admission-free-banner {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin: 0 0 1rem;
+  padding: clamp(0.85rem, 2vw, 1.1rem) 1.25rem;
+  border: 3px solid rgba(122, 36, 24, 0.28);
+  border-radius: 0.8rem;
+  background:
+    linear-gradient(90deg, rgba(184, 58, 36, 0.96), rgba(228, 77, 42, 0.94)),
+    repeating-linear-gradient(90deg, rgba(255, 248, 236, 0.18) 0 18px, transparent 18px 36px);
+  box-shadow:
+    inset 0 0 0 3px rgba(255, 245, 224, 0.28),
+    0 14px 28px rgba(118, 52, 27, 0.18);
+}
+
+.admission-free-banner p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff8ec;
+  font-family: var(--font-display), cursive;
+  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 2px 0 rgba(91, 34, 22, 0.2);
+}
+
 .process-flows {
   display: grid;
   gap: 1rem;
@@ -1163,8 +1230,8 @@ main {
 .pricing-card-summary {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) auto;
-  gap: 0.35rem;
-  align-items: start;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .pricing-card-topline {
@@ -1186,6 +1253,9 @@ main {
 
 .pricing-label {
   display: block;
+  max-width: 11rem;
+  align-self: center;
+  justify-self: end;
   text-align: right;
 }
 
@@ -1193,6 +1263,7 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  justify-self: start;
   min-height: 1.9rem;
   padding: 0.28rem 0.72rem;
   border: 1px solid rgba(29, 123, 115, 0.22);
@@ -1203,6 +1274,10 @@ main {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.buy-wristbands-tickets-page .pricing-badge {
+  margin-top: 0.1rem;
 }
 
 .pricing-board-actions {
@@ -1367,10 +1442,6 @@ main {
   transform: translateX(-50%) rotate(45deg);
 }
 
-.get-involved-page .page-intro {
-  padding-bottom: 0.5rem;
-}
-
 .get-involved-page .page-intro-shell,
 .involvement-guidance-layout {
   gap: clamp(1.6rem, 3vw, 2.5rem);
@@ -1418,10 +1489,6 @@ main {
       rgba(194, 68, 44, 0.08) 16px 32px);
   mix-blend-mode: soft-light;
   opacity: 0.55;
-}
-
-.day-of-guide-page .page-intro {
-  padding-bottom: 0.75rem;
 }
 
 .day-of-guide-page .page-intro-copy {
@@ -3207,6 +3274,14 @@ span.poster-sticker-family::after {
     padding: 2.8rem 0;
   }
 
+  main>.page-intro-text-first+.section {
+    padding-top: 1.25rem;
+  }
+
+  main>.page-intro-text-first+.info-bar {
+    padding-top: 1.25rem;
+  }
+
   .day-of-schedule-card,
   .day-of-activity-card {
     padding: 1.2rem;
@@ -3298,6 +3373,16 @@ span.poster-sticker-family::after {
     font-size: 0.67rem;
     line-height: 1.2;
     transform: rotate(6deg);
+  }
+}
+
+@media (max-width: 1080px) {
+  .buy-wristbands-tickets-page .visit-overview-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .buy-wristbands-tickets-page .pricing-card-summary {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 }
 

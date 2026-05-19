@@ -26,16 +26,18 @@ export default function BuyWristbandsTicketsPage() {
         eventName={siteContent.eventName}
         navigation={siteContent.navigation}
       />
-      <PageIntro title={pageContent.intro.title} description={pageContent.intro.description} variant="text-first" />
+      <PageIntro title={pageContent.intro.title} variant="text-first" />
 
       <Section
         className="visit-admission-section"
         id="admission-overview"
         headingMotion="ribbon"
         title={pageContent.admissionOverview.title}
-        description={pageContent.admissionOverview.summary}
         carnival
       >
+        <MotionPanel className="admission-free-banner" reveal="sticker">
+          <p>{pageContent.admissionOverview.banner}</p>
+        </MotionPanel>
         <div className="split-layout visit-overview-grid">
           <MotionPanel as="article" className="admission-explainer" hover="panel" reveal="signboard">
             <div className="admission-explainer-heading">
@@ -65,7 +67,6 @@ export default function BuyWristbandsTicketsPage() {
 
           <MotionPanel as="article" className="pricing-board" hover="panel" reveal="poster">
             <div className="pricing-board-header">
-              <span>{pageContent.pricing.urgency}</span>
               <h3>{pageContent.pricing.title}</h3>
               <p>{pageContent.pricing.description}</p>
             </div>
@@ -81,10 +82,9 @@ export default function BuyWristbandsTicketsPage() {
                 >
                   <div className="pricing-card-summary">
                     <strong>{item.price}</strong>
-                    <div className="pricing-card-topline">
-                      <span className="pricing-label">{item.title}</span>
-                    </div>
+                    <span className="pricing-label">{item.title}</span>
                   </div>
+                  <span className="pricing-badge">{pageContent.pricing.badge}</span>
                   <p>{item.description}</p>
                   {"note" in item && item.note ? <em>{item.note}</em> : null}
                 </MotionPressableLink>

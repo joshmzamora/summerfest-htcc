@@ -317,7 +317,20 @@ test("plan your visit page stays focused on logistics", async ({ page }) => {
   await page.goto("/plan-your-visit");
 
   await expect(page.getByRole("heading", { level: 1, name: "What You Need to Know" })).toBeVisible();
+  await expect(page.locator(".page-intro-text-first .page-intro-copy")).toHaveCSS("text-align", "center");
   await expect(page.getByRole("heading", { level: 2, name: "Event Details" })).toBeVisible();
+  const titleToInfoGap = await page.evaluate(() => {
+    const title = document.querySelector(".page-intro h1");
+    const info = document.querySelector(".info-bar");
+
+    if (!title || !info) {
+      return Number.POSITIVE_INFINITY;
+    }
+
+    return info.getBoundingClientRect().top - title.getBoundingClientRect().bottom;
+  });
+
+  expect(titleToInfoGap).toBeLessThanOrEqual(150);
   await expect(page.getByText("Parking available in lot and marked field")).toBeVisible();
   await expect(page.getByText("Tents, tables, and chairs provided")).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Need wristbands, tickets, or vendor pricing?" })).toBeVisible();
@@ -341,14 +354,18 @@ test("buy wristbands and tickets page owns admission and pricing", async ({ page
   await page.goto("/buy-wristbands-tickets");
 
   await expect(page.getByRole("heading", { level: 1, name: "Buy Wristbands & Tickets" })).toBeVisible();
+  await expect(page.locator(".page-intro-text-first .page-intro-copy")).toHaveCSS("text-align", "center");
   await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toBeVisible();
-  await expect(page.getByText("Admission is free, and guests can choose optional purchases")).toBeVisible();
+  await expect(page.locator(".admission-free-banner").getByText("Admission is free", { exact: true })).toBeVisible();
+  await expect(page.getByText("Use this page to compare wristbands")).toHaveCount(0);
+  await expect(page.getByText("guests can choose optional purchases")).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 3, name: "Wristbands vs Tickets" })).toBeVisible();
   await expect(page.getByText("Unlimited games and activities")).toBeVisible();
   await expect(page.getByText("Pay one item at a time")).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toBeVisible();
-  await expect(page.getByText("Prices go up Thursday, May 21", { exact: true })).toBeVisible();
-  await expect(page.getByText("Early bird pricing")).toHaveCount(0);
+  await expect(page.locator(".pricing-board-header > span")).toHaveCount(0);
+  await expect(page.getByText(/Prices go up Thursday, May 21/)).toBeVisible();
+  await expect(page.locator(".pricing-badge", { hasText: "Early bird pricing" })).toHaveCount(4);
   await expect(page.getByText("Email htcc_festival@yahoo.com to register")).toBeVisible();
   await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toHaveAttribute(
     "href",
@@ -358,6 +375,24 @@ test("buy wristbands and tickets page owns admission and pricing", async ({ page
     "href",
     "https://secure.myvanco.com/L-ZFPW/home",
   );
+});
+
+test("buy wristbands and tickets page stays readable on tablet widths", async ({ page }) => {
+  await page.setViewportSize({ width: 820, height: 1180 });
+  await page.goto("/buy-wristbands-tickets");
+
+  const main = page.locator("main");
+  const overflow = await main.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }));
+  const gridColumnCount = await page.locator(".buy-wristbands-tickets-page .visit-overview-grid").evaluate(
+    (element) => getComputedStyle(element).gridTemplateColumns.split(" ").length,
+  );
+
+  expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.clientWidth + 1);
+  expect(gridColumnCount).toBe(1);
+  await expect(page.locator(".pricing-badge", { hasText: "Early bird pricing" }).first()).toBeVisible();
 });
 
 test("legacy what to expect route now redirects to plan your visit", async ({ page }) => {
@@ -440,8 +475,19 @@ test("day-of guide renders tentative schedule and activity content", async ({ pa
   await page.goto("/day-of-guide");
 
   await expect(page.getByRole("heading", { level: 1, name: "Day-Of Guide" })).toBeVisible();
-  await expect(page.getByText("tentative schedule and tentative activity lineup")).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Tentative Schedule" })).toBeVisible();
+  const titleToScheduleGap = await page.evaluate(() => {
+    const title = document.querySelector(".page-intro h1");
+    const schedule = document.querySelector(".day-of-schedule-section");
+
+    if (!title || !schedule) {
+      return Number.POSITIVE_INFINITY;
+    }
+
+    return schedule.getBoundingClientRect().top - title.getBoundingClientRect().bottom;
+  });
+
+  expect(titleToScheduleGap).toBeLessThanOrEqual(150);
   await expect(page.getByText("Tentative schedule: times and match order may shift on festival day.")).toBeVisible();
   await expect(page.getByRole("heading", { level: 2, name: "Tentative Activities" })).toBeVisible();
   await expect(page.getByText("Tentative activities: booths, contests, and game stations may be adjusted before or during the event.")).toBeVisible();
