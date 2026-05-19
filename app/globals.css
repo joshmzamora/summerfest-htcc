@@ -324,26 +324,120 @@ main {
 }
 
 .nav-toggle {
+  position: relative;
   display: inline-flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0.3rem;
-  width: 3rem;
+  gap: 0.5rem;
+  width: auto;
+  min-width: 5.8rem;
   height: 3rem;
-  padding: 0.7rem;
+  padding: 0.58rem 0.72rem 0.58rem 0.9rem;
   border: 1px solid rgba(103, 63, 36, 0.12);
   border-radius: 1rem 1.2rem 1rem 1.25rem;
   background: rgba(255, 250, 242, 0.92);
   box-shadow: var(--shadow-soft);
   cursor: pointer;
+  animation: menuButtonPulse 2.6s ease-in-out infinite;
 }
 
-.nav-toggle span {
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  inset: -0.28rem;
+  border: 2px solid rgba(136, 58, 35, 0.16);
+  border-radius: 1.2rem 1.4rem 1.2rem 1.45rem;
+  opacity: 0;
+  animation: menuCueRing 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+.nav-toggle-label {
+  color: #7a2418;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.nav-toggle-lines {
+  position: relative;
   display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nav-toggle-lines span {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
   width: 100%;
   height: 2px;
   border-radius: 999px;
   background: var(--text);
+  transform-origin: center;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.nav-toggle-lines span:nth-child(1) {
+  transform: translateY(-7px);
+}
+
+.nav-toggle-lines span:nth-child(2) {
+  transform: translateY(-1px);
+}
+
+.nav-toggle-lines span:nth-child(3) {
+  transform: translateY(5px);
+}
+
+.nav-toggle-lines.is-open span:nth-child(1) {
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.nav-toggle-lines.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: translateY(-1px) scaleX(0.2);
+}
+
+.nav-toggle-lines.is-open span:nth-child(3) {
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+@keyframes menuButtonPulse {
+  0%,
+  100% {
+    border-color: rgba(103, 63, 36, 0.12);
+    box-shadow: var(--shadow-soft);
+  }
+
+  50% {
+    border-color: rgba(136, 58, 35, 0.26);
+    box-shadow:
+      0 12px 24px rgba(118, 66, 42, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  }
+}
+
+@keyframes menuCueRing {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  16% {
+    opacity: 1;
+  }
+
+  72%,
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
 }
 
 .hero-section,

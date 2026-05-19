@@ -436,7 +436,9 @@ test("navigation, home festival sections, and legacy routes reflect the consolid
   const viewport = page.viewportSize();
 
   if ((viewport?.width ?? 0) < 960) {
-    await page.getByRole("button", { name: "Open navigation menu" }).click();
+    const menuButton = page.getByRole("button", { name: "Open navigation menu" });
+    await expect(menuButton.getByText("Menu")).toBeVisible();
+    await menuButton.click();
     await expect(page.locator("#primary-navigation").getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
     await expect(page.locator("#primary-navigation").getByRole("link", { name: "Buy Wristbands & Tickets" })).toHaveAttribute("href", "/buy-wristbands-tickets");
   } else {

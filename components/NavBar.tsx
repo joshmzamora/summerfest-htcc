@@ -85,14 +85,17 @@ export function NavBar({ churchName, eventName, navigation }: NavBarProps) {
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             className="nav-toggle"
-            whileHover={reduceMotion ? undefined : { y: -2, rotate: -1 }}
+            whileHover={reduceMotion ? undefined : { y: -2 }}
             whileTap={reduceMotion ? undefined : { y: 1, scale: 0.97 }}
             type="button"
             onClick={() => setMenuOpen((current) => !current)}
           >
-            <m.span animate={menuOpen && !reduceMotion ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }} />
-            <m.span animate={menuOpen && !reduceMotion ? { opacity: 0 } : { opacity: 1 }} />
-            <m.span animate={menuOpen && !reduceMotion ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }} />
+            <span className="nav-toggle-label">Menu</span>
+            <span className={`nav-toggle-lines ${menuOpen ? "is-open" : ""}`.trim()} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
           </m.button>
         </div>
         <AnimatePresence initial={false}>
