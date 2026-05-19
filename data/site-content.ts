@@ -318,6 +318,7 @@ export const siteContent = {
     { label: "Home", href: "/" },
     { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
+    { label: "Buy Wristbands & Tickets", href: "/buy-wristbands-tickets" },
     { label: "Get Involved", href: "/get-involved" },
   ],
   heroActions: [
@@ -359,10 +360,11 @@ export const siteContent = {
         "A day of food, games, and fellowship supporting the building fund",
       ],
     },
-    admissionOverview: {
-      title: "Admission Overview",
-      summary:
-        "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
+    purchasePrompt: {
+      title: "Need wristbands, tickets, or vendor pricing?",
+      summary: "Admission is free. Optional purchases for games, activities, food, drinks, and vendor booths are on the purchase page.",
+      ctaLabel: "Buy Wristbands & Tickets",
+      href: "/buy-wristbands-tickets",
     },
     faqs: [
       {
@@ -396,9 +398,16 @@ export const siteContent = {
       },
     ],
   },
-  whatToExpect: {
+  buyWristbandsTickets: {
     intro: {
-      title: "What to Expect at Summer Fest",
+      title: "Buy Wristbands & Tickets",
+      description:
+        "Admission is free. Use this page to compare wristbands, tickets, and vendor booth pricing before opening the Summer Fest Vanco payment page.",
+    },
+    admissionOverview: {
+      title: "Admission Overview",
+      summary:
+        "Admission is free, and guests can choose optional purchases if they want to enjoy food, drinks, games, activities, or vendor participation.",
     },
     wristbandsOrTickets: {
       title: "Wristbands vs Tickets",
@@ -422,7 +431,8 @@ export const siteContent = {
     },
     pricing: {
       title: "Pricing",
-      description: "Early bird pricing is available now! Click below to be redirected to the Summer Fest Vanco payment page.",
+      description: "Prices go up Thursday, May 21. Click below to be redirected to the Summer Fest Vanco payment page.",
+      urgency: "Prices go up Thursday, May 21",
       cta: {
         label: "Open Vanco Payment Link",
         href: paymentUrl,
@@ -451,6 +461,11 @@ export const siteContent = {
           note: `Email ${vendorRegistrationEmail} to register. Plus a required contribution to the silent auction.`,
         },
       ],
+    },
+  },
+  whatToExpect: {
+    intro: {
+      title: "What to Expect at Summer Fest",
     },
     foodAndDrink: {
       title: "Food & Drink",
@@ -681,6 +696,7 @@ export const siteContent = {
   footerLinks: [
     { label: "Day-Of Guide", href: "/day-of-guide" },
     { label: "Plan Your Visit", href: "/plan-your-visit" },
+    { label: "Buy Wristbands & Tickets", href: "/buy-wristbands-tickets" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Donate", href: donationFormUrl },
   ],

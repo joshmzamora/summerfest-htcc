@@ -320,18 +320,36 @@ test("plan your visit page stays focused on logistics", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 2, name: "Event Details" })).toBeVisible();
   await expect(page.getByText("Parking available in lot and marked field")).toBeVisible();
   await expect(page.getByText("Tents, tables, and chairs provided")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Need wristbands, tickets, or vendor pricing?" })).toBeVisible();
+  await expect(page.locator(".visit-purchase-card").getByRole("link", { name: "Buy Wristbands & Tickets" })).toHaveAttribute("href", "/buy-wristbands-tickets");
   await expect(page.getByRole("heading", { level: 2, name: "Know Before You Go" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 3, name: "About Summer Fest" })).toHaveCount(0);
-  await expect(page.getByText("Admission is free, and guests can choose optional purchases")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "Frequently Asked Questions" })).toBeVisible();
 
-  await expect(page.getByRole("heading", { level: 3, name: "Wristbands vs Tickets" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Wristbands vs Tickets" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "Food & Drink" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "Activities & Games" })).toHaveCount(0);
+  await expect(page.getByText("Unlimited games and activities")).toHaveCount(0);
+  await expect(page.getByText("Pay one item at a time")).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Open Vanco Payment Link" })).toHaveCount(0);
+});
+
+test("buy wristbands and tickets page owns admission and pricing", async ({ page }) => {
+  await page.goto("/buy-wristbands-tickets");
+
+  await expect(page.getByRole("heading", { level: 1, name: "Buy Wristbands & Tickets" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Admission Overview" })).toBeVisible();
+  await expect(page.getByText("Admission is free, and guests can choose optional purchases")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Wristbands vs Tickets" })).toBeVisible();
   await expect(page.getByText("Unlimited games and activities")).toBeVisible();
   await expect(page.getByText("Pay one item at a time")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toBeVisible();
+  await expect(page.getByText("Prices go up Thursday, May 21", { exact: true })).toBeVisible();
+  await expect(page.getByText("Early bird pricing")).toHaveCount(0);
+  await expect(page.getByText("Email htcc_festival@yahoo.com to register")).toBeVisible();
   await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toHaveAttribute(
     "href",
     "https://secure.myvanco.com/L-ZFPW/home",
@@ -385,12 +403,15 @@ test("navigation, home festival sections, and legacy routes reflect the consolid
   if ((viewport?.width ?? 0) < 960) {
     await page.getByRole("button", { name: "Open navigation menu" }).click();
     await expect(page.locator("#primary-navigation").getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
+    await expect(page.locator("#primary-navigation").getByRole("link", { name: "Buy Wristbands & Tickets" })).toHaveAttribute("href", "/buy-wristbands-tickets");
   } else {
     await expect(page.locator("#primary-navigation-desktop").getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
+    await expect(page.locator("#primary-navigation-desktop").getByRole("link", { name: "Buy Wristbands & Tickets" })).toHaveAttribute("href", "/buy-wristbands-tickets");
   }
 
   await expect(footerNav.getByRole("link", { name: "Day-Of Guide" })).toHaveAttribute("href", "/day-of-guide");
   await expect(footerNav.getByRole("link", { name: "Plan Your Visit" })).toHaveAttribute("href", "/plan-your-visit");
+  await expect(footerNav.getByRole("link", { name: "Buy Wristbands & Tickets" })).toHaveAttribute("href", "/buy-wristbands-tickets");
   await expect(footerNav.getByRole("link", { name: "Get Involved" })).toHaveAttribute("href", "/get-involved");
   await expect(footerNav.getByRole("link", { name: "Contact" })).toHaveCount(0);
   await expect(page.locator("#primary-navigation").getByRole("link", { name: "What to Expect" })).toHaveCount(0);
