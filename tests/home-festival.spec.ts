@@ -364,8 +364,11 @@ test("buy wristbands and tickets page owns admission and pricing", async ({ page
   await expect(page.getByText("Pay one item at a time")).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Pricing" })).toBeVisible();
   await expect(page.locator(".pricing-board-header > span")).toHaveCount(0);
-  await expect(page.getByText(/Prices go up Thursday, May 21/)).toBeVisible();
-  await expect(page.locator(".pricing-badge", { hasText: "Early bird pricing" })).toHaveCount(4);
+  await expect(page.getByText(/Full pricing is now in effect/)).toBeVisible();
+  await expect(page.locator(".pricing-badge", { hasText: "Full price" })).toHaveCount(4);
+  await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toContainText("$30");
+  await expect(page.getByRole("link", { name: "Open payment link for 3 wristbands" })).toContainText("$75");
+  await expect(page.getByRole("link", { name: "Open payment link for 5 tickets" })).toContainText("$6");
   await expect(page.getByText("Email htcc_festival@yahoo.com to register")).toBeVisible();
   await expect(page.getByRole("link", { name: "Open payment link for 1 wristband" })).toHaveAttribute(
     "href",
@@ -392,7 +395,7 @@ test("buy wristbands and tickets page stays readable on tablet widths", async ({
 
   expect(overflow.scrollWidth).toBeLessThanOrEqual(overflow.clientWidth + 1);
   expect(gridColumnCount).toBe(1);
-  await expect(page.locator(".pricing-badge", { hasText: "Early bird pricing" }).first()).toBeVisible();
+  await expect(page.locator(".pricing-badge", { hasText: "Full price" }).first()).toBeVisible();
 });
 
 test("legacy what to expect route now redirects to plan your visit", async ({ page }) => {

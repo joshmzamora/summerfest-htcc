@@ -428,9 +428,9 @@ export const siteContent = {
     },
     pricing: {
       title: "Pricing",
-      description: "Early bird pricing is available now. Prices go up Thursday, May 21. Click below to be redirected to the Summer Fest Vanco payment page.",
-      urgency: "Prices go up Thursday, May 21",
-      badge: "Early bird pricing",
+      description: "Full pricing is now in effect. Click below to be redirected to the Summer Fest Vanco payment page.",
+      urgency: "Full pricing is now in effect",
+      badge: "Full price",
       cta: {
         label: "Open Vanco Payment Link",
         href: paymentUrl,
@@ -439,17 +439,17 @@ export const siteContent = {
       items: [
         {
           title: "1 wristband",
-          price: "$25",
+          price: "$30",
           description: "A simple option for one guest planning to enjoy the games and activities.",
         },
         {
           title: "3 wristbands",
-          price: "$65",
+          price: "$75",
           description: "A family-friendly bundle for three guests at a lower total price.",
         },
         {
           title: "5 tickets",
-          price: "$5",
+          price: "$6",
           description: "A small ticket bundle for food, drinks, or select festival purchases.",
         },
         {
